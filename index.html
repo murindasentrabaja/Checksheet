@@ -49,7 +49,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:var(--fs)/1.5 "Plus Jak
 #fs:disabled input,#fs:disabled select,#fs:disabled textarea{-webkit-text-fill-color:currentColor;opacity:1}
 #sheet textarea{height:110px;padding:10px 12px;resize:vertical}#sheet input[type=checkbox]{width:auto;min-height:0;margin-right:4px}
 #sheet .pick{display:block;border:1.5px solid #9db9e6;border-radius:12px;height:48px;background:#fff var(--ic) 14px 50%/18px no-repeat;padding:0 14px 0 44px;margin-top:6px;font-size:15px}
-.fx{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}.fx>div{min-width:0}.fx>div>*+*{margin-top:14px}
+.fx{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}.fx>div{min-width:0}.fx>div>*+*{margin-top:14px}.fx.mt{margin:12px 0 0}.rk{display:flex;flex-direction:column;height:100%;border:1px solid var(--bd)}.rk>.l{background:var(--sf);border-bottom:1px solid var(--bd);padding:0 12px;line-height:30px;font-weight:600}#sheet .rk textarea{flex:1;height:auto;min-height:96px;border:0;resize:none}
 .sk{border:2px dashed #b9c7da;border-radius:14px;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--sf);padding:12px}
 .sk img{max-width:100%;max-height:300px;border-radius:8px}.sk img:not([src]){display:none}.sk.has{border-style:solid}.sk.has .ph{display:none}.bt{display:flex;gap:8px}.bt label{cursor:pointer}
 .nm{display:flex}.nm input{flex:1}.me{border:0;border-left:1px solid var(--bd);background:var(--hb);color:var(--pri);padding:0 14px;font:inherit;font-weight:600;cursor:pointer}
@@ -88,15 +88,15 @@ body{margin:0;background:var(--bg);color:var(--ink);font:var(--fs)/1.5 "Plus Jak
 #sheet .cd td:has(>input:not(.c)){grid-column:1/-1}
 #sheet .cd input,#sheet .cd select{border:1px solid var(--bd);border-radius:10px;background:#fff;padding:0 12px}#sheet .cd input.c{padding:0 8px}
 #sheet .cd .ng{background:var(--ngb)}#sheet .cd .ok{background:var(--okb)}#sheet .cd input.exp{background:#fecaca}
-#sheet [data-t=fin] td.n::before{content:"No. "}#sheet [data-t=fin] td.n:empty{display:none}}
-@media print{@page{size:A4;margin:6mm}:root{--rh:17px;--fs:10px;--bd:#000}body{background:#fff;font-family:system-ui,"Segoe UI",Roboto,Arial,sans-serif}#sheet th{color:#000}.np,#top,#ebw{display:none!important}
+#sheet [data-t=fin] td.n::before{content:"No. "}}
+@media print{@page{size:A4;margin:5mm 6mm}:root{--rh:16px;--fs:10px;--bd:#000}body{background:#fff;font-family:system-ui,"Segoe UI",Roboto,Arial,sans-serif}#sheet th{color:#000}.np,#top,#ebw{display:none!important}
 #sheet{max-width:none;padding:0}.card{border:0;border-radius:0;margin:0 0 5px;overflow:visible;box-shadow:none}.in{padding:0}.hd{padding:0 0 6px;border:0}.hd h2{font-size:19px}.hd img{height:11mm}.hd .hr{gap:1.5mm;min-width:0}.hd .hr img{height:auto;max-height:9mm;max-width:54mm}.hr .cn{font-size:12px}.hd small{min-width:0;line-height:1.4}
 .sec{background:#CFE2F3!important;color:#000;border:1px solid #000;padding:3px 6px;font-size:11px;text-transform:uppercase;break-after:avoid}
 #sheet th,#sheet td.l,#sheet td.n{background:#F3F3F3!important}#sheet th{font-size:10px;padding:0 2px}[data-t=pt] th{font-size:8px!important}
-.fx{gap:6px;margin-bottom:5px}#s-e .fx{grid-template-columns:1fr 1fr}.sk{min-height:46mm;border:1px solid #000;border-radius:0;background:none}.sk img{max-height:42mm}#sheet .box{height:15mm}.tw{overflow:visible}#sheet table{min-width:0!important}
+.fx{grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px}.fx>div>*+*,.fx.mt{margin-top:4px}.fx>div:first-child>.sk{height:100%}.rk>.l{background:#F3F3F3!important;line-height:17px;padding:0 6px}#sheet .rk textarea{padding:2px 6px;min-height:0}.sk{min-height:46mm;border:1px solid #000;border-radius:0;background:none}.sk img{max-height:42mm}#sheet .box{height:13mm}.tw{overflow:visible}#sheet table{min-width:0!important}
 #sheet input,#sheet select,#sheet textarea{-webkit-appearance:none;appearance:none;background:none!important}#sheet input::-webkit-calendar-picker-indicator{display:none}
 #sheet .ng,#sheet .ok{background:none!important}#sheet input.exp{color:#000}#sheet textarea{height:18mm}::placeholder{color:transparent}
-input.e::-webkit-datetime-edit{color:transparent}tr,.fx{break-inside:avoid}#s-g{break-before:page}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+input.e::-webkit-datetime-edit{color:transparent}tr,.fx,.card{break-inside:avoid}#s-a,#s-b,#s-f{break-inside:auto}tbody tr:nth-child(-n+3),tbody tr:nth-last-child(-n+2){break-before:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style></head><body>
 <header id="top" class="np"><img id="hlogo" alt=""><h1>IPQC Check Sheet</h1><div id="usr" hidden><div><b id="un"></b><small id="uj"></small></div><button class="btn sm" onclick="bye()">Keluar</button></div></header>
 
@@ -136,17 +136,18 @@ const I=(k,t='text',x='')=>`<input data-k="${k}" type="${t}" ${x}>`;
 const kv=(l,k,t,x)=>`<tr><td class="l" style="width:42%">${l}</td><td>${I(k,t,x)}</td></tr>`;
 const sk=s=>`<div class="sk"><span class="ph mut">Sketch</span><img data-s="${s}" alt="" onerror="skErr(this)"><div class="bt np"><label class="btn sm">Upload gambar<input type="file" accept="image/*" hidden onchange="skUp(this,'${s}')"></label><button type="button" class="btn sm d" onclick="skDel('${s}')">${SKD[s]?'Kembalikan standar':'Hapus'}</button></div></div>`;
 const sig=k=>`<table><tr><th>Inspected By</th><th>Reviewed / Witnessed By</th></tr><tr><td class="box"></td><td class="box"></td></tr><tr><td><div class="nm">${I(k+'_i','text','class="c" list="dl-emp" placeholder="Nama"')}<button type="button" class="me np" onclick="me(this)">Saya</button></div></td><td>${I(k+'_r','text','class="c" list="dl-emp" placeholder="Nama"')}</td></tr><tr><th>Quality Control Inspector</th><th>QC Supervisor / Coordinator</th></tr></table>`;
+const rk=(l,k)=>`<div class="rk"><div class="l">${l}</div><textarea data-k="${k}"></textarea></div>`;
 const hd=(h,w)=>`<colgroup>${w.map(x=>`<col style="width:${x}">`).join('')}</colgroup><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead>`;
-const TB={},DEF={dim:10,wl:10,lk:5,cn:1,al:6,pt:3,pb:3,eqd:4,eqw:4,eqa:4,eqp:4,fin:14},PD=['Primer','Second Coat','Finish Coat'];
-/* Section G — Final Inspection: 14 baris tetap; kolom u1..u4 = Unit 1..4. o: dt=tanggal, tx=teks, ad=Ada/Tidak, ok=OK/NG, wt=berat (kg) */
+const TB={},DEF={dim:10,wl:10,lk:5,cn:1,al:6,pt:3,pb:3,eqd:4,eqw:4,eqa:4,eqp:4,fin:12},PD=['Primer','Second Coat','Finish Coat'];
+/* Section G — Final Inspection (1 unit; No. SO / Unit Number sudah ada di header laporan): 12 baris tetap, 1 kolom hasil (key 'res').
+   o: ad=Ada/Tidak, ok=OK/NG, wt=berat (kg) */
 const AD='<option></option><option>Ada</option><option>Tidak</option>',OKNG='<option></option><option>OK</option><option>NG</option>',VC='Visual check',CS='Cleanliness and Spatter',
-FIN=[{n:'',cp:'Unit Delivery Date',mt:'',o:'dt'},{n:'',cp:'Type',mt:'',o:'tx'},
- {n:'1',cp:'Stamping mark',mt:VC,o:'ad'},{n:'2',cp:'Dry hole',mt:VC,o:'ad'},
- {n:'3',cp:'Upper bushing (LH)',mt:CS,o:'ok'},{n:'3',cp:'Upper bushing (RH)',mt:CS,o:'ok'},
- {n:'4',cp:'Lower bushing (LH)',mt:CS,o:'ok'},{n:'4',cp:'Lower bushing (RH)',mt:CS,o:'ok'},
+FIN=[{n:'1',cp:'Stamping mark',mt:VC,o:'ad'},{n:'2',cp:'Dry hole',mt:VC,o:'ad'},
+ {n:'3a',cp:'Upper bushing (LH)',mt:CS,o:'ok'},{n:'3b',cp:'Upper bushing (RH)',mt:CS,o:'ok'},
+ {n:'4a',cp:'Lower bushing (LH)',mt:CS,o:'ok'},{n:'4b',cp:'Lower bushing (RH)',mt:CS,o:'ok'},
  {n:'5',cp:'Bare base thread',mt:'GO-NOGO',o:'ok'},
  {n:'6a',cp:'Body surface – Putty',mt:VC,o:'ok'},{n:'6b',cp:'Body surface – Dent',mt:VC,o:'ok'},{n:'6c',cp:'Body surface – Painting',mt:VC,o:'ok'},
- {n:'7',cp:'Leakage',mt:VC,o:'ok'},{n:'8',cp:'Weight',mt:'Weighing',o:'wt'}];
+ {n:'7',cp:'Leakage',mt:VC,o:'ok'},{n:'8',cp:'Weight (kg)',mt:'Weighing',o:'wt'}];
 const c=(k,t='text',ls='',ro=0,ct=0)=>({k,t,ls,ro,ct});
 const mk=(id,head,cols,add,mw)=>{TB[id]={cols};return`<div class="tw"><table data-t="${id}" class="${/^(wl|pt)$/.test(id)?'':'cd'}" style="min-width:${mw||0}px">${head}<tbody></tbody></table></div>`+(add?`<button type="button" class="btn sm add np" onclick="addR('${id}');touch()">+ Tambah baris</button><button type="button" class="btn sm np" onclick="rmR('${id}')">− Hapus baris terakhir</button>`:'')};
 const eq=id=>mk(id,hd(['No.','Measuring Equipment','Equipment ID','Calibration Due Date','User'],['8%','34%','22%','22%','']).replace('<thead>','<thead><tr><th colspan="5">Equipment</th></tr>'),[c('n','text','dl-eq'),c('i'),c('c','date'),c('u')]);
@@ -170,15 +171,15 @@ ${card('c','C. Leak Test Inspection Report',fx(sk('lk'),`<table>${kv('Method','l
 ${card('d','D. Concrete Filling Inspection Report',mk('cn',hd(['No.','Total Empty Weight','Total Wet Weight','Total Dry Weight','Total Standard Weight','Total Actual Weight','Tolerance','Remarks'],['5%','14%','14%','14%','15%','15%','10%','']),[c('e','number'),c('w','number'),c('d','number'),c('s','number'),c('a','number'),c('t','text','',0,1),c('r')],1,900))}
 ${card('e','E. Alignment Inspection Report',fx(sk('al'),eq('eqa')+sig('al'))+mk('al',hd(['No.','Check Point','Drawing Reference','Tolerance','Actual','Results','Remark'],['5%','22%','20%','12%','12%','12%','']),[c('cp'),c('rf'),c('tl','text','',0,1),c('ac','text','',0,1),c('res','text','rs'),c('rm')],1,800))}
 ${card('f','F. Painting Inspection Report',fx(sk('pt'),`<table>${kv('Total DFT (µm)','dft')}<tr><td class="l">Spec DFT Min / Max (µm)</td><td><div class="two">${I('dmin','number','class="c" placeholder="Min"')}${I('dmax','number','class="c" placeholder="Max"')}</div></td></tr>${kv('Ambient Temperature (°C)','amb','number')}${kv('Relative Humidity (%)','rh','number')}${kv('Steel Surface Temp. (°C)','sst','number')}${kv('Dew Point (°C)','dew','number')}<tr><td class="l">Coat No.</td><td style="text-align:left;padding:0 10px"><label><input type="checkbox" data-k="c1"> Primer</label> &nbsp;<label><input type="checkbox" data-k="c2"> 2nd</label> &nbsp;<label><input type="checkbox" data-k="c3"> Finish</label></td></tr></table>
-${mk('pb',hd(['No.','Paint Type & Brand','Thinner','Brand','DFT'],['8%','32%','24%','20%','']),[c('ty'),c('th'),c('br'),c('df','text','',0,1)])}${eq('eqp')}`)+mk('pt','<colgroup>'+ptw.map(x=>`<col style="width:${x}">`).join('')+'</colgroup><thead>'+pth+'</thead>',ptc,1,1250)+`<table style="margin-top:12px"><tr><td class="l" style="height:30px">Repair Work</td></tr><tr><td><textarea data-k="repair"></textarea></td></tr></table><div class="fx" style="margin:12px 0 0"><div></div><div>${sig('pt')}</div></div>`)}
-${card('g','G. Final Inspection Report',mk('fin',hd(['No.','Check Point','Method','Unit 1','Unit 2','Unit 3','Unit 4'],['6%','25%','21%','12%','12%','12%','']),[],0,900)+`<table style="margin-top:12px"><tr><td class="l" style="height:30px">Remark</td></tr><tr><td><textarea data-k="g_rm"></textarea></td></tr></table><div class="fx" style="margin:12px 0 0"><div></div><div>${sig('fin')}</div></div>`)}`;
+${mk('pb',hd(['No.','Paint Type & Brand','Thinner','Brand','DFT'],['8%','32%','24%','20%','']),[c('ty'),c('th'),c('br'),c('df','text','',0,1)])}${eq('eqp')}`)+mk('pt','<colgroup>'+ptw.map(x=>`<col style="width:${x}">`).join('')+'</colgroup><thead>'+pth+'</thead>',ptc,1,1250)+`<div class="fx mt"><div>${rk('Repair Work','repair')}</div><div>${sig('pt')}</div></div>`)}
+${card('g','G. Final Inspection Report',mk('fin',hd(['No.','Check Point','Method','Result'],['7%','43%','30%','']),[],0,560)+`<div class="fx mt"><div>${rk('Remark','g_rm')}</div><div>${sig('fin')}</div></div>`)}`;
 
 function addF(d){const tb=$('[data-t=fin] tbody'),f=FIN[tb.rows.length]||{n:'',cp:'',mt:'',o:'ok'},tr=tb.insertRow(),
-  u=k=>f.o=='dt'?`<input data-c="${k}" type="date" class="c">`:f.o=='tx'?`<input data-c="${k}" type="text" class="c" placeholder="Type">`:f.o=='wt'?`<input data-c="${k}" type="number" step="any" class="c" placeholder="kg">`:`<select data-c="${k}">${f.o=='ad'?AD:OKNG}</select>`,
+  u=f.o=='wt'?'<input data-c="res" type="number" step="any" class="c" placeholder="kg">':`<select data-c="res">${f.o=='ad'?AD:OKNG}</select>`,
   ro=(k,v)=>`<input data-c="${k}" type="text" readonly tabindex="-1" style="pointer-events:none" value="${esc(v)}">`;
-  tr.innerHTML=`<td class="n">${f.n}</td><td>${ro('cpt',f.cp)}</td><td>${ro('mth',f.mt)}</td>`+['u1','u2','u3','u4'].map(k=>`<td>${u(k)}</td>`).join('');
+  tr.innerHTML=`<td class="n">${f.n}</td><td>${ro('cpt',f.cp)}</td><td>${ro('mth',f.mt)}</td><td>${u}</td>`;
   tr.querySelectorAll('select,input:not([readonly])').forEach(e=>e.value=d[e.dataset.c]??'');
-  [...tr.cells].forEach((x,i)=>x.dataset.l=['No.','Check Point','Method','Unit 1','Unit 2','Unit 3','Unit 4'][i])}
+  [...tr.cells].forEach((x,i)=>x.dataset.l=['No.','Check Point','Method','Result'][i])}
 function addR(id,d={}){if(id=='fin')return addF(d);const t=TB[id],tb=$(`[data-t=${id}] tbody`),tr=tb.insertRow();
  tr.innerHTML=`<td class="n">${tb.rows.length}</td>`+t.cols.map(x=>{const a=`data-c="${x.k}"${x.ro?' tabindex="-1" style="pointer-events:none"':''}`;
   return`<td>${x.ls=='rs'?`<select ${a}>${RS}</select>`:`<input ${a} type="${x.t}" class="${x.t!='text'||x.ro||x.ct?'c':''}"${x.ls?` list="${x.ls}"`:''}${x.ro?' readonly':''}>`}</td>`}).join('');
@@ -191,7 +192,7 @@ function calc(){clogo();
   if(av.length&&(mn!==''||mx!==''))tr.querySelector('[data-c=res]').value=av.every(a=>(mn===''||a>=+mn)&&(mx===''||a<=+mx))?'OK':'NG'});
  const s=$('[data-k=ls]').value,e=$('[data-k=le]').value,d=(new Date(e)-new Date(s))/6e4;$('[data-k=ld]').value=s&&e&&d>=0?`${Math.floor(d/60)} jam ${Math.round(d%60)} menit`:'';
  const td=new Date().toISOString().slice(0,10);
- $$('#sheet input,#sheet select').forEach(i=>{i.classList.toggle('e',/^(date|datetime-local)$/.test(i.type)&&!i.value);i.classList.toggle('ng',/^(NG|FAIL)$/i.test(i.value));i.classList.toggle('ok',/^OK$/.test(i.value)&&!!i.dataset.c&&/^(res|vs|pt|mp|ut|rt|u[1-4])$/.test(i.dataset.c));if(i.type=='date'&&i.closest('[data-t^=eq]'))i.classList.toggle('exp',!!i.value&&i.value<td)});
+ $$('#sheet input,#sheet select').forEach(i=>{i.classList.toggle('e',/^(date|datetime-local)$/.test(i.type)&&!i.value);i.classList.toggle('ng',/^(NG|FAIL)$/i.test(i.value));i.classList.toggle('ok',/^OK$/.test(i.value)&&!!i.dataset.c&&/^(res|vs|pt|mp|ut|rt)$/.test(i.dataset.c));if(i.type=='date'&&i.closest('[data-t^=eq]'))i.classList.toggle('exp',!!i.value&&i.value<td)});
  const all=$$('[data-c]').map(i=>i.value);$('#ov').textContent=all.includes('NG')?'NG':all.includes('OK')?'OK':'-';
  $$('.sx').forEach(s=>{const f=[...s.querySelectorAll('input,select,textarea')].filter(e=>e.type!='file'&&e.type!='checkbox'&&!/^(ly|cpt|mth)$/.test(e.dataset.c||'')&&e.value!==''),a=$(`#nav a[data-n=${s.dataset.s}]`);a.classList.toggle('done',f.length>0);a.classList.toggle('bad',f.some(e=>e.value=='NG'))})}
 document.addEventListener('input',h);document.addEventListener('change',h);
@@ -220,8 +221,7 @@ function sof(w){const fm=$('#fm'),fd=$('#fd');
  const m=fm.value,d=fd.value,f=SO.filter(r=>(!m||(r.kirim||'').slice(0,7)==m)&&(!d||r.kirim==d));
  $('#dl-so').innerHTML=f.map(r=>`<option value="${esc(lab(r))}">`).join('');
  $('#sc').textContent=!m&&!d?`${SO.length} item. Pilih bulan atau tanggal kirim untuk mempersempit daftar.`:f.length?`${f.length} item dengan tanggal kirim ${d?dmy(d):fm.options[fm.selectedIndex].text.replace(/ \(\d+\)$/,'')} — ketik atau pilih di kolom di atas.`:'Tidak ada Sales Order dengan tanggal kirim tersebut.'}
-function soPick(v){const r=SO.find(x=>lab(x)==v);if(!r)return;const k=(a,b)=>$(`[data-k=${a}]`).value=b||'';k('so',r.so);k('client',r.cust);k('order',r.ord);k('unit',r.unit);k('dwg',r.part);k('serial',r.ser);k('part','Counterweight');gSo(r);calc();touch();toast('Data Sales Order terisi: '+r.so);stdSO(r.prod)}
-function gSo(r){const s=(n,v)=>{const e=$(`[data-t=fin] tbody tr:nth-child(${n}) [data-c=u1]`);if(e&&v&&!e.value)e.value=v};s(1,r.kirim);s(2,r.prod)}
+function soPick(v){const r=SO.find(x=>lab(x)==v);if(!r)return;const k=(a,b)=>$(`[data-k=${a}]`).value=b||'';k('so',r.so);k('client',r.cust);k('order',r.ord);k('unit',r.unit);k('dwg',r.part);k('serial',r.ser);k('part','Counterweight');calc();touch();toast('Data Sales Order terisi: '+r.so);stdSO(r.prod)}
 function me(b){b.previousElementSibling.value=U.n;calc();touch()}
 function skUp(inp,s){const f=inp.files[0];if(!f)return;const im=new Image;im.onload=()=>{const z=Math.min(1,1000/im.width),cv=document.createElement('canvas');cv.width=im.width*z;cv.height=im.height*z;cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);const g=$(`img[data-s=${s}]`);g.src=cv.toDataURL('image/jpeg',.75);g.dataset.def='';g.dataset.new='1';g.closest('.sk').classList.add('has');inp.value='';touch()};im.src=URL.createObjectURL(f)}
 function skDel(s){const g=$(`img[data-s=${s}]`);g.removeAttribute('src');g.dataset.new='';g.dataset.def='';skDef(g);touch()}
@@ -231,14 +231,16 @@ function clogo(){const n=(($('[data-k=client]')||{}).value||'').trim(),g=$('#clo
  if(g.dataset.k===key)return;g.dataset.k=key;g.onerror=()=>{g.hidden=true;g.removeAttribute('src');t.textContent=n;t.hidden=!n};
  if(f){t.hidden=true;t.textContent='';g.hidden=false;g.src=f}else{g.hidden=true;g.removeAttribute('src');t.textContent=n;t.hidden=!n}}   // logo sesuai nama Client; bila tidak ada logonya, nama Client ditulis
 
-function get(full){const k={};$$('[data-k]').forEach(e=>k[e.dataset.k]=e.type=='checkbox'?e.checked:e.value);k.status=ST;k.part='Counterweight';
+function get(full){const k={};$$('[data-k]').forEach(e=>k[e.dataset.k]=e.type=='checkbox'?e.checked:e.value);k.status=ST;k.part='Counterweight';k.fin_v=2;
  const t={};for(const id in TB)t[id]=$$(`[data-t=${id}] tbody tr`).map(tr=>Object.fromEntries([...tr.querySelectorAll('[data-c]')].map(e=>[e.dataset.c,e.value])));
  const s={};$$('.sk img').forEach(i=>{if(i.getAttribute('src')&&!i.dataset.def)s[i.dataset.s]=full||i.dataset.new?i.src:'keep'});
  return{id:RID,k,t,sk:s,overall:$('#ov').textContent.replace('-','')}}
 function put(r,loc){RID=r.id||'';ST=(r.k||{}).status||'Draft';$('#rid').textContent=RID||'(baru)';
  $$('[data-k]').forEach(e=>{const v=(r.k||{})[e.dataset.k];if(e.type=='checkbox')e.checked=!!v;else e.value=v??''});
  $('[data-k=part]').value='Counterweight';$('#qs').value='';
- for(const id in TB){$(`[data-t=${id}] tbody`).innerHTML='';const rows=(r.t||{})[id]||[];for(let i=0;i<Math.max(rows.length,DEF[id]);i++)addR(id,rows[i]||(id=='pt'&&!r.id?{ly:PD[i]}:{}))}
+ for(const id in TB){$(`[data-t=${id}] tbody`).innerHTML='';let rows=(r.t||{})[id]||[];
+  if(id=='fin'&&!(r.k||{}).fin_v&&rows.length)rows=rows.slice(2).map(o=>({res:(o&&(o.res??o.u1))||''}));   // laporan lama (14 baris, Unit 1–4): buang baris Delivery Date & Type, pakai nilai Unit 1
+  for(let i=0;i<Math.max(rows.length,DEF[id]);i++)addR(id,rows[i]||(id=='pt'&&!r.id?{ly:PD[i]}:{}))}
  $$('.sk img').forEach(i=>{const v=(r.sk||{})[i.dataset.s];i.dataset.def='';if(v){i.src=v;i.closest('.sk').classList.add('has')}else skDef(i);i.dataset.new=v&&loc?'1':''});
  lock();calc()}
 function lock(){const f=ST=='Final';$('#fs').disabled=f;$('#bs').hidden=$('#bf').hidden=f;$('#bo').hidden=!f;const b=$('#stb');b.textContent=ST;b.className='bd '+(f?'fin':'dr')}
