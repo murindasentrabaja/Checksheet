@@ -25,18 +25,6 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 .mut{color:var(--mut)}
 
 /* ---------- Top bar ---------- */
-#top{background:linear-gradient(90deg,#0e2747,#12315a 55%,#1b4a88);color:#fff;display:flex;align-items:center;gap:16px;padding:12px 28px;padding-top:calc(12px + env(safe-area-inset-top))}
-#top img{height:34px;background:#fff;padding:5px 12px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-#top img:not([src]){display:none}
-#top h1{margin:0;font-size:16px;font-weight:700;flex:1;letter-spacing:.2px;padding-left:16px;border-left:1px solid rgba(255,255,255,.24);line-height:1.2}
-#usr{display:flex;align-items:center;gap:12px;font-size:13px}
-#usr[hidden]{display:none}
-#usr .av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
-#usr>div{text-align:left;line-height:1.3}
-#usr b{font-weight:700}
-#usr small{display:block;opacity:.75;line-height:1.25;font-size:12px}
-#usr .btn{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#fff;box-shadow:none}
-#usr .btn:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.4);box-shadow:none}
 
 /* ---------- Tombol ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--bd);background:#fff;color:var(--ink);padding:8px 18px;border-radius:12px;font:inherit;font-weight:600;min-height:40px;cursor:pointer;box-shadow:0 1px 2px rgba(15,28,46,.05);transition:background .15s,box-shadow .15s,transform .1s,border-color .15s}
@@ -51,14 +39,6 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 .btn.d:hover{background:var(--ngb);border-color:#f0b4ae}
 .btn.sm{min-height:34px;padding:4px 13px;font-size:13px;border-radius:10px}
 
-/* ---------- Login ---------- */
-#v-login.on{display:grid;justify-items:center;align-content:start;padding:56px 16px 48px;background:linear-gradient(90deg,#0e2747,#12315a 55%,#1b4a88) top/100% 190px no-repeat}
-.lg{width:100%;max-width:420px;background:#fff;border:1px solid var(--bd);border-radius:24px;padding:34px 30px 30px;box-shadow:0 28px 60px -26px rgba(15,28,46,.45)}
-.lg h2{margin:0 0 6px;font-size:26px;font-weight:800;letter-spacing:-.3px;color:var(--pri)}
-.lg label{display:block;font-weight:600;font-size:13px;margin-top:18px}
-.lg select,.lg input{display:block;width:100%;height:50px;margin-top:6px;border:1px solid var(--bd);border-radius:14px;padding:0 14px;font:inherit;font-size:16px;font-weight:500;background:#f8fafd;color:var(--ink);transition:border-color .15s,box-shadow .15s,background .15s}
-.lg select:focus,.lg input:focus{outline:0;border-color:var(--acc);box-shadow:var(--ring);background:#fff}
-.lg .btn{width:100%;margin-top:22px;min-height:50px;font-size:15px;border-radius:14px}
 .err{color:var(--ng);min-height:20px;margin-top:12px;font-size:13px;font-weight:600}
 
 /* ---------- Daftar laporan ---------- */
@@ -179,6 +159,10 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 #sheet table.sgt{width:100%;max-width:320px;margin-left:auto}
 #sheet .sg>div:first-child table.sgt{margin-left:0}
 #sheet .sgt .box{height:76px}
+/* v12: identitas JIG (Section A & E) — cukup sekali isi, di samping kotak Inspected By */
+.jr{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:12px;align-items:start}
+#sheet .jr table.sgt{width:100%;max-width:none;margin-left:0}
+#sheet .jgt td.l{font-size:12.5px;padding:0 10px}
 .add{margin:10px 8px 0 0}
 #msg{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#14532d;color:#fff;padding:12px 20px;border-radius:14px;z-index:60;font-weight:600;text-align:center;max-width:calc(100vw - 32px);box-shadow:0 14px 34px rgba(0,0,0,.28);animation:pop .2s ease-out}
 #msg.on{display:block}
@@ -197,21 +181,11 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 /* ---------- Responsif ---------- */
 @media screen and (max-width:720px){.sof-r{grid-template-columns:1fr 1fr}.sof-r .btn{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-@media(max-width:860px){.fx{grid-template-columns:1fr}.eb,#nav{padding-left:16px;padding-right:16px}}
+@media(max-width:860px){.fx{grid-template-columns:1fr}.jr{grid-template-columns:1fr}.eb,#nav{padding-left:16px;padding-right:16px}}
 @media screen and (max-width:860px){#sheet table.sgt{margin-left:0}}   /* 1 kolom: kotak tanda tangan rata kiri semua (hanya layar; cetak tetap rata kanan) */
-@media screen and (max-width:430px){#top h1{display:none}}
 @media screen and (max-width:960px){.hd{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.hd-c{grid-column:1/-1;order:3;max-width:none}}
 @media screen and (max-width:720px){
 :root{--rh:46px;--fs:15px}
-#top{padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top));gap:10px}
-#top h1{font-size:14px;padding-left:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-#top img{height:28px}
-#usr{gap:8px}
-#usr>div{display:none}
-#usr{margin-left:auto}
-#usr .av{width:32px;height:32px;font-size:14px}
-#v-login.on{padding-top:36px}
-.lg{padding:28px 22px 24px;border-radius:22px}
 .wrap{padding:16px 14px 100px}
 .row h2{font-size:21px}
 #qs2{min-width:100%}
@@ -369,6 +343,110 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 .kl-c{height:20px;min-width:22px;padding:0 5px;font-size:11.5px}
 }
 
+/* ---------- Tampilan baru (v14): login, bilah atas, header laporan — hanya layar, cetak tidak berubah ---------- */
+@media screen{
+:root{--bg:#f4f6fa;--stl:#0d2547;--wd:#f2a900}
+body{background:var(--bg) radial-gradient(900px 380px at 100% -120px,rgba(31,111,224,.10),transparent 70%) no-repeat}
+body:has(#v-login.on) #top{display:none}
+/* ---------- Login & bilah atas (v15) — hanya layar ----------
+   Login: formulir di kiri di atas latar putih, jadi logo tampil apa adanya (tanpa kotak / lingkaran); panel navy bermotif penggaris di kanan. */
+#v-login.on{display:block;padding:0;background:#fff}
+.lw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);width:100%;min-height:100vh;min-height:100dvh}
+.lf{display:flex;flex-direction:column;padding:34px clamp(28px,6vw,92px) 26px;background:radial-gradient(560px 320px at 0 0,rgba(31,111,224,.07),transparent 70%),#fff}
+.lf-top img{display:block;height:46px;width:auto}
+.lf-top img:not([src]){display:none}
+.lf .lg{width:100%;max-width:420px;margin:auto 0;padding:34px 0;animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+.eyb{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--acc)}
+.eyb::before{content:"";width:24px;height:3px;border-radius:3px;background:var(--wd)}
+.lg h2{margin:12px 0 10px;font-size:36px;line-height:1.08;font-weight:800;letter-spacing:-.04em;color:var(--stl)}
+.lg>.mut{font-size:14.5px;line-height:1.65}
+.lg label{display:block;margin-top:26px;font-size:13px;font-weight:700;color:#2b3b52}
+.fl,.pw{position:relative;display:block;margin-top:8px}
+.fl>svg,.pw>svg.ic{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#8191a8;pointer-events:none;transition:color .15s}
+.lg select,.lg input{display:block;width:100%;height:54px;margin:0;border:1.5px solid #d3dcea;border-radius:14px;padding:0 16px 0 48px;font:inherit;font-size:15.5px;font-weight:500;color:var(--ink);background-color:#f8fafd;transition:border-color .15s,box-shadow .15s,background-color .15s}
+.lg select{appearance:none;-webkit-appearance:none;padding-right:46px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;background-size:18px}
+.lg select:hover,.lg input:hover{border-color:#b6c4d9}
+.lg select:focus,.lg input:focus{outline:0;border-color:var(--acc);box-shadow:var(--ring);background-color:#fff}
+.fl:focus-within>svg,.pw:focus-within>svg.ic{color:var(--acc)}
+.lg input::placeholder{color:#97a5ba;font-weight:500}
+.pw input{padding-right:56px}
+.pwb{position:absolute;right:5px;top:5px;width:44px;height:44px;border:0;border-radius:10px;background:none;color:#64748b;cursor:pointer;display:grid;place-items:center;transition:background .15s,color .15s}
+.pwb:hover,.pwb.on{color:var(--acc);background:#eef4fd}
+.lg .err{margin-top:14px}
+.lg .btn{width:100%;margin-top:8px;min-height:54px;border-radius:14px;font-size:16px;font-weight:700}
+.lf-foot{display:flex;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
+/* Panel navy (kanan) */
+.lb{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;justify-content:center;gap:34px;color:#e8effa;padding:56px clamp(32px,5.5vw,92px) 56px clamp(52px,6.5vw,104px);background:radial-gradient(720px 540px at 100% 0,rgba(31,111,224,.5),transparent 62%),radial-gradient(560px 460px at 0 108%,rgba(242,169,0,.13),transparent 60%),linear-gradient(155deg,#10305c,#0a1c38 72%)}
+.lb::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 70% 30%,#000,transparent 78%);mask-image:radial-gradient(ellipse 80% 70% at 70% 30%,#000,transparent 78%)}
+.lb::after{content:"";position:absolute;left:0;top:0;bottom:0;width:26px;color:rgba(255,255,255,.32);background:repeating-linear-gradient(180deg,currentColor 0 1px,transparent 1px 8px) left top/10px 100% no-repeat,repeating-linear-gradient(180deg,currentColor 0 1.5px,transparent 1.5px 40px) left top/22px 100% no-repeat}
+.ltag{align-self:flex-start;display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);font-size:12.5px;font-weight:600;color:#cfe0f8}
+.ltag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--wd);box-shadow:0 0 0 4px rgba(242,169,0,.2)}
+.lb h2{margin:0 0 16px;font-size:clamp(34px,3.7vw,54px);line-height:1.04;font-weight:800;letter-spacing:-.04em;color:#fff;max-width:8.5em}
+.lb h2 span{color:#9cc4ff}
+.lb p{margin:0;max-width:31em;font-size:15.5px;line-height:1.7;color:#b9c9e2}
+.lft{list-style:none;margin:0;padding:0;display:grid;gap:12px;max-width:440px}
+.lft li{display:flex;align-items:center;gap:14px;padding:13px 16px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.05);font-size:14px;font-weight:700;color:#e4edfa;line-height:1.35}
+.lft li small{display:block;font-size:12.5px;font-weight:500;color:#9db2d2}
+.lft svg{flex:none;width:36px;height:36px;padding:8px;border-radius:10px;background:rgba(31,111,224,.3);color:#c3dcff}
+.lsec{display:grid;gap:10px}
+.lsec>span{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8ea6ca}
+.lsec ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;max-width:520px}
+.lsec li{display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 6px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.05);font-size:13px;font-weight:600;color:#dbe6f6}
+.lsec li b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.12);font-size:11.5px;font-weight:800;color:#fff}
+/* Bilah atas: putih bersih, garis aksen tipis, logo apa adanya, identitas pengguna tanpa lingkaran */
+#top{position:relative;display:flex;align-items:center;gap:16px;min-height:calc(64px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 28px 0;background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(1.6) blur(16px);backdrop-filter:saturate(1.6) blur(16px);border-bottom:1px solid var(--bd);color:var(--ink)}
+#top::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--stl),var(--acc) 62%,var(--wd))}
+#top img{display:block;height:34px;width:auto}
+#top img:not([src]){display:none}
+.tt{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;margin-left:2px;padding-left:18px;border-left:1px solid var(--bd);line-height:1.2}
+.tt span{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
+#top h1{margin:2px 0 0;font-size:16px;font-weight:800;letter-spacing:-.01em;color:var(--stl)}
+#usr{display:flex;align-items:center;gap:14px;margin-left:auto;font-size:13px}
+#usr[hidden]{display:none}
+#usr>div{min-width:0;text-align:right;line-height:1.25}
+#usr b{display:block;font-weight:700;color:var(--ink)}
+#usr small{display:block;font-size:12px;color:var(--mut)}
+#usr .btn{gap:8px;background:#fff;border-radius:10px}
+#usr .btn svg{flex:none}
+/* Header laporan: penggaris di tepi atas, judul satu hierarki, ID & hasil sebagai kotak data */
+#s-i{border-radius:20px;border-color:#d3deee;box-shadow:0 1px 2px rgba(15,28,46,.04),0 18px 40px -22px rgba(13,37,71,.3)}
+#s-i::before{height:12px;color:#8aa4c8;background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 8px) left top/100% 5px no-repeat,repeating-linear-gradient(90deg,currentColor 0 1.5px,transparent 1.5px 40px) left top/100% 11px no-repeat,#f3f6fb}
+#s-i .hd{padding:22px 28px 24px;background:#fff}
+.hd h2 span:first-child{font-size:14px;font-weight:600;color:var(--mut);letter-spacing:0}
+.hd h2 span:last-child{font-size:27px;font-weight:800;line-height:1.15;letter-spacing:-.03em;color:var(--stl)}
+#s-i .hd-r img{max-height:58px;max-width:230px;padding:8px 14px;background:#fff;border:1px solid var(--bd);border-radius:12px}
+#s-i .cn{padding:8px 14px;border:1px solid var(--bd);border-radius:12px;background:var(--sf);font-size:14px}
+#s-i .hm{padding:12px 28px;gap:10px 14px}
+#s-i .hm .mi{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:6px 12px}
+#s-i .hm .mi span{font-size:12px;font-weight:600;letter-spacing:0;text-transform:none}
+}
+@media screen and (max-width:860px){
+.lw{grid-template-columns:1fr;min-height:0}
+.lb{display:none}
+.lf{min-height:100vh;min-height:100dvh;padding:24px 22px 20px}
+.lf-top img{height:40px}
+.lf .lg{margin:20px 0 auto;padding:28px 0}
+.lg h2{font-size:30px}
+}
+@media screen and (max-width:720px){
+#top{gap:12px;min-height:calc(56px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 14px 0}
+#top img{height:28px}
+.tt{padding-left:12px}
+.tt span{display:none}
+#top h1{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#usr{gap:10px}
+#usr small{display:none}
+#usr b{max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
+@media screen and (max-width:430px){.tt{display:none}}
+@media screen and (max-width:720px){
+#s-i .hd{padding:16px 16px 18px}
+.hd h2 span:last-child{font-size:21px}
+#s-i .hm{padding:10px 14px}
+#s-i .hm .mi:last-child{margin-left:0}
+}
+
 /* ---------- Cetak / PDF (A4) ---------- */
 @media print{
 @page{size:A4;margin:5mm 6mm}
@@ -423,15 +501,28 @@ input.e::-webkit-datetime-edit{color:transparent}
 tr,.fx,.card{break-inside:avoid}
 #s-a,#s-b,#s-f{break-inside:auto}
 tbody tr:nth-child(-n+3),tbody tr:nth-last-child(-n+2){break-before:avoid}
+#sheet [data-t=wl] [data-c=wd],#sheet [data-t=wl] [data-c=fi],#sheet [data-t=lk] [data-c=wd]{font-size:7.5px!important;padding:0 1px!important}
+[data-t=dim] th,[data-t=al] th{font-size:8px!important}
+.jr{grid-template-columns:minmax(0,1fr) 48mm;gap:3mm}
+#sheet .jgt td.l{font-size:8px;padding:0 3px}
+#sheet .jgt input{font-size:8px!important;padding:0 2px!important}
 *{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style></head><body>
-<header id="top" class="np"><img id="hlogo" alt=""><h1>IPQC Check Sheet</h1><div id="usr" hidden><span id="uav" class="av" aria-hidden="true"></span><div><b id="un"></b><small id="uj"></small></div><button class="btn sm" onclick="bye()">Keluar</button></div></header>
+<header id="top" class="np"><img id="hlogo" alt="PT Murinda Sentra Baja"><div class="tt"><span>In-Process Quality Control</span><h1>IPQC Check Sheet</h1></div><div id="usr" hidden><div><b id="un"></b><small id="uj"></small></div><button class="btn sm" onclick="bye()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="m16 8 4 4-4 4M20 12H9"/></svg>Keluar</button></div></header>
 
-<section id="v-login" class="v on"><form class="lg" onsubmit="return login(event)">
-<h2>Masuk</h2><div class="mut">Pilih nama Anda, lalu isi NIK Karyawan sebagai password.</div>
-<label>Nama karyawan<select id="lu" required><option value="">Memuat daftar…</option></select></label>
-<label>Password (NIK Karyawan)<input id="lp" type="password" placeholder="Masukkan NIK Anda" autocomplete="current-password" required></label>
-<div id="le" class="err"></div><button id="lbtn" class="btn p">Masuk</button></form></section>
+<section id="v-login" class="v on"><div class="lw">
+<div class="lf"><div class="lf-top"><img id="llogo" alt="PT Murinda Sentra Baja"></div>
+<form class="lg" onsubmit="return login(event)">
+<span class="eyb">Quality Control</span><h2>Selamat datang</h2><div class="mut">Masuk dengan nama dan NIK Karyawan Anda untuk membuat serta mengelola laporan IPQC.</div>
+<label>Nama karyawan<span class="fl"><svg class="ic" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><select id="lu" required><option value="">Memuat daftar…</option></select></span></label>
+<label>Password (NIK Karyawan)<span class="pw"><svg class="ic" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input id="lp" type="password" placeholder="Masukkan NIK Anda" autocomplete="current-password" required><button type="button" class="pwb" onclick="pwt(this)" aria-label="Tampilkan password"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></span></label>
+<div id="le" class="err"></div><button id="lbtn" class="btn p">Masuk</button></form>
+<div class="lf-foot"><span>© PT Murinda Sentra Baja</span><span>Quality Control · IPQC Check Sheet</span></div></div>
+<aside class="lb"><span class="ltag">In-Process Quality Control</span>
+<div><h2>IPQC <span>Check Sheet</span></h2><p>Catat hasil inspeksi dari dimensi sampai final inspection. Draft tersimpan otomatis dan laporan siap dicetak sebagai PDF.</p></div>
+<ul class="lft"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg><div>Draft tersimpan otomatis<small>Data tetap aman di perangkat bila koneksi terputus</small></div></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg><div>Terisi dari Sales Order &amp; master data<small>JIG, welder, dan data mesin las</small></div></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v6H7z"/></svg><div>Siap cetak PDF A4<small>Format laporan tetap rapi</small></div></li></ul>
+<div class="lsec"><span>8 bagian inspeksi</span><ol><li><b>A</b>Dimension</li><li><b>B</b>Welding</li><li><b>C</b>Leak Test</li><li><b>D</b>Concrete</li><li><b>E</b>Covering</li><li><b>F</b>Alignment</li><li><b>G</b>Painting</li><li><b>H</b>Final</li></ol></div></aside>
+</div></section>
 
 <section id="v-list" class="v"><div class="wrap">
 <div class="row"><h2>Laporan IPQC</h2><button class="btn p" onclick="newR()">+ Laporan baru</button></div><div id="lb"></div>
@@ -454,10 +545,10 @@ tbody tr:nth-child(-n+3),tbody tr:nth-last-child(-n+2){break-before:avoid}
 <section id="v-edit" class="v"><div id="ebw" class="np"><div class="eb">
 <button class="btn" onclick="back()">← Daftar laporan</button><span id="stb" class="bd dr">Draft</span><span id="ss" class="ss"></span><span class="sp"></span>
 <div class="acts"><button id="bs" class="btn p" onclick="saveR()">Simpan draft</button><button id="bf" class="btn g" onclick="fin()">Finalisasi</button><button id="bo" class="btn" onclick="reopen()" hidden>Buka untuk revisi</button><button class="btn" onclick="print()">Cetak / PDF</button></div></div>
-<nav id="nav"><a href="#s-i" data-n="i">Informasi</a><a href="#s-a" data-n="a">A. Dimension</a><a href="#s-b" data-n="b">B. Welding</a><a href="#s-c" data-n="c">C. Leak Test</a><a href="#s-d" data-n="d">D. Concrete</a><a href="#s-e" data-n="e">E. Alignment</a><a href="#s-f" data-n="f">F. Painting</a><a href="#s-g" data-n="g">G. Final</a></nav></div>
+<nav id="nav"><a href="#s-i" data-n="i">Informasi</a><a href="#s-a" data-n="a">A. Dimension</a><a href="#s-b" data-n="b">B. Welding</a><a href="#s-c" data-n="c">C. Leak Test</a><a href="#s-d" data-n="d">D. Concrete</a><a href="#s-cv" data-n="cv">E. Covering</a><a href="#s-e" data-n="e">F. Alignment</a><a href="#s-f" data-n="f">G. Painting</a><a href="#s-g" data-n="g">H. Final</a></nav></div>
 <fieldset id="fs"><div id="sheet"></div></fieldset></section>
 
-<datalist id="dl-so"></datalist><datalist id="dl-eq"></datalist><datalist id="dl-wd"></datalist><datalist id="dl-emp"></datalist>
+<datalist id="dl-so"></datalist><datalist id="dl-eq"></datalist><datalist id="dl-wd"></datalist><datalist id="dl-emp"></datalist><datalist id="dl-jid"></datalist><datalist id="dl-jig"></datalist><datalist id="dl-ft"></datalist>
 <datalist id="dl-wp"><option>SMAW</option><option>GMAW</option><option>FCAW</option><option>SAW</option><option>GTAW</option></datalist>
 <datalist id="dl-lm"><option>Hydrostatic</option><option>Pneumatic</option><option>Vacuum Box</option><option>Soap Bubble</option></datalist>
 <div id="msg" class="np"></div>
@@ -469,7 +560,7 @@ const CLIENT_LOGO=[[/komatsu/i,'Logo/PT Komatsu.png'],[/sumitomo/i,'Logo/PT Sumi
 /* Sketsa bawaan laporan (folder Sketch/): dim=A Dimension, wl=B Welding, lk=C Leak Test, al=E Alignment, pt=F Painting. Welding belum ada filenya: tambahkan 'wl':'Sketch/Welding.png' jika sudah ada. */
 const SKD={dim:'Sketch/Dimension.png',lk:'Sketch/Leaktest.png',al:'Sketch/Allignment.png',pt:'Sketch/Painting.png'};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let RID='',ST='Draft',U=null,S='',USERS=[],SO=[],EQ=[],LIST=[],PROJ=[],FL='all',LV='so',SOS='all',SOL=100,SOX=-1,dirty=0,saving=0,ver=0,T1,T2,CM='';
+let RID='',ST='Draft',U=null,S='',USERS=[],SO=[],EQ=[],LIST=[],PROJ=[],JIG=[],WM=[],PBS=[],FL='all',LV='so',SOS='all',SOL=100,SOX=-1,dirty=0,saving=0,ver=0,T1,T2,CM='';
 const RS='<option></option><option>OK</option><option>NG</option><option>N/A</option>';
 const I=(k,t='text',x='')=>`<input data-k="${k}" type="${t}" ${x}>`;
 const kv=(l,k,t,x)=>`<tr><td class="l" style="width:42%">${l}</td><td>${I(k,t,x)}</td></tr>`;
@@ -478,7 +569,7 @@ const sig=k=>`<table class="sgt"><tr><th>Inspected By</th></tr><tr><td class="bo
 const rvw=`<table class="sgt"><tr><th>Reviewed / Witnessed By</th></tr><tr><td class="box"></td></tr><tr><td><div class="nm">${I('rv','text','class="c" list="dl-emp" placeholder="Nama"')}<button type="button" class="me np" onclick="me(this)">Saya</button></div></td></tr><tr><th>QC Supervisor / Coordinator</th></tr></table>`;
 const rk=(l,k)=>`<div class="rk"><div class="l">${l}</div><textarea data-k="${k}"></textarea></div>`;
 const hd=(h,w)=>`<colgroup>${w.map(x=>`<col style="width:${x}">`).join('')}</colgroup><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead>`;
-const TB={},DEF={dim:10,wl:10,lk:5,cn:1,al:6,pt:3,pb:3,eqd:4,eqw:4,eqa:4,eqp:4,fin:12},PD=['Primer','Second Coat','Finish Coat'];
+const TB={},DEF={dim:10,wl:10,cv:5,lk:5,cn:1,al:6,pt:3,pb:3,eqd:4,eqw:4,eqa:4,eqp:4,fin:12},PD=['Primer','Second Coat','Finish Coat'];
 /* Section G — Final Inspection (1 unit; No. SO / Unit Number sudah ada di header laporan): 12 baris tetap, 1 kolom hasil (key 'res').
    o: ad=Ada/Tidak, ok=OK/NG, wt=berat (kg) */
 const AD='<option></option><option>Ada</option><option>Tidak</option>',OKNG='<option></option><option>OK</option><option>NG</option>',VC='Visual check',CS='Cleanliness and Spatter',
@@ -489,14 +580,23 @@ FIN=[{n:'1',cp:'Stamping mark',mt:VC,o:'ad'},{n:'2',cp:'Dry hole',mt:VC,o:'ad'},
  {n:'6a',cp:'Body surface – Putty',mt:VC,o:'ok'},{n:'6b',cp:'Body surface – Dent',mt:VC,o:'ok'},{n:'6c',cp:'Body surface – Painting',mt:VC,o:'ok'},
  {n:'7',cp:'Leakage',mt:VC,o:'ok'},{n:'8',cp:'Weight (kg)',mt:'Weighing',o:'wt'}];
 const c=(k,t='text',ls='',ro=0,ct=0)=>({k,t,ls,ro,ct});
+/* v11: kolom JIG (sheet Master_JIG) — pilih ID / nama JIG → tanggal Inspection JIG & Due Date terisi otomatis; Welder / Fitter dari master */
+/* v12: identitas JIG tidak lagi kolom tabel — satu kotak "JIG Identity" per section (kunci: dim_jid / dim_jnm / dim_wd / dim_fi dan al_…), tersimpan di Meta_JSON */
+const JK=['jid','jnm','jin','jdu','wd','fi'];
+/* v13: Sales Order (kolom R–AC) → kotak JIG. SO_JIG = section → grup JIG di SO: 'a' = Jig Assy (R–W), 'w' = Welding (X–AB). Ubah 'a'/'w' bila pemetaan Anda berbeda. Section B selalu memakai grup Welding. */
+const SO_JIG={dim:'a',al:'w'};
+const MBAD=/\b(tidak|belum|dilarang|ditolak|expired|kadaluarsa|nonaktif|non-aktif|suspend|ditangguhkan|rusak)\b/i;   // kata pada "Status Izin Pakai" yang ditandai merah
+const jigBox=p=>{const w=p=='wl',L=[['ID JIG','jid','text','list="dl-jid" autocomplete="off" placeholder="Pilih / ketik ID"'],['JIG Name','jnm','text','list="dl-jig" autocomplete="off" placeholder="Pilih / ketik nama"'],['Inspection JIG','jin','date',''],['Due Date','jdu','date',''],['Welder','wd','text','list="dl-wd" autocomplete="off" placeholder="Pilih / ketik nama"']].concat(w?[]:[['Fitter','fi','text','list="dl-ft" autocomplete="off" placeholder="Pilih / ketik nama"']]);   // v14: JIG Welding cukup 5 baris (ID, nama, inspeksi, due date, Welder); Welder Covering pindah ke section E. Covering
+ return`<table class="jgt"><colgroup><col style="width:38%"><col></colgroup><tr><th colspan="2">${w?'Welding JIG &amp; Welder':'JIG Identity'}</th></tr>`+L.map(([l,k,t,x])=>`<tr><td class="l">${l}</td><td>${I(p+'_'+k,t,x)}</td></tr>`).join('')+`</table>`};
+const jr=p=>`<div class="jr">${jigBox(p)}${sig(p)}</div>`;
 const mk=(id,head,cols,add,mw)=>{TB[id]={cols};return`<div class="tw"><table data-t="${id}" class="${/^(wl|pt)$/.test(id)?'':'cd'}" style="min-width:${mw||0}px">${head}<tbody></tbody></table></div>`+(add?`<button type="button" class="btn sm add np" onclick="addR('${id}');touch()">+ Tambah baris</button><button type="button" class="btn sm np" onclick="rmR('${id}')">− Hapus baris terakhir</button>`:'')};
 const eq=id=>mk(id,hd(['No.','Measuring Equipment','Equipment ID','Calibration Due Date','User'],['8%','34%','22%','22%','']).replace('<thead>','<thead><tr><th colspan="5">Equipment</th></tr>'),[c('n','text','dl-eq'),c('i'),c('c','date'),c('u')]);
-const wlHead=`<colgroup>${['5%','13%','10%','6%','6%','7%','6%','6%','6%','6%','11%',''].map(x=>`<col style="width:${x}">`).join('')}</colgroup><thead><tr><th rowspan="2">No.</th><th rowspan="2">Joint Number</th><th rowspan="2">Welder</th><th colspan="2">Check</th><th rowspan="2">Preheat (°C)</th><th colspan="4">Non-Destructive Testing (NDT)</th><th rowspan="2">NDT Clearance Date</th><th rowspan="2">Remarks</th></tr><tr><th>Size</th><th>Visual</th><th>PT</th><th>MP</th><th>UT</th><th>RT</th></tr></thead>`;
+const wlHead=`<colgroup>${['4%','10%','11%','11%','5%','6%','6%','5%','5%','5%','5%','9%',''].map(x=>`<col style="width:${x}">`).join('')}</colgroup><thead><tr><th rowspan="2">No.</th><th rowspan="2">Joint Number</th><th rowspan="2">Welder</th><th rowspan="2">Fitter</th><th colspan="2">Check</th><th rowspan="2">Preheat (°C)</th><th colspan="4">Non-Destructive Testing (NDT)</th><th rowspan="2">NDT Clearance Date</th><th rowspan="2">Remarks</th></tr><tr><th>Size</th><th>Visual</th><th>PT</th><th>MP</th><th>UT</th><th>RT</th></tr></thead>`;
 let ptc=[c('ly')],pth='<tr><th rowspan="2">No.</th><th rowspan="2">Paint Layer</th>';
 for(let p=1;p<=5;p++){ptc.push(c('p'+p+'1','number'),c('p'+p+'2','number'),c('p'+p+'3','number'),c('a'+p,'text','',1));pth+=`<th colspan="4">DFT Check – Position ${p}</th>`}
 ptc.push(c('res','text','rs',1));pth+='<th rowspan="2">Result</th></tr><tr>'+[1,2,3,4,5].map(()=>'<th>1</th><th>2</th><th>3</th><th>AVG</th>').join('')+'</tr>';
 const ptw=['4%','9%',...Array(20).fill('3.8%'),''];
-const card=(id,t,b)=>`<section class="card sx" id="s-${id}" data-s="${id}"><div class="sec">${t.replace(/^([A-G])\.\s*(.*)$/,'<span class="sl">$1</span><span>$2</span>')}</div><div class="in">${b}</div></section>`;
+const card=(id,t,b)=>`<section class="card sx" id="s-${id}" data-s="${id}"><div class="sec">${t.replace(/^([A-H])\.\s*(.*)$/,'<span class="sl">$1</span><span>$2</span>')}</div><div class="in">${b}</div></section>`;
 const fx=(a,b)=>`<div class="fx"><div>${a}</div><div>${b}</div></div>`;
 $('#sheet').innerHTML=`
 <section class="card" id="s-i" data-s="i"><div class="hd"><div class="hd-l"><img src="${LOGO}" alt="PT Murinda Sentra Baja"></div><div class="hd-c"><h2><span>In-Process Quality Control</span> <span>(IPQC) Check Sheet</span></h2></div><div class="hd-r"><img id="clogo" alt="" hidden><div id="cname" class="cn" hidden></div></div></div>
@@ -506,14 +606,15 @@ $('#sheet').innerHTML=`
 <tr><td class="l">Title</td><td>${I('title','text','readonly tabindex="-1" placeholder="Terisi otomatis sesuai Client"')}</td><td class="l">Unit Number</td><td>${I('unit')}</td></tr>
 <tr><td class="l">Client</td><td>${I('client')}</td><td class="l">Part Drawing Number</td><td>${I('dwg')}</td></tr>
 <tr><td class="l">Order Number</td><td>${I('order')}</td><td class="l">Serial Number</td><td>${I('serial')}${I('so','hidden')}</td></tr></table></div></section>
-${card('a','A. Dimension Inspection Report',fx(sk('dim'),`<table>${kv('Inspection Date','dim_date','date')}</table>${eq('eqd')}${sig('dim')}`)+mk('dim',hd(['No.','Drawing Reference','Inspection Characteristic','Measuring Equipment','Nominal','Tolerance (±)','Actual','Result'],['5%','15%','24%','20%','9%','9%','9%','']),[c('ref'),c('chr'),c('eq','text','dl-eq'),c('nom','number'),c('tol','number'),c('act','number'),c('res','text','rs')],1,900))}
-${card('b','B. Welding Inspection Report',fx(sk('wl'),`<table>${kv('Inspection Date','wl_date','date')}${kv('Welding Process','wl_proc','text','list="dl-wp"')}${kv('Welding Current (A)','wl_a','number')}${kv('Voltage (V)','wl_v','number')}${kv('Machine No. & Calibration','wl_m')}</table>${eq('eqw')}${sig('wl')}`)+mk('wl',wlHead,[c('jn'),c('wd','text','dl-wd'),c('sz','text','',0,1),c('vs','text','rs'),c('ph','number'),c('pt','text','rs'),c('mp','text','rs'),c('ut','text','rs'),c('rt','text','rs'),c('nd','date'),c('rm')],1,1000))}
-${card('c','C. Leak Test Inspection Report',fx(sk('lk'),`<table>${kv('Method','lk_m','text','list="dl-lm"')}${kv('Start Date & Time','ls','datetime-local')}${kv('End Date & Time','le','datetime-local')}${kv('Duration','ld','text','readonly')}${kv('Inspection Date','lk_date','date')}</table>${sig('lk')}`)+mk('lk',hd(['No.','Leak Point','Leak Location','Repair Date','Retest Date','Result','Remarks'],['5%','14%','24%','14%','14%','12%','']),[c('pt'),c('loc'),c('rd','date'),c('td','date'),c('res','text','rs'),c('rm')],1,800))}
+${card('a','A. Dimension Inspection Report',fx(sk('dim'),`<table>${kv('Inspection Date','dim_date','date')}</table>${eq('eqd')}${jr('dim')}`)+mk('dim',hd(['No.','Drawing Reference','Inspection Characteristic','Measuring Equipment','Nominal','Tolerance (±)','Actual','Result'],['5%','14%','26%','20%','9%','9%','9%','']),[c('ref'),c('chr'),c('eq','text','dl-eq'),c('nom','number'),c('tol','number'),c('act','number'),c('res','text','rs')],1,760))}
+${card('b','B. Welding Inspection Report',fx(sk('wl'),`<table>${kv('Inspection Date','wl_date','date')}${kv('Welding Process','wl_proc','text','list="dl-wp"')}${kv('Welding Current (A)','wl_a','number')}${kv('Voltage (V)','wl_v','number')}${kv('Machine No. & Calibration','wl_m')}<tr><td class="l">Brand / Process Type</td><td><div class="two">${I('wl_mb','text','class="c" placeholder="Merek"')}${I('wl_mp','text','class="c" placeholder="Jenis proses"')}</div></td></tr><tr><td class="l">Current Limit (A) / Permit</td><td><div class="two">${I('wl_ml','text','class="c" inputmode="decimal" placeholder="Batas arus"')}${I('wl_ms','text','class="c" placeholder="Status izin"')}</div></td></tr></table>${eq('eqw')}${jr('wl')}`)+mk('wl',wlHead,[c('jn'),c('wd','text','dl-wd'),c('fi','text','dl-ft'),c('sz','text','',0,1),c('vs','text','rs'),c('ph','number'),c('pt','text','rs'),c('mp','text','rs'),c('ut','text','rs'),c('rt','text','rs'),c('nd','date'),c('rm')],1,1100))}
+${card('c','C. Leak Test Inspection Report',fx(sk('lk'),`<table>${kv('Method','lk_m','text','list="dl-lm"')}${kv('Start Date & Time','ls','datetime-local')}${kv('End Date & Time','le','datetime-local')}${kv('Duration','ld','text','readonly')}${kv('Inspection Date','lk_date','date')}</table>${sig('lk')}`)+mk('lk',hd(['No.','Leak Point','Leak Location','Welder','Repair Date','Retest Date','Result','Remarks'],['5%','12%','20%','14%','12%','12%','9%','']),[c('pt'),c('loc'),c('wd','text','dl-wd'),c('rd','date'),c('td','date'),c('res','text','rs'),c('rm')],1,950))}
 ${card('d','D. Concrete Filling Inspection Report',mk('cn',hd(['No.','Total Empty Weight','Total Wet Weight','Total Dry Weight','Total Standard Weight','Total Actual Weight','Tolerance','Remarks'],['5%','14%','14%','14%','15%','15%','10%','']),[c('e','number'),c('w','number'),c('d','number'),c('s','number'),c('a','number'),c('t','text','',0,1),c('r')],1,900))}
-${card('e','E. Alignment Inspection Report',fx(sk('al'),eq('eqa')+sig('al'))+mk('al',hd(['No.','Check Point','Drawing Reference','Tolerance','Actual','Results','Remark'],['5%','22%','20%','12%','12%','12%','']),[c('cp'),c('rf'),c('tl','text','',0,1),c('ac','text','',0,1),c('res','text','rs'),c('rm')],1,800))}
-${card('f','F. Painting Inspection Report',fx(sk('pt'),`<table>${kv('Total DFT (µm)','dft')}<tr><td class="l">Spec DFT Min / Max (µm)</td><td><div class="two">${I('dmin','number','class="c" placeholder="Min"')}${I('dmax','number','class="c" placeholder="Max"')}</div></td></tr>${kv('Ambient Temperature (°C)','amb','number')}${kv('Relative Humidity (%)','rh','number')}${kv('Steel Surface Temp. (°C)','sst','number')}${kv('Dew Point (°C)','dew','number')}<tr><td class="l">Coat No.</td><td style="text-align:left;padding:0 10px"><label><input type="checkbox" data-k="c1"> Primer</label> &nbsp;<label><input type="checkbox" data-k="c2"> 2nd</label> &nbsp;<label><input type="checkbox" data-k="c3"> Finish</label></td></tr></table>
+${card('cv','E. Covering Inspection Report',fx(`<table>${kv('Inspection Date','cv_date','date')}${kv('Welder Covering','cv_wd','text','list="dl-wd" autocomplete="off" placeholder="Pilih / ketik nama"')}${kv('Machine No. & Calibration','cv_m','text','placeholder="Dari Master_Welder"')}<tr><td class="l">Brand / Process Type</td><td><div class="two">${I('cv_mb','text','class="c" placeholder="Merek"')}${I('cv_mp','text','class="c" placeholder="Jenis proses"')}</div></td></tr><tr><td class="l">Current Limit (A) / Permit</td><td><div class="two">${I('cv_ml','text','class="c" inputmode="decimal" placeholder="Batas arus"')}${I('cv_ms','text','class="c" placeholder="Status izin"')}</div></td></tr></table>`,sig('cv'))+mk('cv',hd(['No.','Joint Number','Welder','Size','Visual','Preheat (°C)','Remarks'],['5%','18%','22%','10%','10%','12%','']),[c('jn'),c('wd','text','dl-wd'),c('sz','text','',0,1),c('vs','text','rs'),c('ph','number'),c('rm')],1,760))}
+${card('e','F. Alignment Inspection Report',fx(sk('al'),eq('eqa')+jr('al'))+mk('al',hd(['No.','Check Point','Drawing Reference','Tolerance','Actual','Results','Remark'],['5%','25%','20%','10%','10%','9%','']),[c('cp'),c('rf'),c('tl','text','',0,1),c('ac','text','',0,1),c('res','text','rs'),c('rm')],1,800))}
+${card('f','G. Painting Inspection Report',fx(sk('pt'),`<table>${kv('Total DFT (µm)','dft')}<tr><td class="l">Spec DFT Min / Max (µm)</td><td><div class="two">${I('dmin','number','class="c" placeholder="Min"')}${I('dmax','number','class="c" placeholder="Max"')}</div></td></tr>${kv('Ambient Temperature (°C)','amb','number')}${kv('Relative Humidity (%)','rh','number')}${kv('Steel Surface Temp. (°C)','sst','number')}${kv('Dew Point (°C)','dew','number')}<tr><td class="l">Coat No.</td><td style="text-align:left;padding:0 10px"><label><input type="checkbox" data-k="c1"> Primer</label> &nbsp;<label><input type="checkbox" data-k="c2"> 2nd</label> &nbsp;<label><input type="checkbox" data-k="c3"> Finish</label></td></tr></table>
 ${mk('pb',hd(['No.','Paint Type & Brand','Thinner','Brand','DFT'],['8%','32%','24%','20%','']),[c('ty'),c('th'),c('br'),c('df','text','',0,1)])}${eq('eqp')}`)+mk('pt','<colgroup>'+ptw.map(x=>`<col style="width:${x}">`).join('')+'</colgroup><thead>'+pth+'</thead>',ptc,1,1250)+`<div class="fx mt"><div>${rk('Repair Work','repair')}</div><div>${sig('pt')}</div></div>`)}
-${card('g','G. Final Inspection Report',mk('fin',hd(['No.','Check Point','Method','Result'],['7%','43%','30%','']),[],0,560)+`<div class="rk-w">${rk('Remark','g_rm')}</div><div class="fx mt sg"><div>${sig('fin')}</div><div>${rvw}</div></div>`)}`;
+${card('g','H. Final Inspection Report',mk('fin',hd(['No.','Check Point','Method','Result'],['7%','43%','30%','']),[],0,560)+`<div class="rk-w">${rk('Remark','g_rm')}</div><div class="fx mt sg"><div>${sig('fin')}</div><div>${rvw}</div></div>`)}`;
 
 function addF(d){const tb=$('[data-t=fin] tbody'),f=FIN[tb.rows.length]||{n:'',cp:'',mt:'',o:'ok'},tr=tb.insertRow(),
   u=f.o=='wt'?'<input data-c="res" type="number" step="any" class="c" placeholder="kg">':`<select data-c="res">${f.o=='ad'?AD:OKNG}</select>`,
@@ -533,7 +634,8 @@ function calc(){clogo();projAuto();
   if(av.length&&(mn!==''||mx!==''))tr.querySelector('[data-c=res]').value=av.every(a=>(mn===''||a>=+mn)&&(mx===''||a<=+mx))?'OK':'NG'});
  const s=$('[data-k=ls]').value,e=$('[data-k=le]').value,d=(new Date(e)-new Date(s))/6e4;$('[data-k=ld]').value=s&&e&&d>=0?`${Math.floor(d/60)} jam ${Math.round(d%60)} menit`:'';
  const td=new Date().toISOString().slice(0,10);
- $$('#sheet input,#sheet select').forEach(i=>{i.classList.toggle('e',/^(date|datetime-local)$/.test(i.type)&&!i.value);i.classList.toggle('ng',/^(NG|FAIL)$/i.test(i.value));i.classList.toggle('ok',/^OK$/.test(i.value)&&!!i.dataset.c&&/^(res|vs|pt|mp|ut|rt)$/.test(i.dataset.c));if(i.type=='date'&&i.closest('[data-t^=eq]'))i.classList.toggle('exp',!!i.value&&i.value<td)});
+ $$('#sheet input,#sheet select').forEach(i=>{i.classList.toggle('e',/^(date|datetime-local)$/.test(i.type)&&!i.value);i.classList.toggle('ng',/^(NG|FAIL)$/i.test(i.value)||(/^(wl|cv)_ms$/.test(i.dataset.k||'')&&MBAD.test(i.value)));i.classList.toggle('ok',/^OK$/.test(i.value)&&!!i.dataset.c&&/^(res|vs|pt|mp|ut|rt)$/.test(i.dataset.c));if(i.type=='date'&&(i.closest('[data-t^=eq]')||/_jdu$/.test(i.dataset.k||'')))i.classList.toggle('exp',!!i.value&&i.value<td)});
+ {const a=$('[data-k=wl_a]'),l=parseFloat(String($('[data-k=wl_ml]').value).replace(',','.'));a.classList.toggle('exp',!!l&&a.value!==''&&+a.value>l);a.title=a.classList.contains('exp')?'Melebihi batas arus mesin ('+l+' A)':''}
  const all=$$('[data-c]').map(i=>i.value);const ovv=all.includes('NG')?'NG':all.includes('OK')?'OK':'-';$('#ov').textContent=ovv;$('#ov').dataset.v=ovv;
  $$('.sx').forEach(s=>{const f=[...s.querySelectorAll('input,select,textarea')].filter(e=>e.type!='file'&&e.type!='checkbox'&&!/^(ly|cpt|mth)$/.test(e.dataset.c||'')&&e.dataset.k!='rv'&&e.value!==''),a=$(`#nav a[data-n=${s.dataset.s}]`);a.classList.toggle('done',f.length>0);a.classList.toggle('bad',f.some(e=>e.value=='NG'))})}
 document.addEventListener('input',h);document.addEventListener('change',h);
@@ -541,7 +643,29 @@ function h(e){const i=e.target;if(!i.closest||!i.closest('#sheet'))return;
  if(i.id=='qs'){if(e.type=='change')soPick(i.value);return}if(i.id=='fm'||i.id=='fd'){if(e.type=='change')sof(i.id);return}
  if(i.dataset.k=='client')projAuto(1);
  if(e.type=='change'&&i.getAttribute('list')=='dl-eq'){const m=EQ.find(x=>x.n==i.value),tr=i.closest('tr');if(m&&tr&&tr.querySelector('[data-c=i]')){const s=(k,v)=>{const f=tr.querySelector(`[data-c=${k}]`);if(f&&!f.value)f.value=v||''};s('i',m.i);s('c',m.c);s('u',m.u)}}
+ if(e.type=='change'&&/_(jid|jnm)$/.test(i.dataset.k||''))jigPick(i);
+ if(/^(wl|cv)_wd$/.test(i.dataset.k||'')){if(e.type=='change')mcFill(1,i.dataset.k);else if(WMf(i.value))mcFill(0,i.dataset.k)}
  calc();touch()}
+/* v12: pilih ID atau nama JIG di kotak "JIG Identity" → ID, nama, Welder, Fitter terisi dari Master_JIG (Welder / Fitter tetap bisa diubah manual). */
+function jigPick(i){const p=i.dataset.k.split('_')[0],q=k=>$(`[data-k=${p}_${k}]`)||{},v=i.value.trim().toLowerCase(),byId=/_jid$/.test(i.dataset.k);
+ if(!v){JK.forEach(k=>q(k).value='');if(p=='wl')mcFill(0,'wl_wd');return}
+ const m=JIG.find(x=>String(byId?x.id:x.n).toLowerCase()==v);if(!m)return;
+ q('jid').value=m.id;q('jnm').value=m.n;q('jin').value=m.d||'';q('jdu').value=m.u||'';if(m.w)q('wd').value=m.w;if(m.f)q('fi').value=m.f;if(p=='wl'&&m.w)mcFill(0,'wl_wd');
+ const td=new Date().toISOString().slice(0,10);
+ if(m.u&&m.u<td)toast(`${m.id} ${m.n}: Due Date ${dmy(m.u)} sudah lewat — JIG perlu diinspeksi ulang`,1);
+ else if(/^(NG|FAIL)$/i.test(m.r))toast(`${m.id} ${m.n}: hasil inspeksi JIG = ${m.r}`,1)}
+/* v13: pilih Sales Order → JIG Assy / JIG Welding / Welder / Fitter / Welder Covering terisi (hanya nilai yang ada di SO; isian manual tidak dihapus). Mesin las dicari dari Master_Welder kolom O–S berdasarkan nama Welder. */
+const WMf=n=>{const k=nrm(n);return k?WM.find(x=>nrm(x.n)==k)||null:null};
+function soJig(r){let n=0;const g={a:{id:r.ja_id,n:r.ja_n,d:r.ja_d,u:r.ja_u,w:r.ja_w,f:r.ja_f},w:{id:r.jw_id,n:r.jw_n,d:r.jw_d,u:r.jw_u,w:r.jw_w,f:''}},
+ fill=(p,o)=>{if(!(o.id||o.n||o.w||o.f))return;n++;[['jid',o.id],['jnm',o.n],['jin',o.d],['jdu',o.u],['wd',o.w],['fi',o.f]].forEach(([k,v])=>{const e=$(`[data-k=${p}_${k}]`);if(e&&v)e.value=v})};
+ for(const p in SO_JIG)fill(p,g[SO_JIG[p]]);fill('wl',g.w);
+ if(r.cw){const e=$('[data-k=cv_wd]');if(e){e.value=r.cw;n++}}   // Sales_Order kolom AC (Welder Covering) → section E Covering
+ if(n)mcFill(1);return n}
+/* v14: identitas mesin las per section dari Master_Welder (kolom O–S), dicocokkan dengan NAMA WELDER di section itu: B Welding (wl_wd → wl_m / mb / mp / ml / ms) dan E Covering (cv_wd → cv_m / mb / mp / ml / ms). */
+function mcFill(t,key,soft){const set=(k,v)=>{const e=$(`[data-k=${k}]`);if(!e)return;if(soft){if(!e.value&&v)e.value=v}else e.value=v||''},no=[];
+ for(const p of ['wl','cv']){const w=$(`[data-k=${p}_wd]`);if(!w||(key&&key!=p+'_wd'))continue;const m=WMf(w.value);
+  [['m','id'],['mb','b'],['mp','p'],['ml','a'],['ms','s']].forEach(([k,f])=>set(p+'_'+k,m&&m[f]));if(w.value.trim()&&!m)no.push(w.value.trim())}
+ if(t&&no.length)toast('Data mesin las '+[...new Set(no)].join(', ')+' belum ada di Master_Welder (kolom O–S)',1)}
 const BLN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'],dmy=s=>{const m=/^(\d{4})-(\d\d)-(\d\d)/.exec(s||'');return m?`${+m[3]} ${BLN[+m[2]-1].slice(0,3)} ${m[1]}`:''};
 const lab=r=>`${r.so} | ${r.ser} | ${r.unit} | ${r.cust}${r.kirim?' | Kirim '+dmy(r.kirim):''}`;
 let STD={};
@@ -554,6 +678,9 @@ function projAuto(strict){const e=$('[data-k=proj]'),t=$('[data-k=title]');if(!e
  e.placeholder=t.placeholder=c&&!p&&PROJ.length?'Client belum ada di Master_Project':'Terisi otomatis sesuai Client'}
 function stdEq(){for(const id of ['eqd','eqw','eqa','eqp']){const nm=STD[id]||[],tb=$(`[data-t=${id}] tbody`);if(!nm.length||[...tb.querySelectorAll('[data-c]')].some(e=>e.value))continue;
  tb.innerHTML='';for(let i=0;i<Math.max(nm.length,DEF[id]);i++){const m=EQ.find(x=>x.n==nm[i])||{};addR(id,nm[i]?{n:nm[i],i:m.i,c:m.c,u:m.u}:{})}}}
+/* v14: standar baku Painting (nama cat, thinner, brand, DFT) diisi SEKALI di sheet Standar_Painting → otomatis terisi di tabel "Paint Type & Brand" semua laporan baru / draft yang tabelnya masih kosong. Laporan Final & isian manual tidak ditimpa. */
+function stdPb(){const tb=$('[data-t=pb] tbody');if(!tb||!PBS.length||[...tb.querySelectorAll('[data-c]')].some(e=>e.value))return;
+ tb.innerHTML='';for(let i=0;i<Math.max(PBS.length,DEF.pb);i++)addR('pb',PBS[i]||{})}
 function skSet(s,src){const g=$(`img[data-s=${s}]`);if(!g||(g.getAttribute('src')&&!g.dataset.def))return;const im=new Image;im.onload=()=>{const z=Math.min(1,1000/im.width),cv=document.createElement('canvas');cv.width=im.width*z;cv.height=im.height*z;cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);g.src=cv.toDataURL('image/jpeg',.75);g.dataset.def='';g.dataset.new='1';g.closest('.sk').classList.add('has');touch()};im.src=src}
 async function stdSO(k){if(!k)return;try{stdApply(await api('std',{id:k}))}catch(e){toast('Data standar produk tidak termuat: '+e.message,1)}}
 function stdApply(s){let n=0;const set=(q,v)=>{const e=$(q);if(e&&v&&!e.value){e.value=v;n++}},f=s.f||{},cn=s.cn||{};
@@ -570,7 +697,7 @@ function sof(w){const fm=$('#fm'),fd=$('#fd');
  const m=fm.value,d=fd.value,f=SO.filter(r=>(!m||(r.kirim||'').slice(0,7)==m)&&(!d||r.kirim==d));
  $('#dl-so').innerHTML=f.map(r=>`<option value="${esc(lab(r))}">`).join('');
  $('#sc').textContent=!m&&!d?`${SO.length} item. Pilih bulan atau tanggal kirim untuk mempersempit daftar.`:f.length?`${f.length} item dengan tanggal kirim ${d?dmy(d):fm.options[fm.selectedIndex].text.replace(/ \(\d+\)$/,'')} — ketik atau pilih di kolom di atas.`:'Tidak ada Sales Order dengan tanggal kirim tersebut.'}
-function soPick(v){const r=SO.find(x=>lab(x)==v);if(!r)return;const k=(a,b)=>$(`[data-k=${a}]`).value=b||'';k('so',r.so);k('client',r.cust);k('order',r.ord);k('unit',r.unit);k('dwg',r.part);k('serial',r.ser);k('part','Counterweight');projAuto(1);calc();touch();toast('Data Sales Order terisi: '+r.so);stdSO(r.prod)}
+function soPick(v){const r=SO.find(x=>lab(x)==v);if(!r)return;const k=(a,b)=>$(`[data-k=${a}]`).value=b||'';k('so',r.so);k('client',r.cust);k('order',r.ord);k('unit',r.unit);k('dwg',r.part);k('serial',r.ser);k('part','Counterweight');projAuto(1);const nj=soJig(r);calc();touch();toast('Data Sales Order terisi: '+r.so+(nj?' · JIG & welder dari SO':''));stdSO(r.prod)}
 function me(b){b.previousElementSibling.value=U.n;calc();touch()}
 function skUp(inp,s){const f=inp.files[0];if(!f)return;const im=new Image;im.onload=()=>{const z=Math.min(1,1000/im.width),cv=document.createElement('canvas');cv.width=im.width*z;cv.height=im.height*z;cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);const g=$(`img[data-s=${s}]`);g.src=cv.toDataURL('image/jpeg',.75);g.dataset.def='';g.dataset.new='1';g.closest('.sk').classList.add('has');inp.value='';touch()};im.src=URL.createObjectURL(f)}
 function skDel(s){const g=$(`img[data-s=${s}]`);g.removeAttribute('src');g.dataset.new='';g.dataset.def='';skDef(g);touch()}
@@ -582,18 +709,21 @@ function clogo(){const n=(($('[data-k=client]')||{}).value||'').trim(),g=$('#clo
 
 function get(full){const k={};$$('[data-k]').forEach(e=>k[e.dataset.k]=e.type=='checkbox'?e.checked:e.value);k.status=ST;k.part='Counterweight';k.fin_v=2;
  const t={};for(const id in TB)t[id]=$$(`[data-t=${id}] tbody tr`).map(tr=>Object.fromEntries([...tr.querySelectorAll('[data-c]')].map(e=>[e.dataset.c,e.value])));
+ ['dim','al'].forEach(p=>t[p].forEach(o=>{if(Object.values(o).some(v=>v!==''))JK.forEach(x=>o[x]=($(`[data-k=${p}_${x}]`)||{}).value||'')}));   // sheet detail tetap memuat kolom JIG per baris (isi sama dengan kotak JIG Identity)
  const s={};$$('.sk img').forEach(i=>{if(i.getAttribute('src')&&!i.dataset.def)s[i.dataset.s]=full||i.dataset.new?i.src:'keep'});
  return{id:RID,k,t,sk:s,overall:$('#ov').textContent.replace('-','')}}
 function put(r,loc){RID=r.id||'';ST=(r.k||{}).status||'Draft';$('#rid').textContent=RID||'(baru)';
  $$('[data-k]').forEach(e=>{const v=(r.k||{})[e.dataset.k];if(e.type=='checkbox')e.checked=!!v;else e.value=v??''});
  $('[data-k=part]').value='Counterweight';$('#qs').value='';
  const kk=r.k||{};if(!kk.rv){const o=kk.fin_r||kk.pt_r||kk.al_r||kk.lk_r||kk.wl_r||kk.dim_r;if(o)$('[data-k=rv]').value=o}   // laporan lama: nama Reviewed / Witnessed per section → satu isian di akhir
- projAuto();
+ [['wl_wc','cv_wd'],['wl_cm','cv_m'],['wl_cb','cv_mb'],['wl_cp','cv_mp'],['wl_cl','cv_ml'],['wl_cs','cv_ms']].forEach(([o,n])=>{if(kk[o]&&!kk[n]){const e=$(`[data-k=${n}]`);if(e)e.value=kk[o]}});   // laporan v13: Welder Covering & mesinnya dulu di section Welding → sekarang section E Covering
+ projAuto();if(ST!='Final')mcFill(0,null,1);   // draft lama: lengkapi data mesin las yang masih kosong dari Master_Welder
+ ['dim','al'].forEach(p=>{const rows=(r.t||{})[p]||[],set=(ks,f)=>{if(ks.some(x=>kk[p+'_'+x]))return;const o=rows.find(f);if(o)ks.forEach(x=>{const e=$(`[data-k=${p}_${x}]`);if(e)e.value=o[x]||''})};set(['jid','jnm'],x=>x&&(x.jid||x.jnm));set(['wd','fi'],x=>x&&(x.wd||x.fi))});   // laporan lama: JIG / Welder / Fitter per baris → ambil baris pertama yang berisi
  for(const id in TB){$(`[data-t=${id}] tbody`).innerHTML='';let rows=(r.t||{})[id]||[];
   if(id=='fin'&&!(r.k||{}).fin_v&&rows.length)rows=rows.slice(2).map(o=>({res:(o&&(o.res??o.u1))||''}));   // laporan lama (14 baris, Unit 1–4): buang baris Delivery Date & Type, pakai nilai Unit 1
   for(let i=0;i<Math.max(rows.length,DEF[id]);i++)addR(id,rows[i]||(id=='pt'&&!r.id?{ly:PD[i]}:{}))}
  $$('.sk img').forEach(i=>{const v=(r.sk||{})[i.dataset.s];i.dataset.def='';if(v){i.src=v;i.closest('.sk').classList.add('has')}else skDef(i);i.dataset.new=v&&loc?'1':''});
- lock();calc()}
+ if(ST!='Final')stdPb();lock();calc()}
 function lock(){const f=ST=='Final';$('#fs').disabled=f;$('#bs').hidden=$('#bf').hidden=f;$('#bo').hidden=!f;const b=$('#stb');b.textContent=ST;b.className='bd '+(f?'fin':'dr')}
 
 function ss(t,k){const e=$('#ss');e.textContent=t;e.className='ss '+(k||'')}
@@ -613,6 +743,7 @@ async function reopen(){if(!confirm('Buka laporan final untuk direvisi? Status k
 async function api(a,b={}){const post=a=='save'||a=='delete'||a=='login';
  const r=await fetch(API+(post?'':`?action=${a}&s=${encodeURIComponent(S)}&token=${encodeURIComponent(TOKEN)}&id=${encodeURIComponent(b.id||'')}`),post?{method:'POST',body:JSON.stringify({...b,action:a,token:TOKEN,s:S})}:{});
  const j=await r.json();if(j&&j.error){if(/^Sesi/.test(j.error)&&U)logout(1);throw new Error(j.error)}return j}
+function pwt(b){const i=$('#lp'),h=i.type=='password';i.type=h?'text':'password';b.classList.toggle('on',h);b.setAttribute('aria-label',h?'Sembunyikan password':'Tampilkan password')}
 const show=v=>{$$('.v').forEach(e=>e.classList.toggle('on',e.id=='v-'+v));scrollTo(0,0)};
 function fillUsers(){const g={};USERS.filter(u=>u.l).forEach(u=>(g[u.d||'Lainnya']??=[]).push(u));const qc='Quality Control';
  $('#lu').innerHTML='<option value="">Pilih nama karyawan…</option>'+Object.keys(g).sort((a,b)=>(b==qc)-(a==qc)||a.localeCompare(b)).map(d=>`<optgroup label="${esc(d)}">${g[d].sort((a,b)=>a.n.localeCompare(b.n)).map(u=>`<option value="${esc(u.n)}">${esc(u.n)} — ${esc(u.j)}</option>`).join('')}</optgroup>`).join('');
@@ -622,8 +753,10 @@ async function login(e){e.preventDefault();const b=$('#lbtn');b.disabled=true;b.
  catch(x){$('#le').textContent=x.message}b.disabled=false;b.textContent='Masuk';return false}
 function logout(exp){S='';U=null;dirty=0;sessionStorage.removeItem('ipqc_s');$('#usr').hidden=true;show('login');$('#le').textContent=exp?'Sesi berakhir. Silakan masuk lagi — draft Anda aman di perangkat ini.':''}
 function bye(){if(dirty)bk();logout()}
-async function enter(){$('#un').textContent=U.n;$('#uav').textContent=(U.n||'?').trim().charAt(0).toUpperCase();$('#uj').textContent=U.j;$('#usr').hidden=false;show('list');$('#sr').innerHTML='<tr><td colspan="5" class="mut" style="text-align:center;padding:30px">Memuat…</td></tr>';$('#lr').innerHTML='<tr><td colspan="8" class="mut" style="text-align:center;padding:30px">Memuat…</td></tr>';
- try{const m=await api('init');SO=m.so;EQ=m.eq;STD=m.std||{};PROJ=m.proj||[];sofInit();sosInit();$('#dl-eq').innerHTML=EQ.map(x=>`<option value="${esc(x.n)}">`).join('');$('#dl-wd').innerHTML=m.welder.map(x=>`<option value="${esc(x)}">`).join('');await refresh()}
+async function enter(){$('#un').textContent=U.n;$('#uj').textContent=U.j;$('#usr').hidden=false;show('list');$('#sr').innerHTML='<tr><td colspan="5" class="mut" style="text-align:center;padding:30px">Memuat…</td></tr>';$('#lr').innerHTML='<tr><td colspan="8" class="mut" style="text-align:center;padding:30px">Memuat…</td></tr>';
+ try{const m=await api('init');SO=m.so;EQ=m.eq;STD=m.std||{};PBS=m.pb||[];PROJ=m.proj||[];WM=m.wm||[];sofInit();sosInit();$('#dl-eq').innerHTML=EQ.map(x=>`<option value="${esc(x.n)}">`).join('');$('#dl-wd').innerHTML=m.welder.map(x=>`<option value="${esc(x)}">`).join('');
+  JIG=m.jig||[];$('#dl-jid').innerHTML=JIG.map(x=>`<option value="${esc(x.id)}" label="${esc(x.n)}">`).join('');$('#dl-jig').innerHTML=JIG.map(x=>`<option value="${esc(x.n)}" label="${esc(x.id)}">`).join('');
+  $('#dl-ft').innerHTML=(m.fitter&&m.fitter.length?m.fitter:USERS.map(u=>u.n)).map(x=>`<option value="${esc(x)}">`).join('');await refresh()}
  catch(e){toast('Gagal memuat data: '+e.message,1)}banner()}
 async function refresh(){LIST=await api('list');renderList();renderSO()}
 const bdg=s=>`<span class="bd ${s=='Final'?'fin':'dr'}">${s=='Final'?'Final':'Draft'}</span>`,rsl=o=>o?`<span class="bd ${o=='NG'?'ng':'ok'}">${esc(o)}</span>`:'<span class="mut">–</span>';
@@ -686,7 +819,7 @@ async function back(){if(dirty){bk();await saveR(1)}show('list');try{await refre
 async function del(id){if(!confirm('Hapus laporan '+id+'? Data dan sketsa dihapus permanen.'))return;try{await api('delete',{id});toast('Laporan dihapus');await refresh()}catch(e){toast('Gagal: '+e.message,1)}}
 addEventListener('beforeunload',e=>{if(dirty&&U){bk();e.preventDefault();e.returnValue=''}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&dirty&&U&&$('#v-edit').classList.contains('on')){bk();saveR(1)}});
-(async()=>{$('#hlogo').src=LOGO;put({});
+(async()=>{$('#hlogo').src=LOGO;$('#llogo').src=LOGO;put({});
  try{USERS=await api('users');fillUsers()}catch(e){$('#le').textContent='Gagal memuat daftar karyawan: '+e.message}
  const s=JSON.parse(sessionStorage.getItem('ipqc_s')||'null');if(s){S=s.S;U=s.U;enter()}})();
 </script></body></html>
