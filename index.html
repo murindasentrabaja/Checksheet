@@ -443,53 +443,77 @@ body:has(#v-login.on) #top{display:none}
 @media screen and (max-width:860px){.fx.c3{grid-template-columns:1fr}.jr3{grid-template-columns:1fr}}
 @media screen and (max-width:720px){.sk{min-height:180px}.fx>div>.sk{flex:none;height:220px}.sec{padding:10px 14px}.in{padding:12px}}
 
-/* ---------- Login (v18) — lembar masuk bergaya kepala formulir; tanpa panel promosi, tanpa istilah data/sheet ---------- */
+/* ---------- Tema & login (v19) — hanya layar ---------- */
 @media screen{
-body:has(#v-login.on){background:#e9edf3}
-#v-login.on{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;padding:0;background:none}
-.lgn-rule{flex:none;height:18px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.5) 0 1px,transparent 1px 8px) left top/100% 7px no-repeat,repeating-linear-gradient(90deg,rgba(255,255,255,.75) 0 1.5px,transparent 1.5px 40px) left top/100% 13px no-repeat,var(--pri)}
-.lgn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:28px 16px 40px}
-.lgn-sheet{width:100%;max-width:440px;background:#fff;border:1px solid #bfcadb;border-radius:6px}
-.lgn-hd{display:grid;grid-template-columns:auto minmax(0,1fr);border-bottom:1px solid #bfcadb}
-.lgn-lg{display:flex;align-items:center;padding:14px 18px;border-right:1px solid #bfcadb}
-.lgn-lg img{display:block;height:34px;width:auto}
-.lgn-lg img:not([src]){display:none}
-.lgn-hd h1{margin:0;display:flex;align-items:center;padding:14px 18px;font-size:15px;line-height:1.3;font-weight:700;color:var(--pri)}
-.lgn-fm{padding:22px 24px 26px}
-.lgn-in{margin:0;font-size:14px;color:var(--mut)}
-.lgn-lb{display:block;margin:18px 0 6px;font-size:13px;font-weight:600;color:#2b3b52}
-.lgn-pw{position:relative;display:block}
-.lgn-pw input{display:block;width:100%;height:46px;margin:0;padding:0 48px 0 12px;border:1px solid #aebbd0;border-radius:4px;background:#fff;font:inherit;font-size:15px;color:var(--ink)}
-.lgn-pw input:hover{border-color:#8fa1ba}
-.lgn-eye{position:absolute;right:2px;top:2px;width:42px;height:42px;display:grid;place-items:center;border:0;border-radius:3px;background:none;color:#64748b;cursor:pointer}
-.lgn-eye:hover,.lgn-eye.on{color:var(--pri)}
-.lgn-pw input:focus,.up.open .upb,.upb:focus-visible{outline:0;border-color:var(--pri);box-shadow:0 0 0 3px rgba(31,111,224,.2)}
-.lgn-fm .err{margin:12px 0 0;min-height:0}
-.lgn-fm .err:not(:empty){padding:10px 12px;border:1px solid #f0c2bd;border-left:3px solid var(--ng);border-radius:4px;background:var(--ngb);font-weight:500;line-height:1.45}
-.lgn-fm .btn.p{width:100%;margin-top:18px;min-height:46px;border-radius:4px;background:var(--pri);border-color:var(--pri);box-shadow:none;font-size:15px;font-weight:700;color:#fff}
-.lgn-fm .btn.p:hover{background:#0d2547;border-color:#0d2547;box-shadow:none}
-.lgn-fm .btn.p:active{transform:none}
-.lgn-fm .btn.p.ld{opacity:.75}
-.lgn-ft{font-size:12.5px;color:var(--mut)}
+:root{--pri:#0f2747;--pri2:#1c4476;--stl:#0f2747;--bd:#dde4ef;--bg:#f4f6fa;--hb:#eef2f8;--sf:#f7f9fc;--r:18px;--sh:0 1px 2px rgba(15,39,71,.04),0 10px 28px -14px rgba(15,39,71,.14)}
+body{background:var(--bg)}
+#top{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:1px solid var(--bd)}
+#top::before{display:none}
+.btn{border-color:#d5ddea;box-shadow:none}
+.btn:hover{background:#f5f8fc;border-color:#c3cfe0;box-shadow:none}
+.btn.p{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 14px -8px rgba(15,39,71,.6)}
+.btn.p:hover{background:#18365f;border-color:#18365f}
+.btn.g{background:#177a45;border-color:#177a45;box-shadow:0 6px 14px -8px rgba(23,122,69,.55)}
+.btn.g:hover{background:#12683a;border-color:#12683a}
+.card{border-color:#e1e8f2}
+.sec{background:#fff;color:var(--pri);border-bottom:1px solid var(--bd);letter-spacing:0}
+.sec .sl{background:var(--pri);color:#fff;border-radius:8px}
+.row h2{font-size:26px;letter-spacing:-.02em}
+.lt th{text-transform:none;letter-spacing:0;font-size:12.5px}
+#nav a{border-color:#dbe3ef}
+/* Login: formulir di kiri, gambar teknik di kanan */
+body:has(#v-login.on){background:#fff}
+#v-login.on{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:100vh;min-height:100dvh;padding:0;background:#fff}
+.lg-l{display:flex;flex-direction:column;padding:36px clamp(28px,6vw,88px) 28px}
+.lg-l>img{display:block;height:44px;width:auto;align-self:flex-start}
+.lg-l>img:not([src]){display:none}
+.lg-f{width:100%;max-width:400px;margin:auto 0;padding:36px 0}
+.lg-f h1{margin:0;font-size:32px;line-height:1.15;font-weight:700;letter-spacing:-.03em;color:var(--pri)}
+.lg-in{margin:10px 0 0;font-size:15px;line-height:1.6;color:var(--mut)}
+.lg-lb{display:block;margin:24px 0 8px;font-size:13px;font-weight:600;color:#33445c}
+.lg-pw{position:relative;display:block}
+.lg-pw input{display:block;width:100%;height:52px;margin:0;padding:0 52px 0 16px;border:1px solid #d3dce9;border-radius:12px;background:#fff;font:inherit;font-size:15.5px;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+.lg-pw input:hover,.upb:hover{border-color:#b3c0d4}
+.lg-pw input:focus,.up.open .upb,.upb:focus-visible{outline:0;border-color:var(--pri2);box-shadow:0 0 0 4px rgba(28,68,118,.14)}
+.lg-eye{position:absolute;right:5px;top:5px;width:42px;height:42px;display:grid;place-items:center;border:0;border-radius:9px;background:none;color:#7284a0;cursor:pointer}
+.lg-eye:hover,.lg-eye.on{color:var(--pri);background:#f0f4fa}
+.lg-f .err{margin:16px 0 0;min-height:0}
+.lg-f .err:not(:empty){padding:11px 14px;border-radius:12px;background:var(--ngb);color:var(--ng);font-weight:500;line-height:1.45}
+.lg-f .btn.p{width:100%;margin-top:26px;min-height:52px;border-radius:12px;font-size:15.5px;font-weight:600}
+.lg-f .btn.p.ld{opacity:.75}
+.lg-ft{font-size:12.5px;color:var(--mut)}
+.lg-r{position:relative;display:grid;place-items:center;padding:48px;overflow:hidden;color:#b7cbee;background:#0f2747 linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/36px 36px,linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/36px 36px}
+.lg-r svg{width:min(100%,600px);height:auto;font-family:inherit}
+.lg-r .ob{fill:none;stroke:currentColor;stroke-width:2}
+.lg-r .hd2{fill:none;stroke:currentColor;stroke-width:1.2;stroke-dasharray:6 4;opacity:.7}
+.lg-r .ct{fill:none;stroke:currentColor;stroke-width:.8;stroke-dasharray:14 3 2 3;opacity:.55}
+.lg-r .dm{color:#f2a900;opacity:0;animation:lgin .7s 1.1s ease forwards}
+.lg-r .dm *{stroke:currentColor;fill:none;stroke-width:1.2}
+.lg-r .dm text{fill:currentColor;stroke:none;font-size:14px;font-weight:600}
+.lg-r .tb{fill:none;stroke:currentColor;stroke-width:1;opacity:.6}
+.lg-r .tt2{fill:currentColor;font-size:11px;font-weight:600}
+.lg-r .dw{stroke-dasharray:1;stroke-dashoffset:1;animation:lgdw 1.3s ease forwards}
+@keyframes lgdw{to{stroke-dashoffset:0}}
+@keyframes lgin{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.lg-r .dw{animation:none;stroke-dashoffset:0}.lg-r .dm{animation:none;opacity:1}}
 /* Pemilih nama karyawan */
 .up{position:relative}
-.upb{display:flex;align-items:center;gap:10px;width:100%;height:46px;padding:0 12px;border:1px solid #aebbd0;border-radius:4px;background:#fff;font:inherit;color:var(--ink);text-align:left;cursor:pointer}
-.upb:hover{border-color:#8fa1ba}
+.upb{display:flex;align-items:center;gap:10px;width:100%;height:52px;padding:0 14px 0 16px;border:1px solid #d3dce9;border-radius:12px;background:#fff;font:inherit;color:var(--ink);text-align:left;cursor:pointer;transition:border-color .15s,box-shadow .15s}
 .upb .upt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
-.upb .upt b{font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.upb .upt b{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .upb .upt small{font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.upb .upph{flex:1;font-size:15px;color:#7d8ba1}
-.upb .ch{flex:none;color:#64748b}
+.upb .upph{flex:1;font-size:15.5px;color:#8392a8}
+.upb .ch{flex:none;color:#7284a0;transition:transform .2s}
 .up.open .upb .ch{transform:rotate(180deg)}
-.upp{position:absolute;z-index:40;left:0;right:0;top:calc(100% + 4px);border:1px solid #aebbd0;border-radius:6px;background:#fff;box-shadow:0 10px 24px -8px rgba(13,37,71,.3);overflow:hidden}
-.ups{padding:8px;border-bottom:1px solid #e3e9f2}
+.upp{position:absolute;z-index:40;left:0;right:0;top:calc(100% + 6px);border:1px solid #d3dce9;border-radius:14px;background:#fff;box-shadow:0 18px 40px -14px rgba(15,39,71,.3);overflow:hidden}
+.ups{padding:8px;border-bottom:1px solid #e8edf5}
 .ups svg{display:none}
-.lgn-fm .ups input{display:block;width:100%;height:38px;margin:0;padding:0 10px;border:1px solid #c5cfdc;border-radius:4px;background:#f6f8fb;font:inherit;font-size:14px;color:var(--ink)}
-.lgn-fm .ups input:focus{outline:0;background:#fff;border-color:var(--pri)}
-.upl{max-height:280px;overflow-y:auto;padding:4px;scrollbar-width:thin}
-.upg{padding:8px 8px 3px;font-size:12px;font-weight:700;color:var(--mut)}
-.upi{display:flex;align-items:center;gap:10px;width:100%;padding:7px 8px;border:0;border-radius:4px;background:none;font:inherit;color:var(--ink);text-align:left;cursor:pointer}
-.upi:hover,.upi.act{background:#eef3fa}
+.lg-f .ups input{display:block;width:100%;height:40px;margin:0;padding:0 12px;border:1px solid transparent;border-radius:9px;background:#f3f6fa;font:inherit;font-size:14px;color:var(--ink)}
+.lg-f .ups input:focus{outline:0;background:#fff;border-color:var(--pri2)}
+.upl{max-height:280px;overflow-y:auto;padding:6px;scrollbar-width:thin}
+.upg{padding:8px 10px 3px;font-size:12px;font-weight:700;color:var(--mut)}
+.upi{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:0;border-radius:9px;background:none;font:inherit;color:var(--ink);text-align:left;cursor:pointer}
+.upi:hover,.upi.act{background:#eff3f9}
 .upi .upt{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
 .upi .upt b{font-size:14px;font-weight:600}
 .upi .upt small{font-size:12px;color:var(--mut)}
@@ -497,7 +521,7 @@ body:has(#v-login.on){background:#e9edf3}
 .upi[aria-selected=true] .ck{opacity:1}
 .upe{padding:18px 10px;text-align:center;color:var(--mut);font-size:13.5px}
 }
-@media screen and (max-width:480px){.lgn{justify-content:flex-start;padding-top:20px}.lgn-fm{padding:20px 18px 22px}.lgn-lg{padding:12px 14px}.lgn-hd h1{padding:12px 14px;font-size:14px}.lgn-pw input,.lgn-fm .ups input{font-size:16px}}
+@media screen and (max-width:900px){#v-login.on{display:block;border-top:4px solid var(--pri)}.lg-r{display:none}.lg-l{min-height:calc(100vh - 4px);min-height:calc(100dvh - 4px);padding:24px 22px 20px}.lg-f h1{font-size:28px}.lg-pw input,.lg-f .ups input{font-size:16px}}
 
 /* ---------- Pemilih Sales Order (v17) ---------- */
 @media screen{
@@ -592,16 +616,17 @@ table[data-t^=eq] tbody tr,table[data-t=pb] tbody tr,table[data-t=cn] tbody tr,t
 </style></head><body>
 <header id="top" class="np"><img id="hlogo" alt="PT Murinda Sentra Baja"><div class="tt"><span>In-Process Quality Control</span><h1>IPQC Check Sheet</h1></div><div id="usr" hidden><div><b id="un"></b><small id="uj"></small></div><button class="btn sm" onclick="bye()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="m16 8 4 4-4 4M20 12H9"/></svg>Keluar</button></div></header>
 
-<section id="v-login" class="v on"><div class="lgn-rule" aria-hidden="true"></div>
-<main class="lgn"><div class="lgn-sheet">
-<div class="lgn-hd"><div class="lgn-lg"><img id="llogo" alt="PT Murinda Sentra Baja"></div><h1>In-Process Quality Control (IPQC) Check Sheet</h1></div>
-<form class="lgn-fm" onsubmit="return login(event)">
-<p class="lgn-in">Masuk dengan nama dan NIK Anda.</p>
-<span class="lgn-lb" id="ul">Nama karyawan</span><div class="up" id="up"><input type="hidden" id="lu"><button type="button" id="upb" class="upb" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="ul upb" onclick="upToggle()" onkeydown="if(event.key=='ArrowDown'||event.key=='ArrowUp'){event.preventDefault();$('#upp').hidden&&upOpen()}"><span class="upph">Mohon tunggu…</span><svg class="ch" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="upp" class="upp" hidden><div class="ups"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="upq" type="text" placeholder="Cari nama atau jabatan…" autocomplete="off" aria-label="Cari karyawan" oninput="upRender(this.value)" onkeydown="upKey(event)"></div><div id="upl" class="upl" role="listbox" aria-labelledby="ul"></div></div></div>
+<section id="v-login" class="v on">
+<div class="lg-l"><img id="llogo" alt="PT Murinda Sentra Baja">
+<form class="lg-f" onsubmit="return login(event)">
+<h1>Masuk</h1><p class="lg-in">Masuk dengan nama dan NIK karyawan Anda untuk membuat dan mengelola laporan IPQC.</p>
+<span class="lg-lb" id="ul">Nama karyawan</span><div class="up" id="up"><input type="hidden" id="lu"><button type="button" id="upb" class="upb" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="ul upb" onclick="upToggle()" onkeydown="if(event.key=='ArrowDown'||event.key=='ArrowUp'){event.preventDefault();$('#upp').hidden&&upOpen()}"><span class="upph">Mohon tunggu…</span><svg class="ch" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="upp" class="upp" hidden><div class="ups"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="upq" type="text" placeholder="Cari nama atau jabatan…" autocomplete="off" aria-label="Cari karyawan" oninput="upRender(this.value)" onkeydown="upKey(event)"></div><div id="upl" class="upl" role="listbox" aria-labelledby="ul"></div></div></div>
 
-<label class="lgn-lb" for="lp">Password (NIK)</label><span class="lgn-pw"><input id="lp" type="password" placeholder="Masukkan NIK" autocomplete="current-password" required><button type="button" class="lgn-eye" onclick="pwt(this)" aria-label="Tampilkan password"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
-<div id="le" class="err" role="alert"></div><button id="lbtn" class="btn p"><span>Masuk</span></button></form></div>
-<div class="lgn-ft">© PT Murinda Sentra Baja</div></main></section>
+
+<label class="lg-lb" for="lp">Password (NIK)</label><span class="lg-pw"><input id="lp" type="password" placeholder="Masukkan NIK" autocomplete="current-password" required><button type="button" class="lg-eye" onclick="pwt(this)" aria-label="Tampilkan password"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
+<div id="le" class="err" role="alert"></div><button id="lbtn" class="btn p"><span>Masuk</span></button></form>
+<div class="lg-ft">© PT Murinda Sentra Baja</div></div>
+<aside class="lg-r" aria-hidden="true"><svg viewBox="0 0 560 420" role="img" aria-label="Gambar teknik produk dengan ukuran dimensi" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ar" viewBox="0 0 8 6" refX="4" refY="3" markerWidth="8" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 8 3 0 6z" fill="currentColor" stroke="none"/></marker></defs><rect class="ob dw" pathLength="1" x="120" y="100" width="320" height="190" rx="3"/><rect class="hd2" x="150" y="130" width="260" height="130" rx="2"/><circle class="ob dw" pathLength="1" cx="280" cy="195" r="34"/><path class="ct" d="M100 195H460M280 80V310"/><g class="dm"><path d="M120 296v52M440 296v52M446 100h56M446 290h56"/><line x1="120" y1="340" x2="440" y2="340" marker-start="url(#ar)" marker-end="url(#ar)"/><line x1="494" y1="100" x2="494" y2="290" marker-start="url(#ar)" marker-end="url(#ar)"/><path d="M303 171l30-28h44"/><text x="280" y="332" text-anchor="middle">320 ±0.5</text><text x="486" y="200" text-anchor="middle" transform="rotate(-90 486 200)">190 ±0.5</text><text x="381" y="138">Ø68 H7</text></g><g><rect class="tb" x="300" y="368" width="240" height="40"/><path class="tb" d="M300 388H540"/><text class="tt2" x="310" y="382">PT Murinda Sentra Baja</text><text class="tt2" x="310" y="402" opacity=".75">IPQC Check Sheet</text></g></svg></aside></section>
 
 <section id="v-list" class="v"><div class="wrap">
 <div class="row"><h2>Laporan IPQC</h2><button class="btn p" onclick="newR()">+ Laporan baru</button></div><div id="lb"></div>
