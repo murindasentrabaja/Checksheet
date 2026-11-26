@@ -870,7 +870,7 @@ const CLIENT_LOGO=[[/komatsu/i,'Logo/PT Komatsu.png'],[/sumitomo/i,'Logo/PT Sumi
 /* Sketsa bawaan laporan (folder Sketch/): dim=A Dimension, wl=B Welding, lk=C Leak Test, al=E Alignment, pt=F Painting. Welding belum ada filenya: tambahkan 'wl':'Sketch/Welding.png' jika sudah ada. */
 const SKD={dim:'Sketch/Dimension.png',lk:'Sketch/Leaktest.png',al:'Sketch/Allignment.png',pt:'Sketch/Painting.png'};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let RID='',ST='Draft',U=null,S='',USERS=[],SO=[],EQ=[],LIST=[],PROJ=[],JIG=[],WM=[],PBS=[],FL='all',LV='so',SOS='all',SOL=100,SOX=-1,dirty=0,saving=0,ver=0,T1,T2,CM='';
+const PRE='Belum Inspeksi';let PM={},RID='',ST='Draft',U=null,S='',USERS=[],SO=[],EQ=[],LIST=[],PROJ=[],JIG=[],WM=[],PBS=[],FL='all',LV='so',SOS='all',SOL=100,SOX=-1,dirty=0,saving=0,ver=0,T1,T2,CM='';
 const RS='<option></option><option>OK</option><option>NG</option><option>N/A</option>';
 const I=(k,t='text',x='')=>`<input data-k="${k}" type="${t}" ${x}>`;
 const kv=(l,k,t,x)=>`<tr><td class="l" style="width:42%">${l}</td><td>${I(k,t,x)}</td></tr>`;
@@ -1058,7 +1058,8 @@ function sof(w){const fm=$('#fm'),fd=$('#fd');
  const m=fm.value,d=fd.value,f=SO.filter(r=>(!m||(r.kirim||'').slice(0,7)==m)&&(!d||r.kirim==d));
  $('#dl-so').innerHTML=f.map(r=>`<option value="${esc(lab(r))}">`).join('');
  $('#sc').textContent=!m&&!d?`${SO.length} item. Pilih bulan atau tanggal kirim untuk mempersempit daftar.`:f.length?`${f.length} item dengan tanggal kirim ${d?dmy(d):fm.options[fm.selectedIndex].text.replace(/ \(\d+\)$/,'')} — ketik atau pilih di kolom di atas.`:'Tidak ada Sales Order dengan tanggal kirim tersebut.'}
-function soPick(v){const r=SO.find(x=>lab(x)==v);if(!r)return;const k=(a,b)=>$(`[data-k=${a}]`).value=b||'';k('so',r.so);k('client',r.cust);k('order',r.ord);k('unit',r.unit);k('dwg',r.part);k('serial',r.ser);k('part','Counterweight');k('deliv',dlv(r.kirim));projAuto(1);const nj=soJig(r);calc();touch();toast('Data Sales Order terisi: '+r.so+(nj?' · JIG & welder dari SO':''));stdSO(r.prod)}
+function soPick(v){const r=SO.find(x=>lab(x)==v);if(!r)return;if(!RID){const q=r.so+'|'+r.ser,p=PM[q];if(p){RID=p;$('#rid').textContent=p;delete PM[q]}}   // unit ini sudah punya baris di IPQC_Header → pakai Report ID itu, jangan bikin ganda
+ const k=(a,b)=>$(`[data-k=${a}]`).value=b||'';k('so',r.so);k('client',r.cust);k('order',r.ord);k('unit',r.unit);k('dwg',r.part);k('serial',r.ser);k('part','Counterweight');k('deliv',dlv(r.kirim));projAuto(1);const nj=soJig(r);calc();touch();toast('Data Sales Order terisi: '+r.so+(nj?' · JIG & welder dari SO':''));stdSO(r.prod)}
 /* Tanggal kirim: Hari, DD-MMM-YY (mis. Rabu, 14-Jan-26) */
 const dlv=s=>{const m=/^(\d{4})-(\d\d)-(\d\d)/.exec(s||'');return m?`${HR[new Date(+m[1],+m[2]-1,+m[3]).getDay()]}, ${m[3]}-${BLN[+m[2]-1].slice(0,3)}-${m[1].slice(2)}`:''};
 /* Daftar pilihan Sales Order (pengganti datalist bawaan browser: teks lengkap, tidak terpotong) */
@@ -1089,7 +1090,7 @@ function get(full){const k={};$$('[data-k]').forEach(e=>k[e.dataset.k]=e.type=='
  ['dim','al'].forEach(p=>t[p].forEach(o=>{if(Object.values(o).some(v=>v!==''))JK.forEach(x=>o[x]=($(`[data-k=${p}_${x}]`)||{}).value||'')}));   // sheet detail tetap memuat kolom JIG per baris (isi sama dengan kotak JIG Identity)
  const s={};$$('.sk img').forEach(i=>{if(i.getAttribute('src')&&!i.dataset.def)s[i.dataset.s]=full||i.dataset.new?i.src:'keep'});
  return{id:RID,k,t,sk:s,overall:$('#ov').textContent.replace('-','')}}
-function put(r,loc){RID=r.id||'';ST=(r.k||{}).status||'Draft';$('#rid').textContent=RID||'(baru)';
+function put(r,loc){RID=r.id||'';const pre=(r.k||{}).status==PRE;ST=pre?'Draft':((r.k||{}).status||'Draft');$('#rid').textContent=RID||'(baru)';
  $$('[data-k]').forEach(e=>{const v=(r.k||{})[e.dataset.k];if(e.type=='checkbox')e.checked=!!v;else e.value=v??''});
  $('[data-k=part]').value='Counterweight';$('#qs').value='';
  const kk=r.k||{};if(!kk.rv){const o=kk.fin_r||kk.pt_r||kk.al_r||kk.lk_r||kk.wl_r||kk.dim_r;if(o)$('[data-k=rv]').value=o}   // laporan lama: nama Reviewed / Witnessed per section → satu isian di akhir
@@ -1098,7 +1099,7 @@ function put(r,loc){RID=r.id||'';ST=(r.k||{}).status||'Draft';$('#rid').textCont
  ['dim','al'].forEach(p=>{const rows=(r.t||{})[p]||[],set=(ks,f)=>{if(ks.some(x=>kk[p+'_'+x]))return;const o=rows.find(f);if(o)ks.forEach(x=>{const e=$(`[data-k=${p}_${x}]`);if(e)e.value=o[x]||''})};set(['jid','jnm'],x=>x&&(x.jid||x.jnm));set(['wd','fi'],x=>x&&(x.wd||x.fi))});   // laporan lama: JIG / Welder / Fitter per baris → ambil baris pertama yang berisi
  for(const id in TB){$(`[data-t=${id}] tbody`).innerHTML='';let rows=(r.t||{})[id]||[];
   if(id=='fin'&&!(r.k||{}).fin_v&&rows.length)rows=rows.slice(2).map(o=>({res:(o&&(o.res??o.u1))||''}));   // laporan lama (14 baris, Unit 1–4): buang baris Delivery Date & Type, pakai nilai Unit 1
-  for(let i=0;i<Math.max(rows.length,DEF[id]);i++)addR(id,rows[i]||(id=='pt'&&!r.id?{ly:PD[i]}:{}))}
+  for(let i=0;i<Math.max(rows.length,DEF[id]);i++)addR(id,rows[i]||(id=='pt'&&(!r.id||pre)?{ly:PD[i]}:{}))}
  $$('.sk img').forEach(i=>{const v=(r.sk||{})[i.dataset.s];i.dataset.def='';if(v){i.src=v;i.closest('.sk').classList.add('has')}else skDef(i);i.dataset.new=v&&loc?'1':''});
  if(ST!='Final'){stdPb();eqSync();eqFill()}lock();calc()}
 function lock(){const f=ST=='Final';$('#fs').disabled=f;$('#bs').hidden=$('#bf').hidden=f;$('#bo').hidden=!f;const b=$('#stb');b.textContent=ST;b.className='bd '+(f?'fin':'dr')}
@@ -1158,7 +1159,7 @@ async function enter(){$('#un').textContent=U.n;$('#uj').textContent=U.j;$('#usr
   JIG=m.jig||[];$('#dl-jid').innerHTML=JIG.map(x=>`<option value="${esc(x.id)}" label="${esc(x.n)}">`).join('');$('#dl-jig').innerHTML=JIG.map(x=>`<option value="${esc(x.n)}" label="${esc(x.id)}">`).join('');
   $('#dl-ft').innerHTML=(m.fitter&&m.fitter.length?m.fitter:USERS.map(u=>u.n)).map(x=>`<option value="${esc(x)}">`).join('');await refresh()}
  catch(e){toast('Gagal memuat data: '+e.message,1)}banner()}
-async function refresh(){LIST=await api('list');renderList();renderSO()}
+async function refresh(){const a=await api('list');LIST=a.filter(x=>x.status!=PRE);PM={};a.forEach(x=>{if(x.status==PRE)PM[x.so+'|'+x.serial]=x.id});renderList();renderSO()}   // baris IPQC_Header yang dibuat otomatis dari Sales_Order (status Belum Inspeksi) belum dihitung sebagai laporan
 const bdg=s=>`<span class="bd ${s=='Final'?'fin':'dr'}">${s=='Final'?'Final':'Draft'}</span>`,rsl=o=>o?`<span class="bd ${o=='NG'?'ng':'ok'}">${esc(o)}</span>`:'<span class="mut">–</span>';
 function renderList(){const q=$('#qs2').value.toLowerCase(),n={all:LIST.length,Draft:0,Final:0,me:0};LIST.forEach(x=>{n[x.status=='Final'?'Final':'Draft']++;if(x.by==U.n&&x.status!='Final')n.me++});
  $('#fl').innerHTML=[['all','Semua'],['Draft','Draft'],['Final','Final'],['me','Draft saya']].map(([k,l])=>`<button class="${FL==k?'on':''}" onclick="FL='${k}';renderList()">${l} (${n[k]})</button>`).join('');
@@ -1208,13 +1209,13 @@ function renderSO(){const m=$('#sm').value,d=$('#sd').value,q=$('#sq').value.tri
   ||'<tr><td colspan="5" class="mut" style="text-align:center;padding:30px">Tidak ada Sales Order yang cocok dengan filter ini.</td></tr>';
  $('#smore').hidden=f.length<=SOL}
 function soRep(i){const r=SO[i],a=LIST.filter(x=>x.so==r.so&&x.serial==r.ser);   // report IPQC produk = No. SO + Serial
- if(!a.length){newR();soPick(lab(r));return}   // belum ada: buat laporan baru, data Sales Order terisi otomatis
+ if(!a.length){const p=PM[r.so+'|'+r.ser];if(p){openR(p);return}newR();soPick(lab(r));return}   // belum ada: buat laporan baru, data Sales Order terisi otomatis
  if(a.length==1){openR(a[0].id);return}
  SOX=SOX==i?-1:i;renderSO()}
 function banner(){const d=JSON.parse(localStorage.getItem(LK)||'null');$('#lb').innerHTML=d&&d.by==U.n?`<div class="ban"><div style="flex:1"><b>Ada draft di perangkat ini yang belum terkirim ke server</b><br><span class="mut">${esc(d.d.k.serial||d.d.k.so||'Laporan baru')} · ${new Date(d.at).toLocaleString('id-ID')}</span></div><button class="btn p sm" onclick="resume()">Lanjutkan</button><button class="btn sm" onclick="localStorage.removeItem(LK);banner()">Buang</button></div>`:''}
 function resume(){const d=JSON.parse(localStorage.getItem(LK));put(d.d,1);show('edit');touch()}
 function newR(){put({});stdEq();calc();dirty=0;show('edit');ss('Laporan baru — belum disimpan','')}
-async function openR(id){try{toast('Membuka '+id+'…');put(await api('get',{id}));dirty=0;show('edit');ss('Dibuka: '+id,'')}catch(e){toast('Gagal: '+e.message,1)}}
+async function openR(id){try{toast('Membuka '+id+'…');const r=await api('get',{id});put(r);dirty=0;show('edit');ss('Dibuka: '+id,'');if((r.k||{}).status==PRE){stdEq();const q=SO.find(x=>x.so==r.k.so&&x.ser==r.k.serial);if(q)soPick(lab(q))}}catch(e){toast('Gagal: '+e.message,1)}}   // laporan hasil isi otomatis (status Belum Inspeksi): lengkapi JIG / welder / data standar produk seperti laporan baru
 async function back(){if(dirty){bk();await saveR(1)}show('list');try{await refresh()}catch(e){toast(e.message,1)}banner()}
 async function del(id){if(!confirm('Hapus laporan '+id+'? Data dan sketsa dihapus permanen.'))return;try{await api('delete',{id});toast('Laporan dihapus');await refresh()}catch(e){toast('Gagal: '+e.message,1)}}
 addEventListener('beforeunload',e=>{if(dirty&&U){bk();e.preventDefault();e.returnValue=''}});
