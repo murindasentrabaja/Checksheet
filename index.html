@@ -613,6 +613,297 @@ tbody tr:nth-child(-n+3),tbody tr:nth-last-child(-n+2){break-before:avoid}
 table[data-t^=eq] tbody tr,table[data-t=pb] tbody tr,table[data-t=cn] tbody tr,table.jgt tr,table.mct tr,table.sgt tr{break-before:auto}
 
 *{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media screen{#sheet input.nf{background:#fef3c7;box-shadow:inset 0 0 0 1px #f59e0b}}
+
+/* ===== Tema Liquid Glass v25 (sama dengan glass.css) ===== */
+
+/* ============================================================
+   Tema Liquid Glass (v25) — hanya layar; cetak / PDF tidak berubah.
+   Latar berwarna lembut di belakang → panel kaca bening (opasitas rendah + blur) → tepi terang tipis sebagai sorotan.
+   Isi tabel dibuat transparan; jarak & tinggi baris dipadatkan untuk PC (≥721px). HP tetap memakai ukuran sentuh.
+   Baru di v25:
+   · Login (PC) = satu kartu kaca ringkas di tengah layar: formulir + gambar teknik yang ikut bening (bukan lagi dua separuh layar putih / biru tua).
+     HP: kartu kaca penuh layar dengan ukuran sentuh tetap.
+   · Pengguna di bilah atas = pil kaca satu baris (nama · jabatan · Keluar).
+   · Isi laporan lebih padat di PC: bilah edit & navigasi, header laporan, kotak Sales Order satu baris, kotak sketsa & tanda tangan lebih pendek,
+     tabel Equipment tanpa judul yang patah baris, kalender kirim lebih rendah, area isi lebih lebar di layar ≥1600px.
+   ============================================================ */
+@media screen{
+:root{--ink:#0c2038;--mut:#4f627c;--pri:#0f2747;--pri2:#1c4476;--acc:#1c6be0;
+--gb:rgba(255,255,255,.66);--bd:rgba(15,39,71,.15);--hb:rgba(255,255,255,.38);--sf:rgba(255,255,255,.24);
+--blur:blur(14px) saturate(1.7);--rim:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.18);
+--sh:var(--rim),0 12px 32px -16px rgba(18,48,100,.34);--r:16px;
+--glass:linear-gradient(150deg,rgba(255,255,255,.50),rgba(255,255,255,.18) 55%,rgba(255,255,255,.30));
+--rimln:linear-gradient(140deg,rgba(255,255,255,.95),rgba(255,255,255,0) 36%,rgba(255,255,255,0) 64%,rgba(255,255,255,.7))}
+
+/* ---------- Latar ---------- */
+html{background:#dce8f9}
+body{background:none}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+radial-gradient(46vmax 38vmax at 4% -4%,rgba(76,146,255,.62),transparent 62%),
+radial-gradient(40vmax 34vmax at 100% 6%,rgba(94,214,240,.55),transparent 62%),
+radial-gradient(42vmax 36vmax at 96% 100%,rgba(255,190,92,.46),transparent 62%),
+radial-gradient(44vmax 38vmax at 0% 98%,rgba(150,128,255,.40),transparent 62%),
+linear-gradient(165deg,#eef4ff,#dde9f9 50%,#eaf1fb)}
+::placeholder{color:#7b8aa0}
+
+/* ---------- Permukaan kaca ---------- */
+.card,.kl{position:relative;background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.card::after,.kl::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:var(--rimln);
+-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+#s-i{z-index:2;border-radius:var(--r);border-color:var(--gb);box-shadow:var(--sh)}   /* kartu Informasi di atas kartu lain: daftar pilihan Sales Order tidak tertutup */
+#top{background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.34));-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-bottom:1px solid var(--gb);box-shadow:0 8px 24px -18px rgba(18,48,100,.5)}
+#ebw{border-bottom:1px solid var(--gb);box-shadow:0 10px 28px -20px rgba(18,48,100,.5)}
+#ebw::before{background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.38));-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.qs-l{background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);border-color:var(--gb)}
+.qs-l li.on,.qs-l li:hover{background:rgba(28,107,224,.10)}
+
+/* ---------- Login: kartu kaca (v25) ---------- */
+body:has(#v-login.on){background:none}
+#v-login.on{background:none;border-top:0}
+.lg-l{position:relative;background:none}
+.lg-pw input,.upb{background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.88);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 1px 3px -1px rgba(15,39,71,.14)}
+.lg-pw input:hover,.upb:hover{background:rgba(255,255,255,.72);border-color:#fff}
+.lg-pw input:focus,.up.open .upb,.upb:focus-visible{background:rgba(255,255,255,.9);border-color:var(--acc);box-shadow:0 0 0 3px rgba(28,107,224,.2)}
+.lg-pw input::placeholder,.upb .upph{color:#6f8099}
+.lg-eye:hover,.lg-eye.on{background:rgba(255,255,255,.65)}
+.lg-f .err:not(:empty){background:rgba(255,224,221,.78);border:1px solid rgba(240,150,142,.55)}
+.upp{background:#fbfdff;-webkit-backdrop-filter:none;backdrop-filter:none;border-color:var(--gb)}   /* daftar nama pekat: menimpa tombol Masuk di bawahnya, jadi tidak boleh tembus pandang */
+.ups{border-bottom-color:rgba(15,39,71,.08)}
+.lg-f .ups input{background:rgba(15,39,71,.05)}
+.lg-f .ups input:focus{background:#fff}
+.upi:hover,.upi.act{background:rgba(28,107,224,.10)}
+.lg-ft{color:var(--mut)}
+/* gambar teknik di kanan: ikut bening — garis biru tua di atas kaca, bukan panel biru pekat */
+.lg-r{color:#355f9c;background:
+linear-gradient(rgba(28,68,118,.07) 1px,transparent 1px) 0 0/28px 28px,
+linear-gradient(90deg,rgba(28,68,118,.07) 1px,transparent 1px) 0 0/28px 28px,
+linear-gradient(160deg,rgba(255,255,255,.34),rgba(255,255,255,.06));
+border-left:1px solid rgba(255,255,255,.7)}
+.lg-r .dm{color:#c47a00}
+
+/* ---------- Header laporan & judul bagian ---------- */
+#s-i::before{height:9px;color:rgba(28,68,118,.38);background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 8px) left top/100% 4px no-repeat,repeating-linear-gradient(90deg,currentColor 0 1.5px,transparent 1.5px 40px) left top/100% 8px no-repeat}
+#s-i .hd{background:none}
+#s-i .hm{background:rgba(255,255,255,.16)}
+#s-i .hm .mi{background:rgba(255,255,255,.46);border-color:rgba(255,255,255,.75)}
+#s-i .hd-r img,#s-i .cn{background:rgba(255,255,255,.72);border-color:rgba(255,255,255,.8)}
+.sec{background:linear-gradient(90deg,rgba(255,255,255,.52),rgba(255,255,255,.10));border-bottom:1px solid var(--bd);color:var(--pri)}
+.sec .sl{background:linear-gradient(180deg,#27578f,#0f2747);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 3px 8px -3px rgba(15,39,71,.6)}
+
+/* ---------- Tabel & isian: transparan di atas kaca ---------- */
+#sheet td{background:rgba(255,255,255,.12)}
+#sheet input:focus,#sheet select:focus,#sheet textarea:focus{background-color:rgba(255,255,255,.82);box-shadow:inset 0 0 0 2px var(--acc)}
+#sheet input[readonly]{background:rgba(255,255,255,.26);color:#2b3d57}
+#sheet .ng{background:rgba(255,224,221,.75)}
+#sheet .ok{background:rgba(210,242,223,.75)}
+#sheet input.exp{background:rgba(254,196,196,.85);color:#8f1d1d}
+#sheet input.nf{background:rgba(254,240,190,.88)}
+#sheet .pick{background:rgba(255,255,255,.7) var(--ic) 12px 50%/16px no-repeat;border-color:rgba(28,107,224,.45);padding:0 12px 0 36px}
+.sk{border-color:rgba(28,68,118,.28);background:rgba(255,255,255,.22)}
+.sk.has{background:rgba(255,255,255,.5);border-color:var(--gb)}
+.sof{background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.26));border:1px solid var(--gb)}
+#sheet .sof-r select,#sheet .sof-r input{background:rgba(255,255,255,.7)}
+.me:hover{background:rgba(255,255,255,.7)}
+
+/* ---------- Tombol, chip, bilah navigasi ---------- */
+.btn{background:rgba(255,255,255,.44);border:1px solid var(--gb);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 8px -4px rgba(20,50,100,.25)}
+.btn:hover{background:rgba(255,255,255,.72);border-color:#fff;box-shadow:inset 0 1px 0 #fff,0 6px 14px -8px rgba(20,50,100,.38)}
+.btn.p{background:linear-gradient(180deg,rgba(42,96,176,.94),rgba(15,39,71,.96));border-color:rgba(255,255,255,.3);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 8px 18px -8px rgba(15,39,71,.65)}
+.btn.p:hover{background:linear-gradient(180deg,rgba(52,108,192,.96),rgba(20,50,92,.98));border-color:rgba(255,255,255,.4)}
+.btn.g{background:linear-gradient(180deg,rgba(34,156,96,.95),rgba(18,110,66,.97));border-color:rgba(255,255,255,.3);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 8px 18px -8px rgba(18,110,66,.6)}
+.btn.g:hover{background:linear-gradient(180deg,rgba(40,168,106,.97),rgba(16,98,58,.98));border-color:rgba(255,255,255,.4)}
+.btn.d{color:var(--ng)}
+.btn.d:hover{background:rgba(255,226,224,.82);border-color:rgba(240,150,142,.7)}
+.seg button{background:rgba(255,255,255,.4);border-color:var(--gb)}
+.seg button:not(.on):hover{background:rgba(255,255,255,.72)}
+#nav a{background:rgba(255,255,255,.4);border-color:var(--gb)}
+#nav a:hover{background:rgba(255,255,255,.72)}
+#nav a.done{background:rgba(214,243,225,.7)}
+#nav a.bad{background:rgba(255,224,221,.8)}
+.ban{background:rgba(255,244,214,.62);border-color:rgba(240,190,100,.6)}
+#msg{background:rgba(10,45,28,.84);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25)}
+#msg.bad{background:rgba(150,28,20,.88)}
+
+/* ---------- Daftar laporan & kalender ---------- */
+.lt td,.lx td{border-top-color:rgba(15,39,71,.08)}
+.lt tbody tr:hover,.lx tbody tr:hover{background:rgba(255,255,255,.5)}
+.lx tbody tr.xp:hover{background:none}
+.lx tr.xp td{background:rgba(255,255,255,.4)}
+#qs2,.sf select,.sf input{background-color:rgba(255,255,255,.55);border-color:var(--gb)}
+#qs2{background:rgba(255,255,255,.55) var(--ic) 14px 50%/18px no-repeat}
+.kl-d{background:rgba(255,255,255,.26);border-color:rgba(255,255,255,.55)}
+.kl-d.has{background:rgba(255,255,255,.58);border-color:rgba(28,107,224,.32)}
+.kl-d.has.on,.kl-d.on{background:var(--pri);border-color:var(--pri)}
+}
+
+/* ---------- Login — PC: satu kartu kaca ringkas di tengah layar ---------- */
+@media screen and (min-width:901px){
+body:has(#v-login.on){min-height:100vh;min-height:100dvh;display:grid;align-content:center;justify-items:center;padding:20px}
+#v-login.on{position:relative;width:min(880px,100%);min-height:0;grid-template-columns:minmax(0,370px) minmax(0,1fr);border-radius:20px;background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+#v-login.on::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:var(--rimln);
+-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.lg-l{padding:20px 28px 14px}
+.lg-l>img{height:28px}
+.lg-f{margin:12px 0 0;padding:0;max-width:none}
+.lg-f h1{font-size:21px;line-height:1.2}
+.lg-in{margin:4px 0 0;font-size:12.5px;line-height:1.5}
+.lg-lb{margin:12px 0 5px;font-size:12px}
+.lg-pw input,.upb{height:38px;border-radius:10px;font-size:13.5px}
+.lg-pw input{padding:0 40px 0 12px}
+.upb{padding:0 10px 0 12px}
+.upb .upph{font-size:13.5px}
+.upb .upt b{font-size:13.5px}
+.upb .upt small{font-size:11px}
+.upb .ch{width:18px;height:18px}
+.lg-eye{right:3px;top:3px;width:32px;height:32px;border-radius:8px}
+.lg-eye svg{width:18px;height:18px}
+.lg-f .err{margin:8px 0 0}
+.lg-f .err:not(:empty){padding:6px 10px;border-radius:9px;font-size:12.5px;line-height:1.4}
+.lg-f .btn.p{margin-top:14px;min-height:38px;border-radius:10px;font-size:14px}
+.lg-ft{margin-top:auto;padding-top:12px;font-size:11.5px}
+.upp{top:calc(100% + 4px);border-radius:12px}
+.upl{max-height:220px}
+.ups{padding:6px}
+.lg-f .ups input{height:34px;font-size:13px}
+.upi{padding:6px 9px}
+.upi .upt b{font-size:13px}
+.upg{padding:6px 9px 2px;font-size:11px}
+.lg-r{padding:14px 16px;border-radius:0 19px 19px 0}
+.lg-r svg{width:min(100%,460px)}
+}
+/* ---------- Login — HP / tablet: kartu kaca penuh layar, ukuran sentuh tetap ---------- */
+@media screen and (max-width:900px){
+#v-login.on{padding:12px}
+.lg-l{min-height:calc(100vh - 24px);min-height:calc(100dvh - 24px);padding:22px 18px 16px;border-radius:20px;background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.lg-l::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:var(--rimln);
+-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+}
+
+/* ---------- Layar PC: lebih padat (HP memakai ukuran sentuh bawaan) ---------- */
+@media screen and (min-width:721px){
+/* bilah atas + pengguna (pil kaca satu baris) */
+#top{min-height:calc(42px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 18px 0}
+#top img{height:24px}
+.tt{padding-left:12px}
+.tt span{font-size:9.5px}
+#top h1{font-size:13.5px;margin-top:0}
+#usr{gap:8px;padding:2px 3px 2px 12px;border:1px solid var(--gb);border-radius:999px;background:rgba(255,255,255,.4);box-shadow:var(--rim)}
+#usr>div{display:flex;align-items:baseline;gap:7px;text-align:left}
+#usr b{display:inline;font-size:12.5px}
+#usr small{display:inline;font-size:11.5px}
+#usr small:not(:empty)::before{content:"·";margin-right:7px;color:var(--mut)}
+#usr .btn{min-height:26px;padding:2px 11px;gap:6px;font-size:12px;border-radius:999px;background:rgba(255,255,255,.6)}
+#usr .btn svg{width:14px;height:14px}
+.wrap{padding:10px 16px 24px}
+.row{margin-bottom:8px}
+.row h2{font-size:20px}
+#qs2{height:36px}
+.seg{gap:6px}
+.seg button{padding:3px 11px;font-size:12px}
+.btn{min-height:32px;padding:4px 13px}
+.btn.sm{min-height:28px;padding:2px 10px;font-size:12.5px}
+.lt th,.lx th{padding:6px 12px}
+.lt td,.lx td{padding:6px 12px}
+.lx tr.xp td{padding:3px 12px 6px}
+/* kalender kirim */
+.kl{padding:8px 10px 6px;margin-bottom:8px}
+.kl-h{margin-bottom:5px}
+.kl-t b{font-size:16px}
+.kl-w,.kl-g{gap:3px}
+.kl-w span{padding:0 0 3px;font-size:10.5px}
+.kl-d{min-height:46px;padding:3px 6px 4px;gap:1px;border-radius:9px}
+.kl-n{height:19px;min-width:19px;font-size:12px}
+.kl-c{height:19px;min-width:20px;font-size:11px}
+.kl-m{font-size:11px;line-height:1.2}
+.kl-b{height:3px}
+.kl-l{margin-top:5px;font-size:11.5px}
+.sf{gap:8px;margin-bottom:6px}
+.sf select,.sf input{height:32px;margin-top:2px}
+.sf .btn{min-height:32px}
+.sc{margin:4px 0 6px}
+/* bilah edit & navigasi */
+.eb{padding:4px 16px;padding-top:calc(4px + env(safe-area-inset-top));gap:6px}
+.eb .btn{min-height:30px;padding:3px 12px;font-size:12.5px}
+.eb .acts{gap:6px}
+.eb .bd{padding:1px 9px;font-size:12px}
+.ss{font-size:12px}
+#nav{padding:0 16px 6px;gap:5px}
+#nav a{padding:2px 11px;font-size:12px}
+/* laporan */
+#sheet{padding:8px 12px 20px}
+.card{margin-bottom:8px;scroll-margin-top:76px}
+#s-i::before{height:7px;background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 8px) left top/100% 3px no-repeat,repeating-linear-gradient(90deg,currentColor 0 1.5px,transparent 1.5px 40px) left top/100% 7px no-repeat}
+#s-i .hd{padding:6px 14px}
+.hd img{height:26px}
+.hd h2 span:first-child{font-size:11.5px}
+.hd h2 span:last-child{font-size:16.5px}
+#s-i .hd-r img{max-height:34px;padding:3px 8px}
+#s-i .cn{padding:3px 9px;font-size:12.5px}
+#s-i .hm{padding:4px 14px;gap:6px 10px}
+#s-i .hm .mi{padding:1px 9px;font-size:12px}
+#s-i .hm .mi span{font-size:11px}
+.sec{padding:4px 12px;font-size:13px;gap:8px}
+.sec .sl{width:20px;height:20px;font-size:11px;border-radius:6px}
+.in{padding:8px 10px}
+#sheet th{padding:2px 6px;font-size:11.5px;line-height:1.25}
+#sheet td.l{padding:0 8px;font-size:12.5px}
+.fx{gap:6px;margin-bottom:6px}
+.fx>div>*+*{margin-top:5px}
+.fx.mt{margin-top:6px}
+.jr,.jr3{gap:6px;margin-bottom:6px}
+#sheet .sgt .box{height:32px}
+#sheet .jgt td.l,#sheet .mct td.l{font-size:12px;padding:0 8px}
+.rk>.l{line-height:22px}
+#sheet .rk textarea{min-height:42px}
+#sheet textarea{height:46px;padding:5px 9px}
+.add{margin:4px 4px 0 0}
+#sheet .btn.sm{min-height:24px;padding:1px 10px;font-size:12px}
+.sk{min-height:112px;padding:5px;gap:6px}
+.sk img{height:calc(100% - 40px)}
+.sk.has .bt{bottom:6px}
+.sk .bt{gap:6px}
+/* Pilih Sales Order: satu baris (bulan · tanggal · reset · pencarian) */
+.sof{display:grid;grid-template-columns:minmax(150px,.8fr) minmax(130px,.55fr) auto minmax(0,2.2fr);column-gap:8px;row-gap:3px;align-items:end;padding:6px 10px;margin-bottom:6px}
+.sof-h{grid-column:1/-1;margin:0;font-size:12.5px}
+.sof-r{display:contents}
+.sof-r label{font-size:11px;line-height:1.3}
+.qs-w{min-width:0}
+.sof-c{grid-column:1/-1;margin:0;font-size:11.5px}
+#sheet .sof-r select,#sheet .sof-r input{height:30px;margin-top:1px;font-size:12.5px;border-radius:9px}
+.sof-r .btn{min-height:30px}
+#sheet .pick{height:30px;margin-top:0;font-size:13px;border-radius:9px}
+/* tabel Equipment: kolom disesuaikan supaya judul "Calibration Due Date" tidak patah baris */
+#sheet table[data-t^=eq] col:nth-child(1){width:34px!important}
+#sheet table[data-t^=eq] col:nth-child(2){width:36%!important}
+#sheet table[data-t^=eq] col:nth-child(3){width:24%!important}
+#sheet table[data-t^=eq] col:nth-child(4){width:132px!important}
+#sheet table[data-t^=eq] th{white-space:nowrap;padding:2px 4px}
+}
+@media screen and (min-width:721px) and (max-width:1000px){.sof{grid-template-columns:1fr 1fr auto}.qs-w{grid-column:1/-1}}
+@media screen and (min-width:1600px){.wrap,#sheet{max-width:1360px}}
+@media screen and (min-width:861px) and (pointer:fine){:root{--rh:28px;--fs:13px}}
+@media screen and (min-width:721px){#sheet tbody tr:focus-within>td:not(.l):not(.n){background:rgba(255,255,255,.55)}}
+
+/* ---------- HP: kartu & bilah aksi ikut kaca ---------- */
+@media screen and (max-width:720px){
+.lt tbody tr,.lx tbody tr{background:linear-gradient(150deg,rgba(255,255,255,.55),rgba(255,255,255,.28));border-color:var(--gb);box-shadow:var(--sh);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.acts{background:rgba(255,255,255,.72);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-top-color:var(--gb)}
+}
+
+/* ---------- Cadangan: browser tanpa blur / pengguna meminta transparansi dikurangi ---------- */
+@media screen and (prefers-reduced-transparency:reduce){
+.card,.kl,.lg-l,#v-login.on,#top{background:rgba(255,255,255,.9);-webkit-backdrop-filter:none;backdrop-filter:none}
+#ebw::before{background:rgba(255,255,255,.96);-webkit-backdrop-filter:none;backdrop-filter:none}
+.qs-l,.upp{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+@media screen{
+.card,.kl,.lg-l,#v-login.on,#top{background:rgba(255,255,255,.84)}
+#ebw::before{background:rgba(255,255,255,.94)}
+.qs-l,.upp{background:#fff}
+}}
+
 </style></head><body>
 <header id="top" class="np"><img id="hlogo" alt="PT Murinda Sentra Baja"><div class="tt"><span>In-Process Quality Control</span><h1>IPQC Check Sheet</h1></div><div id="usr" hidden><div><b id="un"></b><small id="uj"></small></div><button class="btn sm" onclick="bye()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="m16 8 4 4-4 4M20 12H9"/></svg>Keluar</button></div></header>
 
@@ -652,7 +943,7 @@ table[data-t^=eq] tbody tr,table[data-t=pb] tbody tr,table[data-t=cn] tbody tr,t
 <nav id="nav"><a href="#s-i" data-n="i">Informasi</a><a href="#s-a" data-n="a">A. Dimension</a><a href="#s-b" data-n="b">B. Welding</a><a href="#s-c" data-n="c">C. Leak Test</a><a href="#s-d" data-n="d">D. Concrete</a><a href="#s-cv" data-n="cv">E. Covering</a><a href="#s-e" data-n="e">F. Alignment</a><a href="#s-f" data-n="f">G. Painting</a><a href="#s-g" data-n="g">H. Final</a></nav></div>
 <fieldset id="fs"><div id="sheet"></div></fieldset></section>
 
-<datalist id="dl-so"></datalist><datalist id="dl-eq"></datalist><datalist id="dl-wd"></datalist><datalist id="dl-emp"></datalist><datalist id="dl-jid"></datalist><datalist id="dl-jig"></datalist><datalist id="dl-ft"></datalist>
+<datalist id="dl-so"></datalist><datalist id="dl-eq"></datalist><datalist id="dl-eqi"></datalist><datalist id="dl-wd"></datalist><datalist id="dl-emp"></datalist><datalist id="dl-jid"></datalist><datalist id="dl-jig"></datalist><datalist id="dl-ft"></datalist>
 <datalist id="dl-wp"><option>SMAW</option><option>GMAW</option><option>FCAW</option><option>SAW</option><option>GTAW</option></datalist>
 <datalist id="dl-lm"><option>Hydrostatic</option><option>Pneumatic</option><option>Vacuum Box</option><option>Soap Bubble</option></datalist>
 <div id="msg" class="np"></div>
@@ -696,7 +987,7 @@ const jr=p=>`<div class="jr">${jigBox(p)}${sig(p)}</div>`;
 /* v16: kartu mesin las (5 baris) — satu baris dengan kotak JIG & tanda tangan; kunci data tetap: p_m / p_mb / p_mp / p_ml / p_ms */
 const mach=(p,t)=>`<table class="mct"><colgroup><col style="width:38%"><col></colgroup><tr><th colspan="2">${t}</th></tr>`+[['Machine No.','m',''],['Brand','mb',''],['Process Type','mp',''],['Current Limit (A)','ml',' inputmode="decimal"'],['Permit Status','ms','']].map(([l,k,x])=>`<tr><td class="l">${l}</td><td>${I(p+'_'+k,'text',`class="c" placeholder="Terisi otomatis dari data welder"${x}`)}</td></tr>`).join('')+`</table>`;
 const mk=(id,head,cols,add,mw)=>{TB[id]={cols};return`<div class="tw"><table data-t="${id}" class="${/^(wl|pt)$/.test(id)?'':'cd'}" style="min-width:${mw||0}px">${head}<tbody></tbody></table></div>`+(add?`<button type="button" class="btn sm add np" onclick="addR('${id}');touch()">+ Tambah baris</button><button type="button" class="btn sm np" onclick="rmR('${id}')">− Hapus baris terakhir</button>`:'')};
-const eq=id=>mk(id,hd(['No.','Measuring Equipment','Equipment ID','Calibration Due Date','User'],['8%','34%','22%','22%','']).replace('<thead>','<thead><tr><th colspan="5">Equipment</th></tr>'),[c('n','text','dl-eq'),c('i'),c('c','date'),c('u')]);
+const eq=id=>mk(id,hd(['No.','Measuring Equipment','Equipment ID','Calibration Due Date','User'],['8%','34%','22%','22%','']).replace('<thead>','<thead><tr><th colspan="5">Equipment</th></tr>'),[c('n','text','dl-eq'),c('i','text','dl-eqi'),c('c','date'),c('u')]);
 const wlHead=`<colgroup>${['4%','10%','11%','11%','5%','6%','6%','5%','5%','5%','5%','12%',''].map(x=>`<col style="width:${x}">`).join('')}</colgroup><thead><tr><th rowspan="2">No.</th><th rowspan="2">Joint Number</th><th rowspan="2">Welder</th><th rowspan="2">Fitter</th><th colspan="2">Check</th><th rowspan="2">Preheat (°C)</th><th colspan="4">Non-Destructive Testing (NDT)</th><th rowspan="2">NDT Clearance Date</th><th rowspan="2">Remarks</th></tr><tr><th>Size</th><th>Visual</th><th>PT</th><th>MP</th><th>UT</th><th>RT</th></tr></thead>`;
 let ptc=[c('ly')],pth='<tr><th rowspan="2">No.</th><th rowspan="2">Paint Layer</th>';
 for(let p=1;p<=5;p++){ptc.push(c('p'+p+'1','number'),c('p'+p+'2','number'),c('p'+p+'3','number'),c('a'+p,'text','',1));pth+=`<th colspan="4">DFT Check – Position ${p}</th>`}
@@ -747,7 +1038,7 @@ document.addEventListener('input',h);document.addEventListener('change',h);
 function h(e){const i=e.target;if(!i.closest||!i.closest('#sheet'))return;
  if(i.id=='qs'){if(e.type=='change')soPick(i.value);return}if(i.id=='fm'||i.id=='fd'){if(e.type=='change')sof(i.id);return}
  if(i.dataset.k=='client')projAuto(1);
- if(e.type=='change'&&i.getAttribute('list')=='dl-eq'){const m=EQ.find(x=>x.n==i.value),tr=i.closest('tr');if(m&&tr&&tr.querySelector('[data-c=i]')){const s=(k,v)=>{const f=tr.querySelector(`[data-c=${k}]`);if(f&&!f.value)f.value=v||''};s('i',m.i);s('c',m.c);s('u',m.u)}}
+ if(e.type=='change'&&/^(dl-eq|dl-eqi)$/.test(i.getAttribute('list')||''))eqPick(i);
  if(e.type=='change'&&/_(jid|jnm)$/.test(i.dataset.k||''))jigPick(i);
  if(/^(wl|cv)_wd$/.test(i.dataset.k||'')){if(e.type=='change')mcFill(1,i.dataset.k);else if(WMf(i.value))mcFill(0,i.dataset.k)}
  calc();touch()}
@@ -781,8 +1072,58 @@ function projF(c){const n=nrm(c);if(!n)return null;const ks=p=>[p.c,p.t].map(nrm
 function projAuto(strict){const e=$('[data-k=proj]');if(!e)return;const c=$('[data-k=client]').value.trim(),p=projF(c);
  if(p){if(e.value!=p.n)e.value=p.n}else if(strict){e.value=''}   // strict: Client diganti/dipilih ulang → kosongkan bila tidak ada di Master_Project
  e.placeholder=c&&!p&&PROJ.length?'Client belum terdaftar di data proyek':'Terisi otomatis sesuai Client'}
-function stdEq(){for(const id of ['eqd','eqw','eqa','eqp']){const nm=STD[id]||[],tb=$(`[data-t=${id}] tbody`);if(!nm.length||[...tb.querySelectorAll('[data-c]')].some(e=>e.value))continue;
- tb.innerHTML='';for(let i=0;i<Math.max(nm.length,DEF[id]);i++){const m=EQ.find(x=>x.n==nm[i])||{};addR(id,nm[i]?{n:nm[i],i:m.i,c:m.c,u:m.u}:{})}}}
+/* v20: tabel Equipment tiap section terisi otomatis dari sheet Standar_Alat (diisi SEKALI untuk semua laporan). Code.gs v13 mengirim baris lengkap {n: nama, i: Equipment_ID, c: due date, u: user}; alat yang tidak ada di Master_Equipment ditandai x:1.
+   Alat tidak ditemukan → nama tetap diisi, selnya dikuningkan + peringatan. Format lama (daftar nama saja, Code.gs ≤ v12) tetap bisa dibaca. Laporan baru: tabel kosong diisi di sini; draft lama disinkronkan oleh eqSync() (v23). */
+function stdEq(){const miss=[];for(const id of ['eqd','eqw','eqa','eqp']){const nm=STD[id]||[],tb=$(`[data-t=${id}] tbody`);if(!nm.length||[...tb.querySelectorAll('[data-c]')].some(e=>e.value))continue;
+ tb.innerHTML='';for(let i=0;i<Math.max(nm.length,DEF[id]);i++){let o=nm[i];if(typeof o=='string'){const m=EQ.find(x=>x.n==o)||{};o={n:o,i:m.i,c:m.c,u:m.u,x:m.n?0:1}}
+  addR(id,o?{n:o.n,i:o.i,c:o.c,u:o.u}:{});
+  if(o&&o.x){const f=tb.rows[i]&&tb.rows[i].querySelector('[data-c=n]');if(f){f.classList.add('nf');f.title='Alat ini tidak ada di Master_Equipment — samakan nama / Equipment_ID di sheet Standar_Alat'}miss.push(o.n)}}}
+ if(miss.length)toast('Alat standar tidak ditemukan di Master_Equipment: '+[...new Set(miss)].join(', '),1)}
+/* v21: laporan lama / draft yang baris Equipment-nya sudah bernama tetapi Equipment ID / Calibration Due Date / User masih kosong → dilengkapi dari Standar_Alat + Master_Equipment saat dibuka.
+   HANYA sel kosong yang diisi (isian manual tidak pernah ditimpa); laporan Final tidak disentuh; laporan tidak ditandai "belum disimpan" → tersimpan saat Anda menyimpan. Nama kembar tanpa ID: dipilih urutan di Standar_Alat, lalu alat berkalibrasi berlaku (urutan Master_Equipment). */
+const eqk=s=>String(s==null?'':s).toLowerCase().replace(/[^a-z0-9]/g,'');
+function eqFill(){if(!EQ.length)return;let n=0;
+ for(const id of ['eqd','eqw','eqa','eqp']){const rows=[...$$(`[data-t=${id}] tbody tr`)].map(tr=>{const f=k=>tr.querySelector(`[data-c=${k}]`);return{a:f('n'),b:f('i'),c:f('c'),u:f('u')}}).filter(r=>r.a&&r.b&&r.c&&r.u),used={},std=(STD[id]||[]).filter(o=>o&&typeof o=='object'&&!o.x);
+  rows.forEach(r=>{if(r.b.value)used[eqk(r.b.value)]=1});
+  rows.forEach(r=>{const nk=eqk(r.a.value),ik=eqk(r.b.value);if(!nk&&!ik)return;if(nk&&ik&&r.c.value&&r.u.value)return;
+   let m=ik?(EQ.find(x=>eqk(x.i)==ik&&(!nk||eqk(x.n)==nk))||EQ.find(x=>eqk(x.i)==ik)):(std.find(o=>eqk(o.n)==nk&&!used[eqk(o.i)])||EQ.find(x=>eqk(x.n)==nk));
+   if(!m)return;let ch=0;const set=(e,v)=>{if(v&&!e.value){e.value=v;ch=1}};
+   set(r.a,m.n);set(r.b,m.i);set(r.c,m.c);set(r.u,m.u);if(m.i)used[eqk(m.i)]=1;n+=ch}) }
+ if(n)toast('Equipment dilengkapi otomatis dari Master_Equipment ('+n+' baris) — simpan laporan agar tersimpan')}
+/* v23: Standar_Alat berlaku untuk SEMUA laporan Draft — bukan hanya laporan baru. Tabel Equipment yang masih kosong, atau berisi nama alat yang TIDAK ada di Master_Equipment dan tanpa Equipment ID
+   (mis. contoh lama "Vernier Caliper 300 mm" / "Measuring Tape 5 m" dari Standar_Alat versi lama), diganti isi standar terbaru (nama, ID, due date kalibrasi, user).
+   Tidak ditimpa: baris yang namanya dikenal Master_Equipment, dan baris yang sudah punya Equipment ID (pilihan manual — ikut dipertahankan di bawah alat standar). Laporan Final tidak disentuh.
+   Hasilnya baru tersimpan saat laporan disimpan (sama seperti eqFill). */
+function eqSync(){const miss=[];let ch=0;
+ for(const id of ['eqd','eqw','eqa','eqp']){const tb=$(`[data-t=${id}] tbody`);if(!tb)continue;
+  const std=(STD[id]||[]).map(o=>typeof o=='string'?(m=>m?{n:m.n,i:m.i,c:m.c,u:m.u}:{n:o,x:1})(EQ.find(x=>eqk(x.n)==eqk(o))):o).filter(o=>o&&(o.n||o.i));
+  if(!std.length)continue;
+  const rows=[...tb.rows].map(tr=>{const f=k=>tr.querySelector(`[data-c=${k}]`);return{n:f('n').value,i:f('i').value,c:f('c').value,u:f('u').value}}).filter(r=>r.n||r.i||r.c||r.u),
+   stale=r=>!r.i&&!EQ.some(x=>eqk(x.n)==eqk(r.n));
+  if(rows.length&&!rows.some(stale))continue;   // hanya alat yang dikenal / pilihan manual → biarkan
+  const keep=rows.filter(r=>!stale(r)),sid=new Set(std.map(o=>eqk(o.i)).filter(Boolean)),
+   list=std.map(o=>(o.i&&keep.find(r=>eqk(r.i)==eqk(o.i)))||o).concat(keep.filter(r=>r.i&&!sid.has(eqk(r.i))));
+  tb.innerHTML='';
+  list.concat(Array(Math.max(0,DEF[id]-list.length)).fill(null)).forEach((o,k)=>{addR(id,o?{n:o.n,i:o.i,c:o.c,u:o.u}:{});
+   if(o&&o.x){const f=tb.rows[k].querySelector('[data-c=n]');if(f){f.classList.add('nf');f.title='Alat ini tidak ada di Master_Equipment — samakan nama / Equipment_ID di sheet Standar_Alat'}miss.push(o.n)}});
+  if(rows.length)ch++}
+ if(miss.length)toast('Alat standar tidak ditemukan di Master_Equipment: '+[...new Set(miss)].join(', '),1);
+ else if(ch)toast('Tabel Equipment disesuaikan dengan Standar_Alat — simpan laporan agar tersimpan')}
+/* v22: GANTI alat di tabel Equipment → Equipment ID, Calibration Due Date & User ikut berganti sesuai alat baru (dulu hanya mengisi sel yang kosong, sehingga data alat pertama tertinggal).
+   Pilih / ketik ID unit → nama alat, tanggal & User mengikuti ID itu. Nama kembar di tabel yang sama: dipilihkan unit yang belum dipakai baris lain. Nama yang tidak ada di master → ID / tanggal / User milik alat sebelumnya dikosongkan. */
+function eqPick(inp){const tr=inp.closest('tr');if(!tr||!inp.closest('[data-t^=eq]'))return;
+ const f=k=>tr.querySelector(`[data-c=${k}]`),a=f('n'),b=f('i'),c=f('c'),u=f('u');if(!a||!b||!c||!u)return;
+ const byI=inp===b,nk=eqk(a.value),ik=eqk(b.value),cur=ik?EQ.find(x=>eqk(x.i)==ik):null;let m=null;
+ if(byI){if(!ik)return;m=EQ.find(x=>eqk(x.i)==ik&&(!nk||eqk(x.n)==nk))||cur}
+ else{if(!nk)return;
+  if(cur&&eqk(cur.n)==nk){a.value=cur.n;if(!c.value)c.value=cur.c||'';if(!u.value)u.value=cur.u||'';return}   // nama sama dengan alat pada ID sekarang (hanya beda huruf besar-kecil): isian tidak diubah
+  const oth=new Set([...tr.parentNode.rows].filter(r=>r!==tr).map(r=>{const x=r.querySelector('[data-c=i]');return x?eqk(x.value):''})),L=EQ.filter(x=>eqk(x.n)==nk);
+  m=L.find(x=>!oth.has(eqk(x.i)))||L[0]||null}
+ if(m){a.value=m.n;b.value=m.i;c.value=m.c||'';u.value=m.u||''}
+ else if(!byI&&cur){b.value='';c.value='';u.value=''}}
+document.addEventListener('focusin',e=>{const i=e.target;if(!i||!i.getAttribute||i.getAttribute('list')!='dl-eqi')return;   // daftar ID menyempit ke unit milik alat di baris itu (label: nama · due date kalibrasi)
+ const a=i.closest('tr')&&i.closest('tr').querySelector('[data-c=n]'),nk=a?eqk(a.value):'',L=nk?EQ.filter(x=>eqk(x.n)==nk):[];
+ $('#dl-eqi').innerHTML=(L.length?L:EQ).map(x=>`<option value="${esc(x.i)}" label="${esc(x.n)} · ${esc(x.c||'tanggal kosong')}">`).join('')});
 /* v14: standar baku Painting (nama cat, thinner, brand, DFT) diisi SEKALI di sheet Standar_Painting → otomatis terisi di tabel "Paint Type & Brand" semua laporan baru / draft yang tabelnya masih kosong. Laporan Final & isian manual tidak ditimpa. */
 function stdPb(){const tb=$('[data-t=pb] tbody');if(!tb||!PBS.length||[...tb.querySelectorAll('[data-c]')].some(e=>e.value))return;
  tb.innerHTML='';for(let i=0;i<Math.max(PBS.length,DEF.pb);i++)addR('pb',PBS[i]||{})}
@@ -844,7 +1185,7 @@ function put(r,loc){RID=r.id||'';ST=(r.k||{}).status||'Draft';$('#rid').textCont
   if(id=='fin'&&!(r.k||{}).fin_v&&rows.length)rows=rows.slice(2).map(o=>({res:(o&&(o.res??o.u1))||''}));   // laporan lama (14 baris, Unit 1–4): buang baris Delivery Date & Type, pakai nilai Unit 1
   for(let i=0;i<Math.max(rows.length,DEF[id]);i++)addR(id,rows[i]||(id=='pt'&&!r.id?{ly:PD[i]}:{}))}
  $$('.sk img').forEach(i=>{const v=(r.sk||{})[i.dataset.s];i.dataset.def='';if(v){i.src=v;i.closest('.sk').classList.add('has')}else skDef(i);i.dataset.new=v&&loc?'1':''});
- if(ST!='Final')stdPb();lock();calc()}
+ if(ST!='Final'){stdPb();eqSync();eqFill()}lock();calc()}
 function lock(){const f=ST=='Final';$('#fs').disabled=f;$('#bs').hidden=$('#bf').hidden=f;$('#bo').hidden=!f;const b=$('#stb');b.textContent=ST;b.className='bd '+(f?'fin':'dr')}
 
 function ss(t,k){const e=$('#ss');e.textContent=t;e.className='ss '+(k||'')}
@@ -898,7 +1239,7 @@ async function login(e){e.preventDefault();const b=$('#lbtn'),t=b.querySelector(
 function logout(exp){S='';U=null;dirty=0;sessionStorage.removeItem('ipqc_s');$('#usr').hidden=true;show('login');$('#le').textContent=exp?'Sesi berakhir. Silakan masuk lagi — draft Anda aman di perangkat ini.':''}
 function bye(){if(dirty)bk();logout()}
 async function enter(){$('#un').textContent=U.n;$('#uj').textContent=U.j;$('#usr').hidden=false;show('list');$('#sr').innerHTML='<tr><td colspan="5" class="mut" style="text-align:center;padding:30px">Memuat…</td></tr>';$('#lr').innerHTML='<tr><td colspan="8" class="mut" style="text-align:center;padding:30px">Memuat…</td></tr>';
- try{const m=await api('init');SO=m.so;EQ=m.eq;STD=m.std||{};PBS=m.pb||[];PROJ=m.proj||[];WM=m.wm||[];sofInit();sosInit();$('#dl-eq').innerHTML=EQ.map(x=>`<option value="${esc(x.n)}">`).join('');$('#dl-wd').innerHTML=m.welder.map(x=>`<option value="${esc(x)}">`).join('');
+ try{const m=await api('init');SO=m.so;EQ=m.eq;STD=m.std||{};PBS=m.pb||[];PROJ=m.proj||[];WM=m.wm||[];sofInit();sosInit();$('#dl-eq').innerHTML=[...new Set(EQ.map(x=>x.n))].map(n=>`<option value="${esc(n)}">`).join('');$('#dl-eqi').innerHTML=EQ.map(x=>`<option value="${esc(x.i)}" label="${esc(x.n)}">`).join('');$('#dl-wd').innerHTML=m.welder.map(x=>`<option value="${esc(x)}">`).join('');
   JIG=m.jig||[];$('#dl-jid').innerHTML=JIG.map(x=>`<option value="${esc(x.id)}" label="${esc(x.n)}">`).join('');$('#dl-jig').innerHTML=JIG.map(x=>`<option value="${esc(x.n)}" label="${esc(x.id)}">`).join('');
   $('#dl-ft').innerHTML=(m.fitter&&m.fitter.length?m.fitter:USERS.map(u=>u.n)).map(x=>`<option value="${esc(x)}">`).join('');await refresh()}
  catch(e){toast('Gagal memuat data: '+e.message,1)}banner()}
