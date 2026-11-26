@@ -497,9 +497,9 @@ body:has(#v-login.on){background:#fff}
 /* ---------- Cetak / PDF (A4) ---------- */
 @media print{
 @page{size:A4;margin:5mm 6mm;@bottom-right{content:"Halaman " counter(page) " dari " counter(pages);font:8px/1 "Plus Jakarta Sans",Arial,sans-serif;color:#000;vertical-align:middle}}
-:root{--rh:16px;--fs:10px;--bd:#000;--cl-h:7mm;--cl-w:32mm}
+:root{--rh:16px;--fs:10px;--bd:#cfd5df;--cl-h:7mm;--cl-w:32mm}
 body{background:#fff;font-family:system-ui,"Segoe UI",Roboto,Arial,sans-serif}
-#sheet th{color:#000}
+#sheet th{color:#111827;font-weight:700}
 .np,#top,#ebw{display:none!important}
 #sheet{max-width:none;padding:0}
 .card{border:0;border-radius:0;margin:0 0 5px;overflow:visible;box-shadow:none}
@@ -512,25 +512,27 @@ body{background:#fff;font-family:system-ui,"Segoe UI",Roboto,Arial,sans-serif}
 .hd img{height:10mm}
 .hd .hd-r img{height:auto;width:auto;max-height:var(--cl-h);max-width:var(--cl-w);object-fit:contain;object-position:right center}   /* logo client lebih kecil dari logo Murinda (10mm); ubah --cl-h / --cl-w di :root cetak bila perlu */
 .cn{font-size:12px;color:#000}
-.hm{padding:1mm 0 1.5mm;gap:0 8mm;background:none!important;border:0;border-top:1px solid #000;margin-bottom:1.5mm;flex-wrap:nowrap}
+.hm{padding:1mm 0 1.5mm;gap:0 8mm;background:none!important;border:0;border-top:2px solid #111827;margin-bottom:1.5mm;flex-wrap:nowrap}
 .hm .mi{gap:2mm;font-size:10px}
 .hm .mi span{font-size:8px;color:#000}
 .hm .mi b{color:#000}
 #ov{background:none!important;color:#000;padding:0;min-width:0}
-.sec{display:flex;align-items:center;gap:2.2mm;background:none!important;color:#12315a;border:0;padding:1.2mm 0 .8mm;font-size:11.5px;font-weight:700;letter-spacing:.2px;text-transform:none;break-after:avoid}
-.sec::after{content:"";flex:1;height:1.2px;border-radius:1px;background:linear-gradient(90deg,#1b4a88,rgba(27,74,136,.45) 40%,rgba(27,74,136,0))}
-.sec .sl{display:grid;place-items:center;flex:none;width:5.2mm;height:5.2mm;border-radius:1.6mm;background:linear-gradient(135deg,#1b4a88,#12315a)!important;color:#fff;font-size:9.5px;font-weight:800;line-height:1}
+.sec{display:flex;align-items:center;gap:2.2mm;background:none!important;color:#111827;border:0;padding:1.2mm 0 .8mm;font-size:11.5px;font-weight:700;letter-spacing:.2px;text-transform:none;break-after:avoid}
+.sec::after{content:"";flex:1;height:1.2px;border-radius:1px;background:linear-gradient(90deg,#9ca3af,rgba(156,163,175,.4) 45%,rgba(156,163,175,0))}
+.sec .sl{display:grid;place-items:center;flex:none;width:5.2mm;height:5.2mm;border-radius:1.6mm;background:#1f2937!important;color:#fff;font-size:9.5px;font-weight:800;line-height:1}
 .sec .sl::after{content:none}
-#sheet th,#sheet td.l,#sheet td.n{background:#F3F3F3!important}
-#sheet td.l{color:#000}
+#sheet th,#sheet td.l,#sheet td.n{background:#fff!important}
+#sheet td.l{color:#4b5563}
+#sheet td.n{color:#9ca3af}
+#sheet thead tr:last-child>th{border-bottom:2px solid #1f2937}
 #sheet th{font-size:10px;padding:0 2px}
 [data-t=pt] th{font-size:8px!important}
 .fx{grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px}
 .fx>div>*+*,.fx.mt{margin-top:4px}
 .fx>div:first-child>.sk{height:100%}
-.rk>.l{background:#F3F3F3!important;line-height:17px;padding:0 6px}
+.rk>.l{background:#fff!important;line-height:17px;padding:0 6px}
 #sheet .rk textarea{padding:2px 6px;min-height:0}
-.sk{min-height:46mm;border:1px solid #000;border-radius:0;background:none}
+.sk{min-height:46mm;border:1px solid var(--bd);border-radius:0;background:none}
 .sk img{max-height:42mm;border-radius:0}
 #sheet .box{height:10mm}
 #sheet table.sgt{width:60mm;max-width:none}
@@ -805,6 +807,35 @@ body[data-v=list] .sb-p[data-for=list],body[data-v=edit] .sb-p[data-for=edit]{di
 }
 @media screen and (min-width:1100px) and (pointer:fine){#nav,#sblv{--nh:36px}}
 
+/* v15 tabel (layar): garis tipis, sudut membulat, header putih kebiruan, kolom label lembut — cetak tidak berubah */
+@media screen and (min-width:721px){
+:root{--tb:#e3e9f3;--tbh:#d2dcec}
+#sheet table{border-collapse:separate;border-spacing:0;border:1px solid var(--tb);border-radius:12px;overflow:hidden;background:#fff}
+#sheet td,#sheet th{border:0;border-right:1px solid var(--tb);border-bottom:1px solid var(--tb)}
+#sheet tr>:last-child{border-right:0}
+#sheet tbody tr:last-child>*{border-bottom:0}
+#sheet th{background:linear-gradient(180deg,#fcfdff,#f2f6fc);color:#173a66;font-weight:600;border-bottom-color:var(--tbh)}
+#sheet td.l{background:#fafbfd;color:#3a4a63;font-weight:500}
+#sheet td.n{background:#fafbfd;color:#9aa8bd;font-weight:500}
+#sheet tbody tr:hover>td:not(.l):not(.n){background:#f8fbff}
+#sheet input:focus,#sheet select:focus,#sheet textarea:focus{background-color:#fff;box-shadow:inset 0 0 0 1.5px var(--acc)}
+.sk{border:1.5px dashed #c9d5e7;background:#fafbfd}
+.rk>.l{background:#fafbfd;font-weight:500}
+}
+/* v16 warna lebih tenang (layar): dekorasi dibuat netral; OK/NG, peringatan, kalibrasi kedaluwarsa & isian wajib tetap berwarna */
+@media screen{
+.bd.dr{background:#eef1f6;color:#475569}.bd.dr::before{background:#d99a1f}
+.bd.fin{background:#e3eaf4;color:#12315a}.bd.fin::before{background:#1b4a88}
+.btn.p{background:var(--pri);border-color:var(--pri);box-shadow:none}.btn.p:hover{background:#18365f;border-color:#18365f}
+.btn.g{background:#fff;color:var(--pri);border-color:var(--pri);box-shadow:none}.btn.g:hover{background:#eef2f8;border-color:var(--pri)}
+.kl-b .f,.kl-l .f{background:#12315a}.kl-b .a,.kl-l .a{background:#8aa0bf}.kl-b .u,.kl-l .u{background:#dde4ef}
+.kl-d.on .kl-b .f{background:#fff}.kl-d.on .kl-b .a{background:#b8c6dc}
+.kl-w span:last-child,.kl-d.su .kl-n{color:#94a3b8}
+#nav a.done b{border-color:rgba(255,255,255,.55);color:#fff}#nav a.done em{background:rgba(255,255,255,.14);color:#fff}
+#nav a.cur b{background:#fff;border-color:#fff;color:#0f2747}
+.sb-bar i{background:#dbe6f7}
+#msg{background:#0f2747}
+}
 </style></head><body data-v="login">
 <header id="tb" class="np"><button type="button" class="sb-tg" onclick="sbOpen(this)" aria-label="Buka menu" aria-controls="sb" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><b>IPQC Check Sheet</b></header>
 
