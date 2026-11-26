@@ -68,8 +68,7 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 .ban{background:#fff8eb;border:1px solid #f4cf8f;border-radius:16px;padding:14px 18px;display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
 
 /* ---------- Bilah edit (sticky) ---------- */
-#ebw{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--bd);box-shadow:0 10px 28px -16px rgba(15,28,46,.28)}
-#ebw::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(1.5) blur(14px);backdrop-filter:saturate(1.5) blur(14px)}
+#ebw{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--bd)}
 .eb{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 24px;padding-top:calc(10px + env(safe-area-inset-top))}
 .sp{flex:1}
 .acts{display:flex;gap:10px;flex-wrap:wrap}
@@ -77,15 +76,6 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 .ss.w{color:var(--wa)}
 .ss.o{color:#15803d}
 .ss.e{color:var(--ng);font-weight:600}
-#nav{display:flex;gap:8px;overflow-x:auto;padding:0 24px 12px;scrollbar-width:none}
-#nav::-webkit-scrollbar{display:none}
-#nav a{flex:none;white-space:nowrap;padding:6px 15px;border:1px solid var(--bd);border-radius:999px;background:#fff;color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;transition:border-color .15s,background .15s,transform .1s}
-#nav a:hover{border-color:var(--acc);background:#f3f8ff}
-#nav a:active{transform:scale(.96)}
-#nav a.done{border-color:#7cc99a;background:#effaf3;color:var(--ok)}
-#nav a.done::before{content:"✓ "}
-#nav a.bad{border-color:#eba8a2;background:var(--ngb);color:var(--ng)}
-#nav a.bad::before{content:"! "}
 #fs{border:0;margin:0;padding:0;min-width:0}
 #sheet{max-width:1180px;margin:0 auto;padding:24px 20px}
 
@@ -181,7 +171,7 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 /* ---------- Responsif ---------- */
 @media screen and (max-width:720px){.sof-r{grid-template-columns:1fr 1fr}.sof-r .btn{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-@media(max-width:860px){.fx{grid-template-columns:1fr}.jr{grid-template-columns:1fr}.eb,#nav{padding-left:16px;padding-right:16px}}
+@media(max-width:860px){.fx{grid-template-columns:1fr}.jr{grid-template-columns:1fr}.eb{padding-left:16px;padding-right:16px}}
 @media screen and (max-width:860px){#sheet table.sgt{margin-left:0}}   /* 1 kolom: kotak tanda tangan rata kiri semua (hanya layar; cetak tetap rata kanan) */
 @media screen and (max-width:960px){.hd{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.hd-c{grid-column:1/-1;order:3;max-width:none}}
 @media screen and (max-width:720px){
@@ -212,7 +202,6 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 #ss{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}
 .acts{position:fixed;left:0;right:0;bottom:0;z-index:30;flex-wrap:nowrap;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--bd);box-shadow:0 -8px 24px rgba(15,28,46,.12)}
 .acts .btn{flex:1;min-height:48px;padding:0 8px;font-size:14px}
-#nav{padding:0 12px 10px}
 #sheet{padding:12px 12px 110px}
 #msg{bottom:calc(86px + env(safe-area-inset-bottom))}
 .card{border-radius:16px;scroll-margin-top:112px}
@@ -347,23 +336,6 @@ body{margin:0;background:var(--bg) linear-gradient(180deg,#e3ebf7,transparent 38
 @media screen{
 :root{--bg:#f4f6fa;--stl:#0d2547;--wd:#f2a900}
 body{background:var(--bg) radial-gradient(900px 380px at 100% -120px,rgba(31,111,224,.10),transparent 70%) no-repeat}
-body:has(#v-login.on) #top{display:none}
-/* ---------- Bilah atas (v15) — hanya layar ---------- */
-/* Bilah atas: putih bersih, garis aksen tipis, logo apa adanya, identitas pengguna tanpa lingkaran */
-#top{position:relative;display:flex;align-items:center;gap:16px;min-height:calc(64px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 28px 0;background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(1.6) blur(16px);backdrop-filter:saturate(1.6) blur(16px);border-bottom:1px solid var(--bd);color:var(--ink)}
-#top::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--stl),var(--acc) 62%,var(--wd))}
-#top img{display:block;height:34px;width:auto}
-#top img:not([src]){display:none}
-.tt{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;margin-left:2px;padding-left:18px;border-left:1px solid var(--bd);line-height:1.2}
-.tt span{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
-#top h1{margin:2px 0 0;font-size:16px;font-weight:800;letter-spacing:-.01em;color:var(--stl)}
-#usr{display:flex;align-items:center;gap:14px;margin-left:auto;font-size:13px}
-#usr[hidden]{display:none}
-#usr>div{min-width:0;text-align:right;line-height:1.25}
-#usr b{display:block;font-weight:700;color:var(--ink)}
-#usr small{display:block;font-size:12px;color:var(--mut)}
-#usr .btn{gap:8px;background:#fff;border-radius:10px}
-#usr .btn svg{flex:none}
 /* Header laporan: penggaris di tepi atas, judul satu hierarki, ID & hasil sebagai kotak data */
 #s-i{border-radius:20px;border-color:#d3deee;box-shadow:0 1px 2px rgba(15,28,46,.04),0 18px 40px -22px rgba(13,37,71,.3)}
 #s-i::before{height:12px;color:#8aa4c8;background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 8px) left top/100% 5px no-repeat,repeating-linear-gradient(90deg,currentColor 0 1.5px,transparent 1.5px 40px) left top/100% 11px no-repeat,#f3f6fb}
@@ -376,17 +348,6 @@ body:has(#v-login.on) #top{display:none}
 #s-i .hm .mi{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:6px 12px}
 #s-i .hm .mi span{font-size:12px;font-weight:600;letter-spacing:0;text-transform:none}
 }
-@media screen and (max-width:720px){
-#top{gap:12px;min-height:calc(56px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 14px 0}
-#top img{height:28px}
-.tt{padding-left:12px}
-.tt span{display:none}
-#top h1{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#usr{gap:10px}
-#usr small{display:none}
-#usr b{max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-}
-@media screen and (max-width:430px){.tt{display:none}}
 @media screen and (max-width:720px){
 #s-i .hd{padding:16px 16px 18px}
 .hd h2 span:last-child{font-size:21px}
@@ -447,8 +408,6 @@ body:has(#v-login.on) #top{display:none}
 @media screen{
 :root{--pri:#0f2747;--pri2:#1c4476;--stl:#0f2747;--bd:#dde4ef;--bg:#f4f6fa;--hb:#eef2f8;--sf:#f7f9fc;--r:18px;--sh:0 1px 2px rgba(15,39,71,.04),0 10px 28px -14px rgba(15,39,71,.14)}
 body{background:var(--bg)}
-#top{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:1px solid var(--bd)}
-#top::before{display:none}
 .btn{border-color:#d5ddea;box-shadow:none}
 .btn:hover{background:#f5f8fc;border-color:#c3cfe0;box-shadow:none}
 .btn.p{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 14px -8px rgba(15,39,71,.6)}
@@ -460,7 +419,6 @@ body{background:var(--bg)}
 .sec .sl{background:var(--pri);color:#fff;border-radius:8px}
 .row h2{font-size:26px;letter-spacing:-.02em}
 .lt th{text-transform:none;letter-spacing:0;font-size:12.5px}
-#nav a{border-color:#dbe3ef}
 /* Login: formulir di kiri, gambar teknik di kanan */
 body:has(#v-login.on){background:#fff}
 #v-login.on{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:100vh;min-height:100dvh;padding:0;background:#fff}
@@ -615,134 +573,11 @@ table[data-t^=eq] tbody tr,table[data-t=pb] tbody tr,table[data-t=cn] tbody tr,t
 *{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 @media screen{#sheet input.nf{background:#fef3c7;box-shadow:inset 0 0 0 1px #f59e0b}}
 
-/* ===== Tema Liquid Glass v25 (sama dengan glass.css) ===== */
-
-/* ============================================================
-   Tema Liquid Glass (v25) — hanya layar; cetak / PDF tidak berubah.
-   Latar berwarna lembut di belakang → panel kaca bening (opasitas rendah + blur) → tepi terang tipis sebagai sorotan.
-   Isi tabel dibuat transparan; jarak & tinggi baris dipadatkan untuk PC (≥721px). HP tetap memakai ukuran sentuh.
-   Baru di v25:
-   · Login (PC) = satu kartu kaca ringkas di tengah layar: formulir + gambar teknik yang ikut bening (bukan lagi dua separuh layar putih / biru tua).
-     HP: kartu kaca penuh layar dengan ukuran sentuh tetap.
-   · Pengguna di bilah atas = pil kaca satu baris (nama · jabatan · Keluar).
-   · Isi laporan lebih padat di PC: bilah edit & navigasi, header laporan, kotak Sales Order satu baris, kotak sketsa & tanda tangan lebih pendek,
-     tabel Equipment tanpa judul yang patah baris, kalender kirim lebih rendah, area isi lebih lebar di layar ≥1600px.
-   ============================================================ */
-@media screen{
-:root{--ink:#0c2038;--mut:#4f627c;--pri:#0f2747;--pri2:#1c4476;--acc:#1c6be0;
---gb:rgba(255,255,255,.66);--bd:rgba(15,39,71,.15);--hb:rgba(255,255,255,.38);--sf:rgba(255,255,255,.24);
---blur:blur(14px) saturate(1.7);--rim:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.18);
---sh:var(--rim),0 12px 32px -16px rgba(18,48,100,.34);--r:16px;
---glass:linear-gradient(150deg,rgba(255,255,255,.50),rgba(255,255,255,.18) 55%,rgba(255,255,255,.30));
---rimln:linear-gradient(140deg,rgba(255,255,255,.95),rgba(255,255,255,0) 36%,rgba(255,255,255,0) 64%,rgba(255,255,255,.7))}
-
-/* ---------- Latar ---------- */
-html{background:#dce8f9}
-body{background:none}
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
-radial-gradient(46vmax 38vmax at 4% -4%,rgba(76,146,255,.62),transparent 62%),
-radial-gradient(40vmax 34vmax at 100% 6%,rgba(94,214,240,.55),transparent 62%),
-radial-gradient(42vmax 36vmax at 96% 100%,rgba(255,190,92,.46),transparent 62%),
-radial-gradient(44vmax 38vmax at 0% 98%,rgba(150,128,255,.40),transparent 62%),
-linear-gradient(165deg,#eef4ff,#dde9f9 50%,#eaf1fb)}
-::placeholder{color:#7b8aa0}
-
-/* ---------- Permukaan kaca ---------- */
-.card,.kl{position:relative;background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
-.card::after,.kl::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:var(--rimln);
--webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
-#s-i{z-index:2;border-radius:var(--r);border-color:var(--gb);box-shadow:var(--sh)}   /* kartu Informasi di atas kartu lain: daftar pilihan Sales Order tidak tertutup */
-#top{background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.34));-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-bottom:1px solid var(--gb);box-shadow:0 8px 24px -18px rgba(18,48,100,.5)}
-#ebw{border-bottom:1px solid var(--gb);box-shadow:0 10px 28px -20px rgba(18,48,100,.5)}
-#ebw::before{background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.38));-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
-.qs-l{background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);border-color:var(--gb)}
-.qs-l li.on,.qs-l li:hover{background:rgba(28,107,224,.10)}
-
-/* ---------- Login: kartu kaca (v25) ---------- */
-body:has(#v-login.on){background:none}
-#v-login.on{background:none;border-top:0}
-.lg-l{position:relative;background:none}
-.lg-pw input,.upb{background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.88);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 1px 3px -1px rgba(15,39,71,.14)}
-.lg-pw input:hover,.upb:hover{background:rgba(255,255,255,.72);border-color:#fff}
-.lg-pw input:focus,.up.open .upb,.upb:focus-visible{background:rgba(255,255,255,.9);border-color:var(--acc);box-shadow:0 0 0 3px rgba(28,107,224,.2)}
-.lg-pw input::placeholder,.upb .upph{color:#6f8099}
-.lg-eye:hover,.lg-eye.on{background:rgba(255,255,255,.65)}
-.lg-f .err:not(:empty){background:rgba(255,224,221,.78);border:1px solid rgba(240,150,142,.55)}
-.upp{background:#fbfdff;-webkit-backdrop-filter:none;backdrop-filter:none;border-color:var(--gb)}   /* daftar nama pekat: menimpa tombol Masuk di bawahnya, jadi tidak boleh tembus pandang */
-.ups{border-bottom-color:rgba(15,39,71,.08)}
-.lg-f .ups input{background:rgba(15,39,71,.05)}
-.lg-f .ups input:focus{background:#fff}
-.upi:hover,.upi.act{background:rgba(28,107,224,.10)}
-.lg-ft{color:var(--mut)}
-/* gambar teknik di kanan: ikut bening — garis biru tua di atas kaca, bukan panel biru pekat */
-.lg-r{color:#355f9c;background:
-linear-gradient(rgba(28,68,118,.07) 1px,transparent 1px) 0 0/28px 28px,
-linear-gradient(90deg,rgba(28,68,118,.07) 1px,transparent 1px) 0 0/28px 28px,
-linear-gradient(160deg,rgba(255,255,255,.34),rgba(255,255,255,.06));
-border-left:1px solid rgba(255,255,255,.7)}
-.lg-r .dm{color:#c47a00}
-
-/* ---------- Header laporan & judul bagian ---------- */
-#s-i::before{height:9px;color:rgba(28,68,118,.38);background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 8px) left top/100% 4px no-repeat,repeating-linear-gradient(90deg,currentColor 0 1.5px,transparent 1.5px 40px) left top/100% 8px no-repeat}
-#s-i .hd{background:none}
-#s-i .hm{background:rgba(255,255,255,.16)}
-#s-i .hm .mi{background:rgba(255,255,255,.46);border-color:rgba(255,255,255,.75)}
-#s-i .hd-r img,#s-i .cn{background:rgba(255,255,255,.72);border-color:rgba(255,255,255,.8)}
-.sec{background:linear-gradient(90deg,rgba(255,255,255,.52),rgba(255,255,255,.10));border-bottom:1px solid var(--bd);color:var(--pri)}
-.sec .sl{background:linear-gradient(180deg,#27578f,#0f2747);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 3px 8px -3px rgba(15,39,71,.6)}
-
-/* ---------- Tabel & isian: transparan di atas kaca ---------- */
-#sheet td{background:rgba(255,255,255,.12)}
-#sheet input:focus,#sheet select:focus,#sheet textarea:focus{background-color:rgba(255,255,255,.82);box-shadow:inset 0 0 0 2px var(--acc)}
-#sheet input[readonly]{background:rgba(255,255,255,.26);color:#2b3d57}
-#sheet .ng{background:rgba(255,224,221,.75)}
-#sheet .ok{background:rgba(210,242,223,.75)}
-#sheet input.exp{background:rgba(254,196,196,.85);color:#8f1d1d}
-#sheet input.nf{background:rgba(254,240,190,.88)}
-#sheet .pick{background:rgba(255,255,255,.7) var(--ic) 12px 50%/16px no-repeat;border-color:rgba(28,107,224,.45);padding:0 12px 0 36px}
-.sk{border-color:rgba(28,68,118,.28);background:rgba(255,255,255,.22)}
-.sk.has{background:rgba(255,255,255,.5);border-color:var(--gb)}
-.sof{background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.26));border:1px solid var(--gb)}
-#sheet .sof-r select,#sheet .sof-r input{background:rgba(255,255,255,.7)}
-.me:hover{background:rgba(255,255,255,.7)}
-
-/* ---------- Tombol, chip, bilah navigasi ---------- */
-.btn{background:rgba(255,255,255,.44);border:1px solid var(--gb);color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 2px 8px -4px rgba(20,50,100,.25)}
-.btn:hover{background:rgba(255,255,255,.72);border-color:#fff;box-shadow:inset 0 1px 0 #fff,0 6px 14px -8px rgba(20,50,100,.38)}
-.btn.p{background:linear-gradient(180deg,rgba(42,96,176,.94),rgba(15,39,71,.96));border-color:rgba(255,255,255,.3);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 8px 18px -8px rgba(15,39,71,.65)}
-.btn.p:hover{background:linear-gradient(180deg,rgba(52,108,192,.96),rgba(20,50,92,.98));border-color:rgba(255,255,255,.4)}
-.btn.g{background:linear-gradient(180deg,rgba(34,156,96,.95),rgba(18,110,66,.97));border-color:rgba(255,255,255,.3);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 8px 18px -8px rgba(18,110,66,.6)}
-.btn.g:hover{background:linear-gradient(180deg,rgba(40,168,106,.97),rgba(16,98,58,.98));border-color:rgba(255,255,255,.4)}
-.btn.d{color:var(--ng)}
-.btn.d:hover{background:rgba(255,226,224,.82);border-color:rgba(240,150,142,.7)}
-.seg button{background:rgba(255,255,255,.4);border-color:var(--gb)}
-.seg button:not(.on):hover{background:rgba(255,255,255,.72)}
-#nav a{background:rgba(255,255,255,.4);border-color:var(--gb)}
-#nav a:hover{background:rgba(255,255,255,.72)}
-#nav a.done{background:rgba(214,243,225,.7)}
-#nav a.bad{background:rgba(255,224,221,.8)}
-.ban{background:rgba(255,244,214,.62);border-color:rgba(240,190,100,.6)}
-#msg{background:rgba(10,45,28,.84);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25)}
-#msg.bad{background:rgba(150,28,20,.88)}
-
-/* ---------- Daftar laporan & kalender ---------- */
-.lt td,.lx td{border-top-color:rgba(15,39,71,.08)}
-.lt tbody tr:hover,.lx tbody tr:hover{background:rgba(255,255,255,.5)}
-.lx tbody tr.xp:hover{background:none}
-.lx tr.xp td{background:rgba(255,255,255,.4)}
-#qs2,.sf select,.sf input{background-color:rgba(255,255,255,.55);border-color:var(--gb)}
-#qs2{background:rgba(255,255,255,.55) var(--ic) 14px 50%/18px no-repeat}
-.kl-d{background:rgba(255,255,255,.26);border-color:rgba(255,255,255,.55)}
-.kl-d.has{background:rgba(255,255,255,.58);border-color:rgba(28,107,224,.32)}
-.kl-d.has.on,.kl-d.on{background:var(--pri);border-color:var(--pri)}
-}
 
 /* ---------- Login — PC: satu kartu kaca ringkas di tengah layar ---------- */
 @media screen and (min-width:901px){
-body:has(#v-login.on){min-height:100vh;min-height:100dvh;display:grid;align-content:center;justify-items:center;padding:20px}
-#v-login.on{position:relative;width:min(880px,100%);min-height:0;grid-template-columns:minmax(0,370px) minmax(0,1fr);border-radius:20px;background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
-#v-login.on::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:var(--rimln);
--webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+body:has(#v-login.on){background:var(--bg);min-height:100vh;min-height:100dvh;display:grid;align-content:center;justify-items:center;padding:20px}
+#v-login.on{position:relative;width:min(880px,100%);min-height:0;grid-template-columns:minmax(0,370px) minmax(0,1fr);border-radius:20px;background:#fff;border:1px solid #dfe6f0;box-shadow:0 30px 70px -34px rgba(15,39,71,.45);overflow:hidden}
 .lg-l{padding:20px 28px 14px}
 .lg-l>img{height:28px}
 .lg-f{margin:12px 0 0;padding:0;max-width:none}
@@ -774,27 +609,11 @@ body:has(#v-login.on){min-height:100vh;min-height:100dvh;display:grid;align-cont
 }
 /* ---------- Login — HP / tablet: kartu kaca penuh layar, ukuran sentuh tetap ---------- */
 @media screen and (max-width:900px){
-#v-login.on{padding:12px}
-.lg-l{min-height:calc(100vh - 24px);min-height:calc(100dvh - 24px);padding:22px 18px 16px;border-radius:20px;background:var(--glass);border:1px solid var(--gb);box-shadow:var(--sh);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
-.lg-l::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:var(--rimln);
--webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+#v-login.on{padding:0;background:#fff}
 }
 
 /* ---------- Layar PC: lebih padat (HP memakai ukuran sentuh bawaan) ---------- */
 @media screen and (min-width:721px){
-/* bilah atas + pengguna (pil kaca satu baris) */
-#top{min-height:calc(42px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 18px 0}
-#top img{height:24px}
-.tt{padding-left:12px}
-.tt span{font-size:9.5px}
-#top h1{font-size:13.5px;margin-top:0}
-#usr{gap:8px;padding:2px 3px 2px 12px;border:1px solid var(--gb);border-radius:999px;background:rgba(255,255,255,.4);box-shadow:var(--rim)}
-#usr>div{display:flex;align-items:baseline;gap:7px;text-align:left}
-#usr b{display:inline;font-size:12.5px}
-#usr small{display:inline;font-size:11.5px}
-#usr small:not(:empty)::before{content:"·";margin-right:7px;color:var(--mut)}
-#usr .btn{min-height:26px;padding:2px 11px;gap:6px;font-size:12px;border-radius:999px;background:rgba(255,255,255,.6)}
-#usr .btn svg{width:14px;height:14px}
 .wrap{padding:10px 16px 24px}
 .row{margin-bottom:8px}
 .row h2{font-size:20px}
@@ -828,8 +647,6 @@ body:has(#v-login.on){min-height:100vh;min-height:100dvh;display:grid;align-cont
 .eb .acts{gap:6px}
 .eb .bd{padding:1px 9px;font-size:12px}
 .ss{font-size:12px}
-#nav{padding:0 16px 6px;gap:5px}
-#nav a{padding:2px 11px;font-size:12px}
 /* laporan */
 #sheet{padding:8px 12px 20px}
 .card{margin-bottom:8px;scroll-margin-top:76px}
@@ -883,29 +700,126 @@ body:has(#v-login.on){min-height:100vh;min-height:100dvh;display:grid;align-cont
 @media screen and (min-width:721px) and (max-width:1000px){.sof{grid-template-columns:1fr 1fr auto}.qs-w{grid-column:1/-1}}
 @media screen and (min-width:1600px){.wrap,#sheet{max-width:1360px}}
 @media screen and (min-width:861px) and (pointer:fine){:root{--rh:28px;--fs:13px}}
-@media screen and (min-width:721px){#sheet tbody tr:focus-within>td:not(.l):not(.n){background:rgba(255,255,255,.55)}}
+@media screen and (min-width:721px){#sheet tbody tr:focus-within>td:not(.l):not(.n){background:#f5f9ff}}
 
-/* ---------- HP: kartu & bilah aksi ikut kaca ---------- */
-@media screen and (max-width:720px){
-.lt tbody tr,.lx tbody tr{background:linear-gradient(150deg,rgba(255,255,255,.55),rgba(255,255,255,.28));border-color:var(--gb);box-shadow:var(--sh);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
-.acts{background:rgba(255,255,255,.72);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-top-color:var(--gb)}
-}
 
-/* ---------- Cadangan: browser tanpa blur / pengguna meminta transparansi dikurangi ---------- */
-@media screen and (prefers-reduced-transparency:reduce){
-.card,.kl,.lg-l,#v-login.on,#top{background:rgba(255,255,255,.9);-webkit-backdrop-filter:none;backdrop-filter:none}
-#ebw::before{background:rgba(255,255,255,.96);-webkit-backdrop-filter:none;backdrop-filter:none}
-.qs-l,.upp{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
-}
-@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+
+
+/* ============================================================
+   v26 — Sidebar + form putih (hanya layar; cetak / PDF tidak berubah)
+   · Menu pindah dari bilah atas ke sidebar. PC (≥1100px): selalu tampil di kiri. HP & tablet: laci geser dari tombol menu.
+   · Efek kaca dihapus: kartu, tabel, isian & tombol memakai putih solid di atas latar abu-biru lembut.
+   · Sidebar di daftar laporan = pilihan tampilan. Di dalam laporan = rel bagian A–H dengan penanda terisi / NG dan bagian yang sedang dibaca.
+   ============================================================ */
 @media screen{
-.card,.kl,.lg-l,#v-login.on,#top{background:rgba(255,255,255,.84)}
-#ebw::before{background:rgba(255,255,255,.94)}
-.qs-l,.upp{background:#fff}
-}}
+:root{--ink:#0c2038;--mut:#56677f;--bg:#eff2f7;--bd:#dce3ee;--sf:#f6f8fc;--hb:#edf1f7;--wd:#f2a900;--sbw:244px}
+::placeholder{color:#728199}
+.card{scroll-margin-top:calc(64px + env(safe-area-inset-top))}
+.kl,#sst{scroll-margin-top:calc(64px + env(safe-area-inset-top))}
+#s-i{position:relative;z-index:2}
+.sec{background:#f6f8fc;border-bottom:1px solid var(--bd)}
+.sof{background:#f7f9fd;border:1px solid #dbe5f3}
 
-</style></head><body>
-<header id="top" class="np"><img id="hlogo" alt="PT Murinda Sentra Baja"><div class="tt"><span>In-Process Quality Control</span><h1>IPQC Check Sheet</h1></div><div id="usr" hidden><div><b id="un"></b><small id="uj"></small></div><button class="btn sm" onclick="bye()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="m16 8 4 4-4 4M20 12H9"/></svg>Keluar</button></div></header>
+/* ---------- Login: panel gambar teknik biru tua, senada dengan sidebar ---------- */
+.lg-r{color:#a9c1e8;background-color:#0f2747;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px}
+
+/* ---------- Bilah atas HP / tablet (hanya di daftar laporan; di dalam laporan tombol menu ada di bilah edit) ---------- */
+#tb{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;min-height:calc(52px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 12px 0;background:#fff;border-bottom:1px solid var(--bd)}
+#tb b{font-size:15px;font-weight:800;letter-spacing:-.01em;color:var(--pri)}
+body[data-v=edit] #tb{display:none}
+.sb-tg{display:inline-grid;place-items:center;flex:none;width:40px;height:40px;padding:0;border:1px solid var(--bd);border-radius:12px;background:#fff;color:var(--pri);cursor:pointer;transition:background .15s,border-color .15s}
+.sb-tg:hover{background:#f3f6fb;border-color:#c9d5e6}
+.sb-tg:active{transform:scale(.95)}
+@media (max-width:480px){.eb .lb{display:none}}
+@media screen and (min-width:721px){.eb{flex-wrap:nowrap}.eb .sp{display:none}.eb #ss{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.eb .acts{flex:none;flex-wrap:nowrap}.eb>.btn,.eb>.bd{flex:none}}
+
+/* ---------- Sidebar ---------- */
+#sb{position:fixed;z-index:70;top:0;bottom:0;left:0;width:min(300px,86vw);display:flex;flex-direction:column;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom) env(safe-area-inset-left);background:linear-gradient(180deg,#112b4f,#0d2342);color:#fff;transform:translateX(-104%);visibility:hidden;transition:transform .26s cubic-bezier(.2,.7,.2,1),visibility 0s .26s}
+body.sb-open #sb{transform:none;visibility:visible;box-shadow:24px 0 60px -12px rgba(5,14,30,.55);transition:transform .26s cubic-bezier(.2,.7,.2,1)}
+body.sb-open{overflow:hidden}
+#sbo{position:fixed;inset:0;z-index:65;background:rgba(7,18,36,.5);opacity:0;visibility:hidden;transition:opacity .22s,visibility 0s .22s}
+body.sb-open #sbo{opacity:1;visibility:visible;transition:opacity .22s}
+body[data-v=login] #sb,body[data-v=login] #sbo,body[data-v=login] #tb{display:none}
+#sb :focus-visible{outline:2px solid var(--wd);outline-offset:2px}
+.sb-x{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;display:grid;place-items:center;width:38px;height:38px;padding:0;border:0;border-radius:10px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer}
+.sb-x:hover{background:rgba(255,255,255,.16)}
+.sb-brand{padding:18px 18px 10px}
+.sb-logo{display:inline-flex;align-items:center;padding:8px 12px;border-radius:11px;background:#fff}
+.sb-logo img{display:block;height:27px;width:auto;max-width:100%}
+.sb-logo img:not([src]){display:none}
+.sb-ttl{margin-top:13px;line-height:1.25}
+.sb-ttl b{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em}
+.sb-ttl span{display:block;margin-top:2px;font-size:12px;color:rgba(255,255,255,.62)}
+.sb-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:4px 12px 14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent}
+.sb-p{display:none}
+body[data-v=list] .sb-p[data-for=list],body[data-v=edit] .sb-p[data-for=edit]{display:block}
+.sb-h{padding:14px 8px 8px;font-size:12px;font-weight:700;color:rgba(255,255,255,.52)}
+
+/* butir menu: pilihan tampilan (daftar) & rel bagian laporan (edit) */
+#nav,#sblv{position:relative;display:flex;flex-direction:column;flex-wrap:nowrap;gap:2px;margin:0;padding:0;overflow:visible;width:auto;--nh:40px}
+#nav a,#sblv button{position:relative;display:flex;align-items:center;gap:12px;width:100%;min-height:var(--nh);padding:6px 10px 6px 8px;border:0;border-radius:10px;background:none;box-shadow:none;color:rgba(255,255,255,.76);font:inherit;font-size:13.5px;font-weight:600;line-height:1.25;text-align:left;text-decoration:none;white-space:normal;cursor:pointer;transition:background .15s,color .15s}
+#sblv button{padding-left:10px}
+#nav a:hover,#sblv button:hover{background:rgba(255,255,255,.07);color:#fff}
+#nav a:active,#sblv button:active{background:rgba(255,255,255,.12)}
+#sblv button.on,#nav a.cur{background:rgba(255,255,255,.1);color:#fff}
+#sblv button.on::before,#nav a.cur::before{content:"";position:absolute;left:-12px;top:9px;bottom:9px;width:3px;border-radius:0 3px 3px 0;background:var(--wd)}
+#sblv button svg{flex:none;opacity:.9}
+#nav::before{content:"";position:absolute;left:21px;top:calc(var(--nh)/2);bottom:calc(var(--nh)/2);width:1px;background:rgba(255,255,255,.16)}
+#nav a b{position:relative;z-index:1;flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:#0f2747;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.8);font-size:12px;font-weight:800;transition:background .15s,border-color .15s,color .15s}
+#nav a span{flex:1;min-width:0}
+#nav a em{flex:none;display:none;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;font-style:normal;font-size:11px;font-weight:800;line-height:1}
+#nav a.done b{border-color:rgba(63,207,135,.75);color:#8ff0bd}
+#nav a.done em{display:grid;background:rgba(63,207,135,.16);color:#8ff0bd}
+#nav a.done em::before{content:"✓"}
+#nav a.bad b{border-color:rgba(255,107,95,.85);color:#ffb4ad}
+#nav a.bad em{background:rgba(255,107,95,.2);color:#ffb4ad}
+#nav a.bad em::before{content:"NG"}
+#nav a.cur b{background:var(--wd);border-color:var(--wd);color:#0f2747}
+
+/* ringkasan isian */
+.sb-prog{margin:16px 8px 0}
+.sb-pt{margin-bottom:7px;font-size:12px;line-height:1.4;color:rgba(255,255,255,.68)}
+.sb-bar{height:4px;border-radius:4px;background:rgba(255,255,255,.12);overflow:hidden}
+.sb-bar i{display:block;height:100%;width:0;border-radius:4px;background:#3fcf87;transition:width .3s}
+
+/* pengguna */
+.sb-foot{padding:12px 14px 14px;border-top:1px solid rgba(255,255,255,.1)}
+.sb-foot:has(#usr[hidden]){display:none}
+#usr{display:flex;align-items:center;gap:10px}
+#usr>div{flex:1;min-width:0;line-height:1.3}
+#usr b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:700;color:#fff}
+#usr small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11.5px;color:rgba(255,255,255,.62)}
+#usr .btn{flex:none;gap:7px;min-height:34px;padding:4px 11px;border:1px solid rgba(255,255,255,.2);border-radius:10px;background:rgba(255,255,255,.08);box-shadow:none;color:#fff;font-size:12.5px}
+#usr .btn:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.34);box-shadow:none}
+#usr .btn svg{flex:none}
+}
+
+/* ---------- PC: sidebar tetap di kiri, bilah atas hilang ---------- */
+@media screen and (min-width:1100px){
+#sb{width:var(--sbw);transform:none;visibility:visible;transition:none;z-index:40;box-shadow:inset -1px 0 0 rgba(255,255,255,.06)}
+#sbo,.sb-x,.sb-tg,#tb,#lvs{display:none!important}
+#v-list,#v-edit{margin-left:var(--sbw)}
+.wrap{padding-top:20px}
+.kl,#sst{scroll-margin-top:16px}
+}
+@media screen and (min-width:1100px) and (pointer:fine){#nav,#sblv{--nh:36px}}
+
+</style></head><body data-v="login">
+<header id="tb" class="np"><button type="button" class="sb-tg" onclick="sbOpen(this)" aria-label="Buka menu" aria-controls="sb" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><b>IPQC Check Sheet</b></header>
+
+<aside id="sb" class="np" aria-label="Menu aplikasi">
+<button type="button" id="sbx" class="sb-x" onclick="sbClose(1)" aria-label="Tutup menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<div class="sb-brand"><span class="sb-logo"><img id="hlogo" alt="PT Murinda Sentra Baja"></span><div class="sb-ttl"><b>IPQC Check Sheet</b><span>In-Process Quality Control</span></div></div>
+<div class="sb-body">
+<div class="sb-p" data-for="list"><div class="sb-h">Laporan</div>
+<div id="sblv"><button type="button" class="on" data-v="so" onclick="lvSet('so');sbClose()"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Kalender kirim</button><button type="button" data-v="all" onclick="lvSet('all');sbClose()"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>Semua laporan</button></div></div>
+<div class="sb-p" data-for="edit"><div class="sb-h">Bagian laporan</div>
+<nav id="nav" aria-label="Bagian laporan"><a href="#s-i" data-n="i"><b><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></b><span>Informasi</span><em aria-hidden="true"></em></a><a href="#s-a" data-n="a"><b>A</b><span>Dimension</span><em aria-hidden="true"></em></a><a href="#s-b" data-n="b"><b>B</b><span>Welding</span><em aria-hidden="true"></em></a><a href="#s-c" data-n="c"><b>C</b><span>Leak Test</span><em aria-hidden="true"></em></a><a href="#s-d" data-n="d"><b>D</b><span>Concrete</span><em aria-hidden="true"></em></a><a href="#s-cv" data-n="cv"><b>E</b><span>Covering</span><em aria-hidden="true"></em></a><a href="#s-e" data-n="e"><b>F</b><span>Alignment</span><em aria-hidden="true"></em></a><a href="#s-f" data-n="f"><b>G</b><span>Painting</span><em aria-hidden="true"></em></a><a href="#s-g" data-n="g"><b>H</b><span>Final</span><em aria-hidden="true"></em></a></nav>
+<div class="sb-prog"><div id="sbpt" class="sb-pt"></div><div class="sb-bar"><i id="sbpb"></i></div></div></div>
+</div>
+<div class="sb-foot"><div id="usr" hidden><div><b id="un"></b><small id="uj"></small></div><button class="btn sm" onclick="bye()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="m16 8 4 4-4 4M20 12H9"/></svg>Keluar</button></div></div>
+</aside>
+<div id="sbo" class="np" onclick="sbClose(1)"></div>
 
 <section id="v-login" class="v on">
 <div class="lg-l"><img id="llogo" alt="PT Murinda Sentra Baja">
@@ -938,9 +852,9 @@ body:has(#v-login.on){min-height:100vh;min-height:100dvh;display:grid;align-cont
 </div></section>
 
 <section id="v-edit" class="v"><div id="ebw" class="np"><div class="eb">
-<button class="btn" onclick="back()">← Daftar laporan</button><span id="stb" class="bd dr">Draft</span><span id="ss" class="ss"></span><span class="sp"></span>
+<button type="button" class="sb-tg" onclick="sbOpen(this)" aria-label="Buka menu" aria-controls="sb" aria-expanded="false"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><button class="btn" onclick="back()" aria-label="Kembali ke daftar laporan"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="lb">Daftar laporan</span></button><span id="stb" class="bd dr">Draft</span><span id="ss" class="ss"></span><span class="sp"></span>
 <div class="acts"><button id="bs" class="btn p" onclick="saveR()">Simpan draft</button><button id="bf" class="btn g" onclick="fin()">Finalisasi</button><button id="bo" class="btn" onclick="reopen()" hidden>Buka untuk revisi</button><button class="btn" onclick="print()">Cetak / PDF</button></div></div>
-<nav id="nav"><a href="#s-i" data-n="i">Informasi</a><a href="#s-a" data-n="a">A. Dimension</a><a href="#s-b" data-n="b">B. Welding</a><a href="#s-c" data-n="c">C. Leak Test</a><a href="#s-d" data-n="d">D. Concrete</a><a href="#s-cv" data-n="cv">E. Covering</a><a href="#s-e" data-n="e">F. Alignment</a><a href="#s-f" data-n="f">G. Painting</a><a href="#s-g" data-n="g">H. Final</a></nav></div>
+</div>
 <fieldset id="fs"><div id="sheet"></div></fieldset></section>
 
 <datalist id="dl-so"></datalist><datalist id="dl-eq"></datalist><datalist id="dl-eqi"></datalist><datalist id="dl-wd"></datalist><datalist id="dl-emp"></datalist><datalist id="dl-jid"></datalist><datalist id="dl-jig"></datalist><datalist id="dl-ft"></datalist>
@@ -1207,7 +1121,7 @@ async function apiRaw(a,b={}){const post=a=='save'||a=='delete'||a=='login';
  const r=await fetch(API+(post?'':`?action=${a}&s=${encodeURIComponent(S)}&token=${encodeURIComponent(TOKEN)}&id=${encodeURIComponent(b.id||'')}`),post?{method:'POST',body:JSON.stringify({...b,action:a,token:TOKEN,s:S})}:{});
  const j=await r.json();if(j&&j.error){if(/^Sesi/.test(j.error)&&U)logout(1);throw new Error(j.error)}return j}
 function pwt(b){const i=$('#lp'),h=i.type=='password';i.type=h?'text':'password';b.classList.toggle('on',h);b.setAttribute('aria-label',h?'Sembunyikan password':'Tampilkan password')}
-const show=v=>{$$('.v').forEach(e=>e.classList.toggle('on',e.id=='v-'+v));scrollTo(0,0)};
+const show=v=>{$$('.v').forEach(e=>e.classList.toggle('on',e.id=='v-'+v));document.body.dataset.v=v;sbClose();scrollTo(0,0);SPY='';spy()};
 /* v16: pemilih karyawan di login — combobox dengan pencarian & avatar inisial (menggantikan <select> bawaan). #lu (hidden) menyimpan nama terpilih. */
 let UL=[],UA=-1;
 const uCh='<svg class="ch" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
@@ -1249,7 +1163,7 @@ function renderList(){const q=$('#qs2').value.toLowerCase(),n={all:LIST.length,D
  $('#fl').innerHTML=[['all','Semua'],['Draft','Draft'],['Final','Final'],['me','Draft saya']].map(([k,l])=>`<button class="${FL==k?'on':''}" onclick="FL='${k}';renderList()">${l} (${n[k]})</button>`).join('');
  const f=LIST.filter(x=>(FL=='all'||(FL=='me'?x.by==U.n&&x.status!='Final':(x.status=='Final'?'Final':'Draft')==FL))&&Object.values(x).join(' ').toLowerCase().includes(q));
  $('#lr').innerHTML=f.map(x=>`<tr onclick="openR('${x.id}')"><td><b>${esc(x.id)}</b></td><td>${esc(x.so)}<br><span class="mut">${esc(x.serial)}</span></td><td>${esc(x.client)}<br><span class="mut">${esc(x.unit)}</span></td><td>${bdg(x.status)}</td><td>${rsl(x.overall)}</td><td>${esc(x.updated)}</td><td>${esc(x.by)}</td><td><button class="btn sm d" onclick="event.stopPropagation();del('${x.id}')">Hapus</button></td></tr>`).join('')||'<tr><td colspan="8" class="mut" style="text-align:center;padding:30px">Belum ada laporan yang cocok. Klik “+ Laporan baru” untuk memulai.</td></tr>'}
-function lvSet(v){LV=v;$$('#lvs button').forEach(b=>b.classList.toggle('on',b.dataset.v==v));$('#lv-so').hidden=v!='so';$('#lv-all').hidden=v!='all';v=='so'?renderSO():renderList()}
+function lvSet(v){LV=v;$$('#lvs button,#sblv button').forEach(b=>b.classList.toggle('on',b.dataset.v==v));$('#lv-so').hidden=v!='so';$('#lv-all').hidden=v!='all';v=='so'?renderSO():renderList()}
 /* ---------- Kalender kirim (v10): kalender ↔ filter Bulan/Tanggal kirim saling terhubung ---------- */
 const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,HR=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],
  dmyw=s=>{const m=/^(\d{4})-(\d\d)-(\d\d)/.exec(s||'');return m?`${HR[new Date(+m[1],+m[2]-1,+m[3]).getDay()].slice(0,3)}, ${dmy(s)}`:''};
@@ -1304,6 +1218,25 @@ async function back(){if(dirty){bk();await saveR(1)}show('list');try{await refre
 async function del(id){if(!confirm('Hapus laporan '+id+'? Data dan sketsa dihapus permanen.'))return;try{await api('delete',{id});toast('Laporan dihapus');await refresh()}catch(e){toast('Gagal: '+e.message,1)}}
 addEventListener('beforeunload',e=>{if(dirty&&U){bk();e.preventDefault();e.returnValue=''}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&dirty&&U&&$('#v-edit').classList.contains('on')){bk();saveR(1)}});
+/* ---------- Sidebar (v26): PC = menu tetap di kiri · HP / tablet = laci geser ---------- */
+let SBT=null,SPY='',SPR=0;
+function sbOpen(b){SBT=b||null;document.body.classList.add('sb-open');$$('.sb-tg').forEach(x=>x.setAttribute('aria-expanded','true'));$$('#v-list,#v-edit,#tb').forEach(e=>e.inert=true);setTimeout(()=>$('#sbx').focus(),40)}
+function sbClose(back){const b=document.body;if(!b.classList.contains('sb-open'))return;b.classList.remove('sb-open');$$('.sb-tg').forEach(x=>x.setAttribute('aria-expanded','false'));$$('#v-list,#v-edit,#tb').forEach(e=>e.inert=false);if(back&&SBT)SBT.focus()}
+addEventListener('keydown',e=>{if(e.key=='Escape')sbClose(1)});
+{const mq=matchMedia('(min-width:1100px)'),f=e=>{if(e.matches)sbClose()};mq.addEventListener?mq.addEventListener('change',f):mq.addListener(f)}
+$('#nav').addEventListener('click',e=>{if(e.target.closest('a'))sbClose()});
+/* bagian yang sedang dibaca → disorot di sidebar */
+function spy(){const v=$('#v-edit');if(!v||!v.classList.contains('on'))return;const cs=$$('#sheet .card');if(!cs.length)return;let cur=cs[0].dataset.s;
+ for(const c of cs){if(c.getBoundingClientRect().top<=110)cur=c.dataset.s;else break}
+ if(scrollY>0&&innerHeight+scrollY>=document.documentElement.scrollHeight-4)cur=cs[cs.length-1].dataset.s;
+ if(cur==SPY)return;SPY=cur;
+ $$('#nav a').forEach(a=>{const on=a.dataset.n==cur;a.classList.toggle('cur',on);on?a.setAttribute('aria-current','location'):a.removeAttribute('aria-current')})}
+addEventListener('scroll',()=>{SPR||(SPR=requestAnimationFrame(()=>{SPR=0;spy()}))},{passive:true});addEventListener('resize',spy);
+/* ringkasan: jumlah bagian yang sudah terisi (mengikuti penanda ✓ / NG di rel) */
+function prog(){const t=$$('#sheet .sx').length,d=$$('#nav a.done').length,n=$$('#nav a.bad').length;
+ $('#sbpt').textContent=`${d} dari ${t} bagian terisi.`+(n?` ${n} bagian ada NG.`:'');$('#sbpb').style.width=t?Math.round(Math.min(d,t)/t*100)+'%':'0%'}
+new MutationObserver(prog).observe($('#nav'),{subtree:true,attributes:true,attributeFilter:['class']});prog();
+
 (async()=>{$('#hlogo').src=LOGO;$('#llogo').src=LOGO;put({});
  try{USERS=await api('users');fillUsers()}catch(e){$('#le').textContent=lerr('Daftar karyawan belum dapat dimuat. '+e.message)}
  const s=JSON.parse(sessionStorage.getItem('ipqc_s')||'null');if(s){S=s.S;U=s.U;enter()}})();
