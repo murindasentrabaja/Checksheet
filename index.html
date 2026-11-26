@@ -517,9 +517,10 @@ body{background:#fff;font-family:system-ui,"Segoe UI",Roboto,Arial,sans-serif}
 .hm .mi span{font-size:8px;color:#000}
 .hm .mi b{color:#000}
 #ov{background:none!important;color:#000;padding:0;min-width:0}
-.sec{display:block;background:#CFE2F3!important;color:#000;border:1px solid #000;padding:3px 6px;font-size:11px;text-transform:uppercase;break-after:avoid}
-.sec .sl{display:inline;width:auto;height:auto;border-radius:0;background:none;font-size:inherit}
-.sec .sl::after{content:". "}
+.sec{display:flex;align-items:center;gap:2.2mm;background:none!important;color:#12315a;border:0;padding:1.2mm 0 .8mm;font-size:11.5px;font-weight:700;letter-spacing:.2px;text-transform:none;break-after:avoid}
+.sec::after{content:"";flex:1;height:1.2px;border-radius:1px;background:linear-gradient(90deg,#1b4a88,rgba(27,74,136,.45) 40%,rgba(27,74,136,0))}
+.sec .sl{display:grid;place-items:center;flex:none;width:5.2mm;height:5.2mm;border-radius:1.6mm;background:linear-gradient(135deg,#1b4a88,#12315a)!important;color:#fff;font-size:9.5px;font-weight:800;line-height:1}
+.sec .sl::after{content:none}
 #sheet th,#sheet td.l,#sheet td.n{background:#F3F3F3!important}
 #sheet td.l{color:#000}
 #sheet th{font-size:10px;padding:0 2px}
